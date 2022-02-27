@@ -1,0 +1,112 @@
+html {
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+
+.main-container {
+    margin: 0 auto;
+    padding: 25px 10%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 300px calc(100% - 300px - 25px) 25px;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "header header section2 section2 section2"
+        "section1 section1 section2 section2 section2"
+        "footer footer section2 section2 section2";
+    background: linear-gradient(180deg, #6e5494 0%, #605fa1 32.6%, #4e6db3 68.54%, #4078c0 100%);
+    color: white;
+    font-family: "Red Hat Display", sans-serif;
+}
+
+a:link,
+a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.header {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.58));
+}
+
+.header img {
+    margin-bottom: 5px;
+}
+
+.header h4 {
+    margin-top: 15px;
+    font-style: italic;
+}
+
+.theme-selector {
+    grid-area: section1;
+    text-align: center;
+}
+
+.toolbox-container {
+    grid-area: section2;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.toolbox-container .result-box {
+    height: 300px;
+    padding: 25px;
+    background: #333333;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.toolbox-container .toolbox {
+    padding: 25px;
+}
+
+.footer {
+    grid-area: footer;
+}
+
+.footer a {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: center;
+}
+
+.footer img {
+    margin-left: 5px;
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        display: flex;
+        flex-direction: column;
+    }
+}
