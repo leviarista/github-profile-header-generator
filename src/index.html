@@ -42,22 +42,22 @@
     </section>
 
     <section class="toolbox-container">
-        <div class="result-box">
+        <div class="result-box dark-mode">
             <div class="github-header-image" style="width: 100%; height: 200px; padding: 15px; 
-                display: flex; align-items: center; 
-                background-color: #000; color: white;
-                font-size: 40px;">
-                Hey! I am Leví
+                display: flex; align-items: center; justify-content: center; flex-direction: column;
+                background-color: rgb(0, 175, 214); color: white;">
+                <div class="title" style="font-size: 40px;"></div>
+                <div class="subtitle" style="font-size: 20px;"></div>
             </div>
             <div class="options-container">
-                <button class="dark-mode-button">Github dark mode</button>
+                <button class="dark-mode-button">Toogle Dark mode</button>
                 <button class="download-button">Download</button>
                 <button class="randomize-button">Randomize</button>
             </div>
         </div>
         <div class="toolbox">
-            <input type="text" name="title" id="" placeholder="Title" value="Hey! I am Leví">
-            <input type="text" name="title" id="" placeholder="Subtitle" value="Fullstack developer">
+            <input type="text" name="title" id="title-input" placeholder="Title" value="Hey! I am Leví">
+            <input type="text" name="subtitle" id="subtitle-input" placeholder="Subtitle" value="Fullstack developer">
         </div>
     </section>
 
@@ -68,6 +68,8 @@
         </a>
     </footer>
 
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 
 </html>

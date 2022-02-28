@@ -3,6 +3,8 @@
     --input-border-radius: 7px;
     --text-color: white;
     --paddings: 25px;
+    --github-dark-mode-color: #0d1117;
+    --github-light-mode-color: white;
 }
 
 .main-container {
@@ -11,7 +13,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 300px calc(100% - 300px - 25px) 25px;
-    gap: 0px 0px;
+    gap: 15px 40px;
     grid-auto-flow: row;
     grid-template-areas:
         "header header section2 section2 section2"
@@ -77,17 +79,18 @@ button {
 
 .theme-selector-box {
     grid-area: section1;
-    // text-align: center;
+    text-align: center;
 
     .theme-options-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        gap: 15px 15px;
         place-items: center;
         padding: 25px 0;
     }
 
     .theme-option {
-        width: 150px;
+        width: 100%;
         height: 70px;
         display: flex;
         align-items: center;
@@ -121,11 +124,17 @@ button {
     .result-box {
         // height: 300px;
         padding: var(--paddings);
-        background: #333333;
         border-radius: 10px 10px 0px 0px;
+        background: var(--github-dark-mode-color);
 
+
+        &.light-mode{
+            background: var(--github-light-mode-color);
+        }
+        
         .github-header-image {
-            margin: auto;
+            margin: 0 auto;
+            border: none;
         }
 
         .options-container {
@@ -137,6 +146,8 @@ button {
                 border: 1px solid #ffffff;
                 border-radius: var(--button-border-radius);
                 color: var(--text-color);
+                text-transform: uppercase;
+                font-size: 12px;
                 transition: all 0.25s ease-in-out;
 
                 &:hover {
@@ -147,11 +158,11 @@ button {
             .dark-mode-button {
                 background: #71486f;
             }
-            .download-button{
-                background: #38C481;
+            .download-button {
+                background: #38c481;
             }
-            .randomize-button{
-                background: #10B2D6;
+            .randomize-button {
+                background: #10b2d6;
             }
         }
     }

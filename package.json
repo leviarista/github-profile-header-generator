@@ -20,5 +20,8 @@
   "devDependencies": {
     "sass": "^1.49.9",
     "vite": "^2.8.0"
+  },
+  "dependencies": {
+    "html2canvas": "^1.4.1"
   }
 }
