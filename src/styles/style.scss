@@ -1,0 +1,197 @@
+:root {
+    --button-border-radius: 7px;
+    --input-border-radius: 7px;
+    --text-color: white;
+    --paddings: 25px;
+}
+
+.main-container {
+    margin: 0 auto;
+    padding: 25px 10%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 300px calc(100% - 300px - 25px) 25px;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "header header section2 section2 section2"
+        "section1 section1 section2 section2 section2"
+        "footer footer section2 section2 section2";
+    background: linear-gradient(180deg, #6e5494 0%, #605fa1 32.6%, #4e6db3 68.54%, #4078c0 100%);
+    color: var(--text-color);
+    font-family: "Red Hat Display", sans-serif;
+}
+
+a:link,
+a:visited {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+input {
+    height: 35px;
+    padding: 0 10px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid #ffffff;
+    box-sizing: border-box;
+    border-radius: var(--input-border-radius);
+    font-family: "Red Hat Display", sans-serif;
+    color: var(--text-color);
+
+    &:focus {
+        box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.7);
+        outline: transparent;
+        // filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.5));
+    }
+
+    &::placeholder {
+        color: #cccccc;
+        font-family: "Red Hat Display", sans-serif;
+    }
+}
+
+button {
+    font-family: "Red Hat Display", sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.header {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.5));
+
+    img {
+        margin-bottom: 5px;
+    }
+
+    h4 {
+        margin-top: 15px;
+        font-style: italic;
+    }
+}
+
+.theme-selector-box {
+    grid-area: section1;
+    // text-align: center;
+
+    .theme-options-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        place-items: center;
+        padding: 25px 0;
+    }
+
+    .theme-option {
+        width: 150px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--button-border-radius);
+        transition: all 0.25s ease-in-out;
+
+        &:hover {
+            box-shadow: 0px 0px 5px 2px rgba(255, 255, 255, 0.25);
+        }
+    }
+
+    .theme-github {
+        background: radial-gradient(50% 50% at 50% 50%, #333333 0%, #010101 100%);
+        color: #ffffff;
+        border: 1px solid #ffffff;
+
+        &.active {
+            border-width: 2px;
+        }
+    }
+}
+
+.toolbox-container {
+    grid-area: section2;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 2px rgba(255, 255, 255, 0.25);
+
+    .result-box {
+        // height: 300px;
+        padding: var(--paddings);
+        background: #333333;
+        border-radius: 10px 10px 0px 0px;
+
+        .github-header-image {
+            margin: auto;
+        }
+
+        .options-container {
+            padding: 25px 0 0 0;
+
+            button {
+                width: 150px;
+                height: 35px;
+                border: 1px solid #ffffff;
+                border-radius: var(--button-border-radius);
+                color: var(--text-color);
+                transition: all 0.25s ease-in-out;
+
+                &:hover {
+                    box-shadow: 0px 0px 5px 2px rgba(255, 255, 255, 0.25);
+                }
+            }
+
+            .dark-mode-button {
+                background: #71486f;
+            }
+            .download-button{
+                background: #38C481;
+            }
+            .randomize-button{
+                background: #10B2D6;
+            }
+        }
+    }
+
+    .toolbox {
+        padding: var(--paddings);
+
+        input {
+            width: calc(50% - 2px - 10px);
+
+            &:first-child {
+                margin-right: 20px;
+            }
+        }
+    }
+}
+
+.footer {
+    grid-area: footer;
+
+    a {
+        margin-top: 15px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        text-align: center;
+
+        &:hover {
+            text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
+        }
+    }
+
+    img {
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        display: flex;
+        flex-direction: column;
+    }
+}

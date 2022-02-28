@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Github Profile Header Generator</title>
     <!-- Styles -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/styles/index.scss">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
         rel="stylesheet">
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-    <link rel="manifest" href="images/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/images/site.webmanifest">
 
 </head>
 
@@ -33,16 +33,31 @@
         </h4>
     </header>
 
-    <section class="theme-selector">
+    <section class="theme-selector-box">
         Choose a theme:
+        <div class="theme-options-container">
+            <button class="theme-option theme-github">Github Theme</button>
+            <button class="theme-option theme-github">Github Theme</button>
+        </div>
     </section>
 
     <section class="toolbox-container">
         <div class="result-box">
-            Hi there! I am Leví
+            <div class="github-header-image" style="width: 100%; height: 200px; padding: 15px; 
+                display: flex; align-items: center; 
+                background-color: #000; color: white;
+                font-size: 40px;">
+                Hey! I am Leví
+            </div>
+            <div class="options-container">
+                <button class="dark-mode-button">Github dark mode</button>
+                <button class="download-button">Download</button>
+                <button class="randomize-button">Randomize</button>
+            </div>
         </div>
         <div class="toolbox">
-            Hi there! I am Leví
+            <input type="text" name="title" id="" placeholder="Title" value="Hey! I am Leví">
+            <input type="text" name="title" id="" placeholder="Subtitle" value="Fullstack developer">
         </div>
     </section>
 
