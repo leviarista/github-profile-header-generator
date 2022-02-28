@@ -30,7 +30,9 @@ a:visited {
     text-decoration: none;
 }
 
-input, .align-buttons button {
+input,
+select,
+.align-buttons button {
     height: 35px;
     padding: 0 10px;
     background: rgba(255, 255, 255, 0.15);
@@ -69,6 +71,10 @@ button {
 
     img {
         margin-bottom: 5px;
+    }
+
+    span {
+        font-family: "Kalam";
     }
 
     h4 {
@@ -134,6 +140,7 @@ button {
         #github-header-image {
             margin: 0 auto;
             border: none;
+            overflow: hidden;
         }
 
         .options-container {
@@ -224,14 +231,55 @@ button {
                     margin-left: 5px;
                 }
             }
+
+            .paddings-input {
+                width: 100px;
+            }
         }
 
         .align-buttons {
             display: flex;
             align-items: center;
 
-            button{
+            button {
                 margin-left: 5px;
+            }
+        }
+
+        .font-selectors-container {
+            display: flex;
+
+            div {
+                &:not(:last-child) {
+                    margin-right: 15px;
+                }
+
+                input {
+                    margin-left: 5px;
+                }
+            }
+
+            select {
+                cursor: pointer;
+                margin-left: 5px;
+
+                option {
+                    color: black;
+                }
+            }
+        }
+
+        .font-size-inputs{
+            display: flex;
+
+            div {
+                &:not(:last-child) {
+                    margin-right: 15px;
+                }
+
+                input {
+                    margin-left: 5px;
+                }
             }
         }
     }

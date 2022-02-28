@@ -1,10 +1,11 @@
-let headerImageContainer = document.querySelector('.header-image-container');
+const headerImageContainer = document.querySelector('.header-image-container');
 const headerImage = document.querySelector('#github-header-image');
-// console.log(headerImage.clientWidth)
 const title = headerImage.querySelector('.title');
 const subtitle = headerImage.querySelector('.subtitle');
 
 const toolbox = document.querySelector('.toolbox');
+
+let selectedTheme = 'github';
 
 
 // Init
@@ -12,15 +13,6 @@ const toolbox = document.querySelector('.toolbox');
 document.querySelector('.toolbox .size-inputs input#width-input').value = headerImageContainer.clientWidth;
 // setInfoValues;
 // setColorValues;
-
-/* ************** Theme options ************** */
-
-document.querySelectorAll('.theme-option')
-    .forEach(button => {
-        button.addEventListener('click', (e) => {
-            console.log(e.target)
-        });
-    })
 
 /* ************** Header image buttons ************** */
 
@@ -34,7 +26,7 @@ document.querySelector('.download-button')
                 // height: (headerImage.style.height * 2)
             })
             .then(function (canvas) {
-                document.body.before(canvas);
+                // document.body.before(canvas);
                 // var imageURL = canvas.toDataURL("image/png");
                 // let a = document.createElement("a");
                 // a.href = imageURL;
@@ -139,8 +131,115 @@ toolbox.querySelectorAll('.align-buttons button')
     })
 
 
+/* ************** Font Selectors ************** */
 
+function setFontValues() {
+    let titleFontSelect = toolbox.querySelector('.font-selectors-container #title-font-selector');
+    let subtitleFontSelect = toolbox.querySelector('.font-selectors-container #subtitle-font-selector');
 
+    if (!document.fonts.check(`14px ${titleFontSelect.value}`)) {
+        let font = getFont(titleFontSelect.value)
+        font.load().then(function (loadedFont) {
+            document.fonts.add(loadedFont)
+            console.log('Font loaded an added');
+            title.style.fontFamily = `"${titleFontSelect.value}"`;
+        }).catch(function (error) {
+            console.log('Failed to load font: ' + error)
+        })
+    } else {
+        title.style.fontFamily = `"${titleFontSelect.value}"`;
+    }
+
+    if (!document.fonts.check(`14px ${subtitleFontSelect.value}`)) {
+        let font = getFont(subtitleFontSelect.value)
+        font.load().then(function (loadedFont) {
+            document.fonts.add(loadedFont)
+            console.log('Font loaded an added');
+            subtitle.style.fontFamily = `"${subtitleFontSelect.value}"`;
+        }).catch(function (error) {
+            console.log('Failed to load font: ' + error)
+        })
+    } else {
+        subtitle.style.fontFamily = `"${subtitleFontSelect.value}"`;
+    }
+}
+
+function getFont(fontName) {
+    switch (fontName) {
+        case 'Kalam':
+            return new FontFace('Kalam', 'url("/fonts/Kalam-Regular.ttf")');
+        default:
+            return new FontFace('Kalam', 'url("/fonts/Kalam-Regular.ttf")');
+    }
+}
+
+toolbox.querySelectorAll('.font-selectors-container')
+    .forEach(button => {
+        button.addEventListener('change', (e) => {
+            setFontValues();
+        });
+    })
+
+/* ************** Font Size inputs ************** */
+
+function setFontSizeValues() {
+    let titleFontSizeInput = toolbox.querySelector('.font-size-inputs input#title-font-size-input');
+    let subtitleFontSizeInput = toolbox.querySelector('.font-size-inputs input#sutitle-font-size-input');
+
+    title.style.fontSize = titleFontSizeInput.value;
+    subtitle.style.fontSize = subtitleFontSizeInput.value;
+}
+
+toolbox.querySelectorAll('.font-size-inputs input')
+    .forEach(input => {
+        input.addEventListener('click', () => input.select());
+
+        input.addEventListener('keyup', (e) => {
+            setFontSizeValues();
+        });
+    })
+
+/* ************** Theme options ************** */
+
+document.querySelectorAll('.theme-option')
+    .forEach(button => {
+        button.addEventListener('click', (e) => {
+            console.log(e.target);
+            document.querySelectorAll('.theme-option').forEach(button => { button.classList.remove('active'); });
+            button.classList.add('active');
+        });
+        if (button.getAttribute('data-theme') === selectedTheme)
+            button.classList.add('active');
+    })
+
+// Github theme
+const imageDecorationContainer = document.querySelector('.img-decoration-container');
+const imgDecorationElement = document.createElement('img');
+imgDecorationElement.src = 'images/octocat.png';
+imgDecorationElement.style.position = 'absolute';
+imgDecorationElement.style.bottom = 'calc(50% - 50px)';
+imgDecorationElement.style.right = 0;
+imageDecorationContainer.appendChild(imgDecorationElement)
+
+toolbox.querySelectorAll('.align-buttons button')
+    .forEach(button => {
+        button.addEventListener('click', (e) => {
+            const element = e.target.tagName.toLowerCase() === 'img' ?
+                e.target.parentNode :
+                e.target;
+            const alignValue = element.getAttribute('data-align-value');
+            if (selectedTheme === 'github') {
+                const imageDecoration = document.querySelector('.img-decoration-container img');
+                if(alignValue === 'flex-end'){
+                    imageDecoration.style.left = 0;
+                    imageDecoration.style.right = 'auto';
+                } else if(alignValue === 'flex-start') {
+                    imageDecoration.style.left = 'auto';
+                    imageDecoration.style.right = 0;
+                }
+            }
+        });
+    })
 
 
 /* ************** ************** ************** */
