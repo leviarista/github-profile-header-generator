@@ -11,14 +11,14 @@
     margin: 0 auto;
     padding: 25px 10%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 300px calc(100% - 300px - 25px) 25px;
-    gap: 15px 40px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 300px calc(100% - 300px - 25px - 45px) 25px;
+    grid-gap: 15px 40px;
     grid-auto-flow: row;
     grid-template-areas:
-        "header header section2 section2 section2"
-        "section1 section1 section2 section2 section2"
-        "footer footer section2 section2 section2";
+        "header header section2 section2 section2 section2"
+        "section1 section1 section2 section2 section2 section2"
+        "footer footer section2 section2 section2 section2";
     background: linear-gradient(180deg, #6e5494 0%, #605fa1 32.6%, #4e6db3 68.54%, #4078c0 100%);
     color: var(--text-color);
     font-family: "Red Hat Display", sans-serif;
@@ -30,7 +30,7 @@ a:visited {
     text-decoration: none;
 }
 
-input {
+input, .align-buttons button {
     height: 35px;
     padding: 0 10px;
     background: rgba(255, 255, 255, 0.15);
@@ -116,10 +116,10 @@ button {
 
 .toolbox-container {
     grid-area: section2;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.1);
+    // text-align: center;
+    background: rgba(255, 255, 255, 0.15);
     border-radius: 10px;
-    box-shadow: 0px 0px 15px 2px rgba(255, 255, 255, 0.25);
+    box-shadow: 0px 0px 5px 2px rgba(255, 255, 255, 0.25);
 
     .result-box {
         // height: 300px;
@@ -127,31 +127,38 @@ button {
         border-radius: 10px 10px 0px 0px;
         background: var(--github-dark-mode-color);
 
-
-        &.light-mode{
+        &.light-mode {
             background: var(--github-light-mode-color);
         }
-        
-        .github-header-image {
+
+        #github-header-image {
             margin: 0 auto;
             border: none;
         }
 
         .options-container {
-            padding: 25px 0 0 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: var(--paddings) 0 0 0;
 
             button {
-                width: 150px;
+                width: 155px;
                 height: 35px;
                 border: 1px solid #ffffff;
                 border-radius: var(--button-border-radius);
                 color: var(--text-color);
                 text-transform: uppercase;
                 font-size: 12px;
+                font-weight: 600;
                 transition: all 0.25s ease-in-out;
 
                 &:hover {
                     box-shadow: 0px 0px 5px 2px rgba(255, 255, 255, 0.25);
+                }
+
+                &:not(:last-child) {
+                    margin-right: 15px;
                 }
             }
 
@@ -170,11 +177,61 @@ button {
     .toolbox {
         padding: var(--paddings);
 
-        input {
-            width: calc(50% - 2px - 10px);
+        > div:not(:last-child) {
+            margin-bottom: 15px;
+        }
 
-            &:first-child {
-                margin-right: 20px;
+        .text-inputs {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+            input {
+                width: calc(50% - 7.5px);
+            }
+        }
+
+        .color-selectors-container {
+            display: flex;
+            flex-wrap: wrap;
+
+            div {
+                display: flex;
+                align-items: center;
+
+                &:not(:last-child) {
+                    margin-right: 15px;
+                }
+
+                input {
+                    margin-left: 5px;
+                    cursor: pointer;
+                    padding: 0;
+                }
+            }
+        }
+
+        .size-inputs {
+            display: flex;
+            flex-wrap: wrap;
+
+            div {
+                &:not(:last-child) {
+                    margin-right: 15px;
+                }
+
+                input {
+                    margin-left: 5px;
+                }
+            }
+        }
+
+        .align-buttons {
+            display: flex;
+            align-items: center;
+
+            button{
+                margin-left: 5px;
             }
         }
     }
@@ -201,8 +258,40 @@ button {
 }
 
 @media (max-width: 768px) {
+    :root {
+        --paddings: 15px;
+    }
     .main-container {
         display: flex;
         flex-direction: column;
+        padding: 25px 5%;
+    }
+    .toolbox-container {
+        input {
+            margin-bottom: 5px;
+        }
+
+        .result-box {
+            .options-container {
+                button {
+                    width: 100%;
+                    &:not(:last-child) {
+                        margin-bottom: 10px;
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+
+        .toolbox {
+            .text-inputs {
+                input {
+                    width: 100%;
+                    &:not(:last-child) {
+                        // margin-bottom: 10px;
+                    }
+                }
+            }
+        }
     }
 }

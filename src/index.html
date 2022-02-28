@@ -16,7 +16,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-    <link rel="manifest" href="/images/site.webmanifest">
+    <link rel="manifest" href="/site.webmanifest">
 
 </head>
 
@@ -24,7 +24,7 @@
 
     <header class="header">
         <h1>
-            <img src="images/github-logo-40.svg" alt="My Happy SVG" /><br />
+            <img src="images/github-logo-40.svg" alt="Github logo" /><br />
             Github <br />
             Profile Header Generator
         </h1>
@@ -37,34 +37,86 @@
         Choose a theme:
         <div class="theme-options-container">
             <button class="theme-option theme-github">Github Theme</button>
-            <button class="theme-option theme-github">Github Theme</button>
         </div>
     </section>
 
     <section class="toolbox-container">
+
         <div class="result-box dark-mode">
-            <div class="github-header-image" style="width: 100%; height: 200px; padding: 15px; 
+            <div class="header-image-container" style="width: 100%;">
+                <div id="github-header-image" style="width: 100%; height: 200px; padding: 25px; 
                 display: flex; align-items: center; justify-content: center; flex-direction: column;
-                background-color: rgb(0, 175, 214); color: white;">
-                <div class="title" style="font-size: 40px;"></div>
-                <div class="subtitle" style="font-size: 20px;"></div>
+                background-color: #00678A; color: white;">
+                    <div class="title" style="font-size: 40px;">Hey! I am Leví</div>
+                    <div class="subtitle" style="font-size: 20px;">Fullstack developer </div>
+                </div>
             </div>
             <div class="options-container">
-                <button class="dark-mode-button">Toogle Dark mode</button>
-                <button class="download-button">Download</button>
-                <button class="randomize-button">Randomize</button>
+                <button type="button" class="dark-mode-button">Dark mode</button>
+                <button type="button" class="download-button">Download</button>
+                <button type="button" class="randomize-button">Randomize</button>
             </div>
         </div>
+
         <div class="toolbox">
-            <input type="text" name="title" id="title-input" placeholder="Title" value="Hey! I am Leví">
-            <input type="text" name="subtitle" id="subtitle-input" placeholder="Subtitle" value="Fullstack developer">
+            <div class="text-inputs">
+                <input type="text" name="title" id="title-input" placeholder="Title" value="Hey! I am Leví"
+                    aria-label="Title">
+                <input type="text" name="subtitle" id="subtitle-input" placeholder="Subtitle"
+                    value="Fullstack developer" aria-label="Subtitle">
+            </div>
+            <div class="color-selectors-container">
+                <div>
+                    <label for="bg-color-selector">Background color:</label>
+                    <input type="color" id="bg-color-selector" name="bg-color-selector" value="#00678A"><br><br>
+                </div>
+                <div>
+                    <label for="title-color-selector">Title color:</label>
+                    <input type="color" id="title-color-selector" name="title-color-selector" value="#FFFFFF"><br><br>
+                </div>
+                <div>
+                    <label for="subtitle-color-selector">Subtitle color:</label>
+                    <input type="color" id="subtitle-color-selector" name="subtitle-color-selector"
+                        value="#FFFFFF"><br><br>
+                </div>
+            </div>
+            <div class="size-inputs">
+                <div>
+                    <label for="width-input">Width:</label>
+                    <input type="text" name="width-width" id="width-input" placeholder="Width" value="">
+                </div>
+                <div>
+                    <label for="height-input">Height:</label>
+                    <input type="text" name="height-width" id="height-input" placeholder="Height" value="200">
+                </div>
+                <div>
+                    <label for="paddings-input">Padding:</label>
+                    <input type="text" name="paddings-width" id="paddings-input" placeholder="Paddings" value="25">
+                </div>
+            </div>
+            <div class="align-buttons">
+                Text align:
+                <button type="button" class="left-align-button" aria-label="Left align button"
+                    data-align-value="flex-start">
+                    <img src="images/icons/left-align.svg" alt="Left align button" /><br />
+                </button>
+                <button type="button" class="center-align-button" aria-label="Center align button"
+                    data-align-value="center">
+                    <img src="images/icons/center-align.svg" alt="Center align button" /><br />
+                </button>
+                <button type="button" class="right-align-button" aria-label="Right align button"
+                    data-align-value="flex-end">
+                    <img src="images/icons/right-align.svg" alt="Right align button" /><br />
+                </button>
+            </div>
         </div>
+
     </section>
 
     <footer class="footer">
         <a href="https://github.com/leviarista/github-profile-header-generator" target="_blank"
             rel="noopener noreferrer">
-            Look it at Github <img src="images/github-logo-20.svg" alt="My Happy SVG" />
+            Look it at Github <img src="images/github-logo-20.svg" alt="Github logo" />
         </a>
     </footer>
 
