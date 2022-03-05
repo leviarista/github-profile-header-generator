@@ -1,6 +1,4 @@
-document.getElementById("defaultOpen").click();
-
-function openCity(evt, cityName) {
+function openTab(e, name) {
     let i, tabcontent, tablinks;
 
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -13,6 +11,16 @@ function openCity(evt, cityName) {
         tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
 
-    document.getElementById(cityName).style.display = "block";
-    evt.currentTarget.className += " active";
+    document.getElementById(name).style.display = "block";
+    e.currentTarget.className += " active";
 }
+
+document.querySelectorAll('.tab .tablinks')
+    .forEach(button => {
+        button.addEventListener('click', (e) => {
+            const name = e.target.getAttribute('data-name');
+            openTab(e, name);
+        });
+    })
+
+document.getElementById("defaultOpenTag").click();

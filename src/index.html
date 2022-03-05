@@ -63,9 +63,9 @@
         </div>
 
         <div class="tab">
-            <button class="tablinks" onclick="openCity(event, 'main-section')" id="defaultOpen">Main</button>
-            <button class="tablinks" onclick="openCity(event, 'background-section')">Background</button>
-            <!-- <button class="tablinks" onclick="openCity(event, 'decorations-section')">Decorations</button> -->
+            <button class="tablinks" data-name="main-section" id="defaultOpenTag">Main</button>
+            <button class="tablinks" data-name="background-section">Background</button>
+            <!-- <button class="tablinks" onclick="openTab(event, 'decorations-section')">Decorations</button> -->
         </div>
 
         <div id="main-section" class="tabcontent">
@@ -77,10 +77,6 @@
                         value="Fullstack developer" aria-label="Subtitle">
                 </div>
                 <div class="color-selectors-container">
-                    <div>
-                        <label for="bg-color-selector">Background color:</label>
-                        <input type="color" id="bg-color-selector" name="bg-color-selector" value="#4078c0"><br><br>
-                    </div>
                     <div>
                         <label for="title-color-selector">Title color:</label>
                         <input type="color" id="title-color-selector" name="title-color-selector"
@@ -173,7 +169,13 @@
         </div>
 
         <div id="background-section" class="tabcontent">
-            <div class="toolbox">
+            <div class="toolbox-background">
+                <div class="bg-color-selectors">
+                    <div>
+                        <label for="bg-color-selector">Background color:</label>
+                        <input type="color" id="bg-color-selector" name="bg-color-selector" value="#4078c0"><br><br>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -191,9 +193,11 @@
         </a>
     </footer>
 
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-    <script src="/js/main.js"></script>
-    <script src="/js/tabs.js"></script>
+    <script type="module" src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script type="module" src="/js/themes.js"></script>
+    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="/js/background.js"></script>
+    <script type="module" src="/js/tabs.js"></script>
 </body>
 
 </html>
