@@ -58,108 +58,127 @@
             <div class="options-container">
                 <button type="button" class="dark-mode-button">Dark mode</button>
                 <button type="button" class="download-button">Download</button>
-                <button type="button" class="randomize-button">Randomize</button>
+                <!-- <button type="button" class="randomize-button">Randomize</button> -->
             </div>
         </div>
 
-        <div class="toolbox">
-            <div class="text-inputs">
-                <input type="text" name="title" id="title-input" placeholder="Title" value="Hey! I am Leví"
-                    aria-label="Title">
-                <input type="text" name="subtitle" id="subtitle-input" placeholder="Subtitle"
-                    value="Fullstack developer" aria-label="Subtitle">
+        <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'main-section')" id="defaultOpen">Main</button>
+            <button class="tablinks" onclick="openCity(event, 'background-section')">Background</button>
+            <!-- <button class="tablinks" onclick="openCity(event, 'decorations-section')">Decorations</button> -->
+        </div>
+
+        <div id="main-section" class="tabcontent">
+            <div class="toolbox">
+                <div class="text-inputs">
+                    <input type="text" name="title" id="title-input" placeholder="Title" value="Hey! I am Leví"
+                        aria-label="Title">
+                    <input type="text" name="subtitle" id="subtitle-input" placeholder="Subtitle"
+                        value="Fullstack developer" aria-label="Subtitle">
+                </div>
+                <div class="color-selectors-container">
+                    <div>
+                        <label for="bg-color-selector">Background color:</label>
+                        <input type="color" id="bg-color-selector" name="bg-color-selector" value="#4078c0"><br><br>
+                    </div>
+                    <div>
+                        <label for="title-color-selector">Title color:</label>
+                        <input type="color" id="title-color-selector" name="title-color-selector"
+                            value="#FFFFFF"><br><br>
+                    </div>
+                    <div>
+                        <label for="subtitle-color-selector">Subtitle color:</label>
+                        <input type="color" id="subtitle-color-selector" name="subtitle-color-selector"
+                            value="#FFFFFF"><br><br>
+                    </div>
+                </div>
+                <div class="size-inputs">
+                    <div>
+                        <label for="width-input">Width:</label>
+                        <input type="text" name="width-input" id="width-input" placeholder="Width" value="">
+                    </div>
+                    <div>
+                        <label for="height-input">Height:</label>
+                        <input type="text" name="height-input" id="height-input" placeholder="Height" value="200">
+                    </div>
+                    <div>
+                        <label for="paddings-input">Padding:</label>
+                        <input type="text" name="paddings-input" id="paddings-input" placeholder="Paddings" value="25">
+                    </div>
+                </div>
+                <div class="align-buttons">
+                    Text align:
+                    <button type="button" class="left-align-button" aria-label="Left align button"
+                        data-align-value="flex-start">
+                        <img src="images/icons/left-align.svg" alt="Left align button" /><br />
+                    </button>
+                    <button type="button" class="center-align-button" aria-label="Center align button"
+                        data-align-value="center">
+                        <img src="images/icons/center-align.svg" alt="Center align button" /><br />
+                    </button>
+                    <button type="button" class="right-align-button" aria-label="Right align button"
+                        data-align-value="flex-end">
+                        <img src="images/icons/right-align.svg" alt="Right align button" /><br />
+                    </button>
+                </div>
+                <div class="font-selectors-container">
+                    <div>
+                        <label for="title-font-selector">Title font:</label>
+                        <select name="title-font-selector" id="title-font-selector">
+                            <option value="Red Hat Display">Red Hat Display</option>
+                            <option value="Kalam">Kalam</option>
+                            <option value="Arial">Arial</option>
+                            <option value="Verdana">Verdana</option>
+                            <option value="Helvetica">Helvetica</option>
+                            <option value="Tahoma">Tahoma</option>
+                            <option value="Trebuchet MS">Trebuchet MS</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Garamond">Garamond</option>
+                            <option value="Courier New">Courier New</option>
+                            <option value="Brush Script MT">Brush Script MT</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="subtitle-font-selector">Subtitle font:</label>
+                        <select name="subtitle-font-selector" id="subtitle-font-selector">
+                            <option value="Red Hat Display">Red Hat Display</option>
+                            <option value="Kalam" selected>Kalam</option>
+                            <option value="Arial">Arial</option>
+                            <option value="Verdana">Verdana</option>
+                            <option value="Helvetica">Helvetica</option>
+                            <option value="Tahoma">Tahoma</option>
+                            <option value="Trebuchet MS">Trebuchet MS</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Garamond">Garamond</option>
+                            <option value="Courier New">Courier New</option>
+                            <option value="Brush Script MT">Brush Script MT</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="font-size-inputs">
+                    <div>
+                        <label for="title-font-size-input">Title font size:</label>
+                        <input type="text" name="title-font-size-input" id="title-font-size-input"
+                            placeholder="Title font size" value="40">
+                    </div>
+                    <div>
+                        <label for="sutitle-font-size-input">Subitle font size:</label>
+                        <input type="text" name="sutitle-font-size-input" id="sutitle-font-size-input"
+                            placeholder="Subitle font size" value="20">
+                    </div>
+                </div>
             </div>
-            <div class="color-selectors-container">
-                <div>
-                    <label for="bg-color-selector">Background color:</label>
-                    <input type="color" id="bg-color-selector" name="bg-color-selector" value="#4078c0"><br><br>
-                </div>
-                <div>
-                    <label for="title-color-selector">Title color:</label>
-                    <input type="color" id="title-color-selector" name="title-color-selector" value="#FFFFFF"><br><br>
-                </div>
-                <div>
-                    <label for="subtitle-color-selector">Subtitle color:</label>
-                    <input type="color" id="subtitle-color-selector" name="subtitle-color-selector"
-                        value="#FFFFFF"><br><br>
-                </div>
+        </div>
+
+        <div id="background-section" class="tabcontent">
+            <div class="toolbox">
             </div>
-            <div class="size-inputs">
-                <div>
-                    <label for="width-input">Width:</label>
-                    <input type="text" name="width-input" id="width-input" placeholder="Width" value="">
-                </div>
-                <div>
-                    <label for="height-input">Height:</label>
-                    <input type="text" name="height-input" id="height-input" placeholder="Height" value="200">
-                </div>
-                <div>
-                    <label for="paddings-input">Padding:</label>
-                    <input type="text" name="paddings-input" id="paddings-input" placeholder="Paddings" value="25">
-                </div>
-            </div>
-            <div class="align-buttons">
-                Text align:
-                <button type="button" class="left-align-button" aria-label="Left align button"
-                    data-align-value="flex-start">
-                    <img src="images/icons/left-align.svg" alt="Left align button" /><br />
-                </button>
-                <button type="button" class="center-align-button" aria-label="Center align button"
-                    data-align-value="center">
-                    <img src="images/icons/center-align.svg" alt="Center align button" /><br />
-                </button>
-                <button type="button" class="right-align-button" aria-label="Right align button"
-                    data-align-value="flex-end">
-                    <img src="images/icons/right-align.svg" alt="Right align button" /><br />
-                </button>
-            </div>
-            <div class="font-selectors-container">
-                <div>
-                    <label for="title-font-selector">Title font:</label>
-                    <select name="title-font-selector" id="title-font-selector">
-                        <option value="Red Hat Display">Red Hat Display</option>
-                        <option value="Kalam">Kalam</option>
-                        <option value="Arial">Arial</option>
-                        <option value="Verdana">Verdana</option>
-                        <option value="Helvetica">Helvetica</option>
-                        <option value="Tahoma">Tahoma</option>
-                        <option value="Trebuchet MS">Trebuchet MS</option>
-                        <option value="Times New Roman">Times New Roman</option>
-                        <option value="Georgia">Georgia</option>
-                        <option value="Garamond">Garamond</option>
-                        <option value="Courier New">Courier New</option>
-                        <option value="Brush Script MT">Brush Script MT</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="subtitle-font-selector">Subtitle font:</label>
-                    <select name="subtitle-font-selector" id="subtitle-font-selector">
-                        <option value="Red Hat Display">Red Hat Display</option>
-                        <option value="Kalam" selected>Kalam</option>
-                        <option value="Arial">Arial</option>
-                        <option value="Verdana">Verdana</option>
-                        <option value="Helvetica">Helvetica</option>
-                        <option value="Tahoma">Tahoma</option>
-                        <option value="Trebuchet MS">Trebuchet MS</option>
-                        <option value="Times New Roman">Times New Roman</option>
-                        <option value="Georgia">Georgia</option>
-                        <option value="Garamond">Garamond</option>
-                        <option value="Courier New">Courier New</option>
-                        <option value="Brush Script MT">Brush Script MT</option>
-                    </select>
-                </div>
-            </div>
-            <div class="font-size-inputs">
-                <div>
-                    <label for="title-font-size-input">Title font size:</label>
-                    <input type="text" name="title-font-size-input" id="title-font-size-input"
-                        placeholder="Title font size" value="40">
-                </div>
-                <div>
-                    <label for="sutitle-font-size-input">Subitle font size:</label>
-                    <input type="text" name="sutitle-font-size-input" id="sutitle-font-size-input"
-                        placeholder="Subitle font size" value="20">
-                </div>
+        </div>
+
+        <div id="decorations-section" class="tabcontent">
+            <div class="toolbox">
             </div>
         </div>
 
@@ -174,6 +193,7 @@
 
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="/js/main.js"></script>
+    <script src="/js/tabs.js"></script>
 </body>
 
 </html>

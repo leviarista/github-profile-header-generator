@@ -26,7 +26,7 @@ document.querySelector('.download-button')
                 // height: (headerImage.style.height * 2)
             })
             .then(function (canvas) {
-                // document.body.before(canvas);
+                document.body.before(canvas);
                 // var imageURL = canvas.toDataURL("image/png");
                 // let a = document.createElement("a");
                 // a.href = imageURL;
@@ -215,6 +215,7 @@ document.querySelectorAll('.theme-option')
 // Github theme
 const imageDecorationContainer = document.querySelector('.img-decoration-container');
 const imgDecorationElement = document.createElement('img');
+imgDecorationElement.className = 'img-decoration';
 imgDecorationElement.src = 'images/octocat.png';
 imgDecorationElement.style.position = 'absolute';
 imgDecorationElement.style.bottom = 'calc(50% - 50px)';
@@ -230,12 +231,21 @@ toolbox.querySelectorAll('.align-buttons button')
             const alignValue = element.getAttribute('data-align-value');
             if (selectedTheme === 'github') {
                 const imageDecoration = document.querySelector('.img-decoration-container img');
-                if(alignValue === 'flex-end'){
+                if (alignValue === 'flex-end') {
+                    document.querySelector('.img-decoration-container .img-decoration-2')?.remove();
                     imageDecoration.style.left = 0;
                     imageDecoration.style.right = 'auto';
-                } else if(alignValue === 'flex-start') {
+                } else if (alignValue === 'flex-start') {
+                    document.querySelector('.img-decoration-container .img-decoration-2')?.remove();
+                    imageDecoration.style.right = 0;
+                } else if (alignValue === 'center') {
                     imageDecoration.style.left = 'auto';
                     imageDecoration.style.right = 0;
+                    clonedImageDecoration = imageDecoration.cloneNode(true);
+                    clonedImageDecoration.style.left = 0;
+                    clonedImageDecoration.style.right = 'auto';
+                    clonedImageDecoration.className = 'img-decoration-2';
+                    imageDecorationContainer.appendChild(clonedImageDecoration)
                 }
             }
         });
