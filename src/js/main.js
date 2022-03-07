@@ -22,6 +22,7 @@ document.querySelector('.download-button')
         html2canvas(
             document.querySelector('#github-header-image'),
             {
+                backgroundColor: null
                 // widtH: (headerImage.clientWidth * 2),
                 // height: (headerImage.style.height * 2)
             })
@@ -75,9 +76,12 @@ function setColorValues() {
     let titleColorSelector = toolbox.querySelector('.color-selectors-container input#title-color-selector');
     let subtitleColorSelector = toolbox.querySelector('.color-selectors-container input#subtitle-color-selector');
 
-    headerImage.style.background = bgColorSelector.value;
+    headerImage.style.backgroundColor = bgColorSelector.value;
     title.style.color = titleColorSelector.value;
     subtitle.style.color = subtitleColorSelector.value;
+
+    let backgroundTabBgColorSelector = document.querySelector('.bg-color-selectors input#bg-color-selector');
+    backgroundTabBgColorSelector.value = bgColorSelector.value;
 }
 
 toolbox.querySelectorAll('.color-selectors-container input')
@@ -129,7 +133,6 @@ toolbox.querySelectorAll('.align-buttons button')
             setAlignValues(alignValue);
         });
     })
-
 
 /* ************** Font Selectors ************** */
 
@@ -192,9 +195,8 @@ function setFontSizeValues() {
 
 toolbox.querySelectorAll('.font-size-inputs input')
     .forEach(input => {
-        input.addEventListener('click', () => input.select());
-
-        input.addEventListener('keyup', (e) => {
+        input.addEventListener('input', (e) => {
+            e.target.nextElementSibling.value = e.target.value
             setFontSizeValues();
         });
     })

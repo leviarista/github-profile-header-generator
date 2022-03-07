@@ -1,0 +1,114 @@
+.toolbox-background {
+    box-sizing: border-box;
+
+    > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        &:not(:last-child) {
+            margin-bottom: 15px;
+        }
+    }
+
+    .bg-color-selectors {
+        > div {
+            display: flex;
+            align-items: center;
+
+            &:not(:last-child) {
+                margin-right: 15px;
+            }
+        }
+
+        input {
+            margin-left: 5px;
+            cursor: pointer;
+            padding: 0;
+        }
+    }
+
+    .border-inputs {
+        div {
+            display: flex;
+            align-items: flex-start;
+
+            &:not(:last-child) {
+                margin-right: 15px;
+            }
+
+            input {
+                cursor: pointer;
+            }
+        }
+    }
+
+    .pattern-inputs {
+        div {
+            display: flex;
+            align-items: flex-start;
+
+            &:not(:last-child) {
+                margin-right: 15px;
+            }
+
+            &:first-child {
+                align-items: center;
+            }
+
+            #pattern-color-selector {
+                padding: 0;
+            }
+
+            input {
+                margin-left: 5px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .patterns-buttons {
+        button {
+            width: 50px;
+            height: 50px;
+            padding: 0;
+            margin-left: 5px;
+
+            img {
+                width: 45px;
+                border-radius: var(--input-border-radius);
+            }
+
+            &.selected {
+                border: solid white 2px;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .toolbox-background {
+        .border-inputs {
+            > div {
+                &:not(:last-child) {
+                    margin-bottom: 10px;
+                }
+            }
+        }
+
+        .pattern-inputs {
+            input {
+                &:not(:last-child) {
+                    margin-bottom: 15px;
+                }
+            }
+        }
+
+        .patterns-buttons {
+            button {
+                margin-bottom: 10px;
+            }
+        }
+    }
+}

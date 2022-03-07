@@ -46,11 +46,12 @@
     <section class="toolbox-container">
 
         <div class="result-box dark-mode">
-            <div class="header-image-container" style="width: 100%;">
+            <div class="header-image-container"
+                style="width: 100%; filter: drop-shadow(0px 0px 5px rgba(125, 125, 125, 0.5));">
                 <div id="github-header-image" style="width: 100%; height: 200px; padding: 25px; position: relative;
                 display: flex; align-items: flex-start; justify-content: center; flex-direction: column;
                 background-color: #4078c0; color: white;">
-                    <div class="title" style="font-size: 40px;">Hey! I am Leví</div>
+                    <div class="title" style="font-size: 40px;">Hey! I am ...</div>
                     <div class="subtitle" style="font-size: 20px; font-family: 'Kalam';">Fullstack developer </div>
                     <div style="width: 100%" class="img-decoration-container"></div>
                 </div>
@@ -63,8 +64,8 @@
         </div>
 
         <div class="tab">
-            <button class="tablinks" data-name="main-section" id="defaultOpenTag">Main</button>
-            <button class="tablinks" data-name="background-section">Background</button>
+            <button class="tablinks" data-name="main-section">Main</button>
+            <button class="tablinks" data-name="background-section" id="defaultOpenTag">Background</button>
             <!-- <button class="tablinks" onclick="openTab(event, 'decorations-section')">Decorations</button> -->
         </div>
 
@@ -75,18 +76,6 @@
                         aria-label="Title">
                     <input type="text" name="subtitle" id="subtitle-input" placeholder="Subtitle"
                         value="Fullstack developer" aria-label="Subtitle">
-                </div>
-                <div class="color-selectors-container">
-                    <div>
-                        <label for="title-color-selector">Title color:</label>
-                        <input type="color" id="title-color-selector" name="title-color-selector"
-                            value="#FFFFFF"><br><br>
-                    </div>
-                    <div>
-                        <label for="subtitle-color-selector">Subtitle color:</label>
-                        <input type="color" id="subtitle-color-selector" name="subtitle-color-selector"
-                            value="#FFFFFF"><br><br>
-                    </div>
                 </div>
                 <div class="size-inputs">
                     <div>
@@ -102,17 +91,33 @@
                         <input type="text" name="paddings-input" id="paddings-input" placeholder="Paddings" value="25">
                     </div>
                 </div>
+                <div class="color-selectors-container">
+                    <div>
+                        <label for="bg-color-selector">Background color:</label>
+                        <input type="color" id="bg-color-selector" name="bg-color-selector" value="#4078c0"><br><br>
+                    </div>
+                    <div>
+                        <label for="title-color-selector">Title color:</label>
+                        <input type="color" id="title-color-selector" name="title-color-selector"
+                            value="#FFFFFF"><br><br>
+                    </div>
+                    <div>
+                        <label for="subtitle-color-selector">Subtitle color:</label>
+                        <input type="color" id="subtitle-color-selector" name="subtitle-color-selector"
+                            value="#FFFFFF"><br><br>
+                    </div>
+                </div>
                 <div class="align-buttons">
                     Text align:
-                    <button type="button" class="left-align-button" aria-label="Left align button"
+                    <button type="button" class="left-align-button btn" aria-label="Left align button"
                         data-align-value="flex-start">
                         <img src="images/icons/left-align.svg" alt="Left align button" /><br />
                     </button>
-                    <button type="button" class="center-align-button" aria-label="Center align button"
+                    <button type="button" class="center-align-button btn" aria-label="Center align button"
                         data-align-value="center">
                         <img src="images/icons/center-align.svg" alt="Center align button" /><br />
                     </button>
-                    <button type="button" class="right-align-button" aria-label="Right align button"
+                    <button type="button" class="right-align-button btn" aria-label="Right align button"
                         data-align-value="flex-end">
                         <img src="images/icons/right-align.svg" alt="Right align button" /><br />
                     </button>
@@ -156,13 +161,15 @@
                 <div class="font-size-inputs">
                     <div>
                         <label for="title-font-size-input">Title font size:</label>
-                        <input type="text" name="title-font-size-input" id="title-font-size-input"
-                            placeholder="Title font size" value="40">
+                        <input type="range" name="title-font-size-input" id="title-font-size-input"
+                            placeholder="Title font size" value="40" min="5" max="150">
+                        <output for="title-font-size-input">40</output>
                     </div>
                     <div>
                         <label for="sutitle-font-size-input">Subitle font size:</label>
-                        <input type="text" name="sutitle-font-size-input" id="sutitle-font-size-input"
-                            placeholder="Subitle font size" value="20">
+                        <input type="range" name="sutitle-font-size-input" id="sutitle-font-size-input"
+                            placeholder="Subitle font size" value="20" min="5" max="150">
+                        <output for="sutitle-font-size-input">20</output>
                     </div>
                 </div>
             </div>
@@ -175,6 +182,83 @@
                         <label for="bg-color-selector">Background color:</label>
                         <input type="color" id="bg-color-selector" name="bg-color-selector" value="#4078c0"><br><br>
                     </div>
+                    <div>
+                        <label for="border-color-selector">Border color:</label>
+                        <input type="color" id="border-color-selector" name="border-color-selector"
+                            value="#FFFFFF"><br><br>
+                    </div>
+                </div>
+                <div class="border-inputs">
+                    <div>
+                        <label for="border-input">Border (px):</label>
+                        <input type="range" name="border-input" id="border-input" placeholder="Border" value="0"
+                            min="0">
+                        <output for="border-input">0</output>
+                    </div>
+                    <div>
+                        <label for="border-radius-input">Border radius (px):</label>
+                        <input type="range" name="border-radius-input" id="border-radius-input"
+                            placeholder="Border Radius" value="0" min="0" max="200">
+                        <output for="border-radius-input">0</output>
+                    </div>
+                </div>
+                <div class="pattern-inputs">
+                    <div>
+                        <label for="pattern-color-selector">Pattern color:</label>
+                        <input type="color" id="pattern-color-selector" name="pattern-color-selector"
+                            value="#FFFFFF">
+                    </div>
+                    <div>
+                        <label for="pattern-size-input">Pattern size (px):</label>
+                        <input type="range" name="pattern-size-input" id="pattern-size-input" value="100" min="10"
+                            max="350">
+                        <output for="pattern-size-input">100</output>
+                    </div>
+                    <div>
+                        <label for="pattern-opacity-input">Pattern opacity (px):</label>
+                        <input type="range" name="pattern-opacity-input" id="pattern-opacity-input" step="0.05" width="50" value="0.25" min="0"
+                            max="1">
+                        <output for="pattern-opacity-input">0.25</output>
+                    </div>
+                </div>
+                <div class="patterns-buttons">
+                    Patterns:
+                    <button type="button" class="left-align-button btn" aria-label="Left align button"
+                        data-pattern-value="none">
+                        None
+                    </button>
+                    <button type="button" class="left-align-button btn selected" aria-label="Left align button"
+                        data-pattern-value="jigsaw">
+                        <img src="images/patterns/jigsaw.svg" alt="Left align button" />
+                    </button>
+                    <button type="button" class="center-align-button btn" aria-label="Center align button"
+                        data-pattern-value="github">
+                        <img src="images/patterns/github.svg" alt="Center align button" />
+                    </button>
+                    <button type="button" class="right-align-button btn" aria-label="Right align button"
+                        data-pattern-value="endless-constellation">
+                        <img src="images/patterns/endless-constellation.svg" alt="Right align button" />
+                    </button>
+                    <button type="button" class="right-align-button btn" aria-label="Right align button"
+                        data-pattern-value="floating-cogs">
+                        <img src="images/patterns/floating-cogs.svg" alt="Right align button" />
+                    </button>
+                    <button type="button" class="right-align-button btn" aria-label="Right align button"
+                        data-pattern-value="bubbles">
+                        <img src="images/patterns/bubbles.svg" alt="Right align button" />
+                    </button>
+                    <button type="button" class="right-align-button btn" aria-label="Right align button"
+                        data-pattern-value="random-shapes">
+                        <img src="images/patterns/random-shapes.svg" alt="Right align button" />
+                    </button>
+                    <button type="button" class="right-align-button btn" aria-label="Right align button"
+                        data-pattern-value="lisbon">
+                        <img src="images/patterns/lisbon.svg" alt="Right align button" />
+                    </button>
+                    <button type="button" class="right-align-button btn" aria-label="Right align button"
+                        data-pattern-value="temple">
+                        <img src="images/patterns/temple.svg" alt="Right align button" />
+                    </button>
                 </div>
             </div>
         </div>

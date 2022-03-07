@@ -28,6 +28,7 @@ imgDecorationElement.src = 'images/octocat.png';
 imgDecorationElement.style.position = 'absolute';
 imgDecorationElement.style.bottom = 'calc(50% - 50px)';
 imgDecorationElement.style.right = 0;
+imgDecorationElement.style.transition = '5.5s';
 imageDecorationContainer.appendChild(imgDecorationElement)
 
 toolbox.querySelectorAll('.align-buttons button')
@@ -50,7 +51,7 @@ toolbox.querySelectorAll('.align-buttons button')
                 } else if (alignValue === 'center') {
                     imageDecoration.style.left = 'auto';
                     imageDecoration.style.right = 0;
-                    clonedImageDecoration = imageDecoration.cloneNode(true);
+                    const clonedImageDecoration = imageDecoration.cloneNode(true);
                     clonedImageDecoration.style.left = 0;
                     clonedImageDecoration.style.right = 'auto';
                     clonedImageDecoration.className = 'img-decoration-2';
