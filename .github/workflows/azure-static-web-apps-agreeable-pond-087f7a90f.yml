@@ -16,10 +16,9 @@ jobs:
     name: Build and Deploy Job
     steps:
       - uses: actions/checkout@v2
-      - name: Install dependencies GPHG
-        run: npm ci
-      - name: Build GPHG
-        run: npm run build          
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.NODE_VERSION }}
       - uses: actions/checkout@v2
         with:
           submodules: true
@@ -35,7 +34,7 @@ jobs:
           app_location: "src" # App source code path
           api_location: "api" # Api source code path - optional
           output_location: "../dist" # Built app content directory - optional
-          # app_build_command: "npm run build"
+          app_build_command: "npm run build"
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
