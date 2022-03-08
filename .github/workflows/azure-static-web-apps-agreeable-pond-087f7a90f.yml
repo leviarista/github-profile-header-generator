@@ -16,6 +16,11 @@ jobs:
     name: Build and Deploy Job
     steps:
       - uses: actions/checkout@v2
+      - name: Install dependencies GPHG
+        run: npm ci
+      - name: Build GPHG
+        run: npm run build          
+      - uses: actions/checkout@v2
         with:
           submodules: true
       - name: Build And Deploy
@@ -32,9 +37,6 @@ jobs:
           output_location: "../dist" # Built app content directory - optional
           # app_build_command: "npm run build"
           ###### End of Repository/Build Configurations ######
-      - name: Build GPHG
-      - run: npm ci
-      - run: npm run build          
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
