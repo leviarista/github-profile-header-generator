@@ -4,10 +4,14 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - '**/*.md'
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
       - main
+    paths-ignore:
+      - '**/*.md'
 
 jobs:
   build_and_deploy_job:
@@ -15,10 +19,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: ${{ env.NODE_VERSION }}
       - uses: actions/checkout@v2
         with:
           submodules: true
@@ -31,9 +31,9 @@ jobs:
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: "src" # App source code path
-          api_location: "api" # Api source code path - optional
-          output_location: "../dist" # Built app content directory - optional
+          app_location: "/" # App source code path
+          # api_location: "" # Api source code path - optional
+          output_location: "dist" # Built app content directory - optional
           app_build_command: "npm run build"
           ###### End of Repository/Build Configurations ######
 
