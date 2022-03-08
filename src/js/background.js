@@ -89,7 +89,7 @@ toolboxBackground.querySelectorAll('.pattern-inputs input[type="color"]')
 
 function setPatternBackground() {
     headerImage.style.backgroundImage = getBackgroundSvg(selectedPattern, selectedPatternColor, selectedPatternOpacity);
-    headerImage.style.backgroundSize = selectedPatternSize;
+    headerImage.style.backgroundSize = `${selectedPatternSize}px`;
 }
 
 toolboxBackground.querySelectorAll('.patterns-buttons button')
@@ -100,86 +100,43 @@ toolboxBackground.querySelectorAll('.patterns-buttons button')
                 e.target;
             const patternValue = element.getAttribute('data-pattern-value');
             selectedPattern = patternValue;
-            setPatternOpacityAndSize(patternValue);
+            setPatternDefaultSize(patternValue);
             setPatternBackground();
         });
     })
 
-function setPatternOpacityAndSize(patternValue) {
+function setPatternDefaultSize(patternValue) {
     switch (patternValue) {
         case 'jigsaw':
-            selectedPatternOpacity = 0.25;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-opacity-input').value = 0.25;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-opacity-input').nextElementSibling.innerHTML = 0.25;
-            selectedPatternSize = `100px`;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-size-input').value = 100;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-size-input').nextElementSibling.innerHTML = 100;
+            selectedPatternSize = 100;
             break;
         case 'github':
-            selectedPatternOpacity = 0.15;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-opacity-input').value = 0.15;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-opacity-input').nextElementSibling.innerHTML = 0.15;
-            selectedPatternSize = `40px`;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-size-input').value = 40;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-size-input').nextElementSibling.innerHTML = 40;
+            selectedPatternSize = 40;
             break;
         case 'endless-constellation':
-            selectedPatternOpacity = 0.5;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-opacity-input').value = 0.5;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-opacity-input').nextElementSibling.innerHTML = 0.5;
-            selectedPatternSize = `200px`;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-size-input').value = 200;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-size-input').nextElementSibling.innerHTML = 200;
+            selectedPatternSize = 200;
             break;
         case 'floating-cogs':
-            selectedPatternOpacity = 0.25;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-opacity-input').value = 0.25;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-opacity-input').nextElementSibling.innerHTML = 0.25;
-            selectedPatternSize = `350px`;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-size-input').value = 350;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-size-input').nextElementSibling.innerHTML = 350;
+            selectedPatternSize = 350;
             break;
         case 'bubbles':
-            selectedPatternOpacity = 0.1;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-opacity-input').value = 0.1;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-opacity-input').nextElementSibling.innerHTML = 0.1;
-            selectedPatternSize = `200px`;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-size-input').value = 200;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-size-input').nextElementSibling.innerHTML = 200;
+            selectedPatternSize = 200;
             break;
         case 'random-shapes':
-            selectedPatternOpacity = 0.15;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-opacity-input').value = 0.15;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-opacity-input').nextElementSibling.innerHTML = 0.15;
-            selectedPatternSize = `80px`;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-size-input').value = 80;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-size-input').nextElementSibling.innerHTML = 80;
+            selectedPatternSize = 80;
             break;
         case 'lisbon':
-            selectedPatternOpacity = 0.15;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-opacity-input').value = 0.15;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-opacity-input').nextElementSibling.innerHTML = 0.15;
-            selectedPatternSize = `80px`;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-size-input').value = 80;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-size-input').nextElementSibling.innerHTML = 80;
+            selectedPatternSize = 80;
             break;
         case 'temple':
-            selectedPatternOpacity = 0.1;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-opacity-input').value = 0.1;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-opacity-input').nextElementSibling.innerHTML = 0.1;
-            selectedPatternSize = `100px`;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-size-input').value = 100;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-size-input').nextElementSibling.innerHTML = 100;
+            selectedPatternSize = 100;
             break;
         default:
-            selectedPatternOpacity = 0.25;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-opacity-input').value = 0;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-opacity-input').nextElementSibling.innerHTML = 0;
-            selectedPatternSize = `0`;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-size-input').value = 0;
-            toolboxBackground.querySelector('.pattern-inputs #pattern-size-input').nextElementSibling.innerHTML = 0;
+            selectedPatternSize = 0;
             break;
     }
+    toolboxBackground.querySelector('.pattern-inputs #pattern-size-input').value = selectedPatternSize;
+    toolboxBackground.querySelector('.pattern-inputs #pattern-size-input').nextElementSibling.innerHTML = selectedPatternSize;
 }
 
 /**
