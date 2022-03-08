@@ -1,0 +1,42 @@
+.toolbox-decorations {
+    box-sizing: border-box;
+
+    > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        &:not(:last-child) {
+            margin-bottom: 15px;
+        }
+    }
+
+    .decorations-buttons {
+        button {
+            width: 50px;
+            height: 50px;
+            padding: 0;
+            margin-left: 5px;
+
+            img {
+                width: 40px;
+                border-radius: var(--input-border-radius);
+            }
+
+            &.selected {
+                border: solid white 2px;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .toolbox-decorations {
+        .decorations-buttons {
+            button {
+                margin-bottom: 10px;
+            }
+        }
+    }
+}

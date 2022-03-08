@@ -1,10 +1,10 @@
 /* ************** Elements ************** */
 
-var toolbox = document.querySelector('.toolbox');
+let toolbox = document.querySelector('.toolbox');
 
 /* ************** Options ************** */
 
-var selectedTheme = 'github';
+let selectedTheme = 'github';
 
 /* ************** Theme options ************** */
 
@@ -21,14 +21,18 @@ document.querySelectorAll('.theme-option')
 
 // Github theme
 
+let paddingValue = document.querySelector('#paddings-input').value || 25;
+let padding = `${paddingValue}px`;
+
 const imageDecorationContainer = document.querySelector('.img-decoration-container');
 const imgDecorationElement = document.createElement('img');
 imgDecorationElement.className = 'img-decoration';
-imgDecorationElement.src = 'images/octocat.png';
+imgDecorationElement.src = 'images/decorations/octocat.png';
 imgDecorationElement.style.position = 'absolute';
-imgDecorationElement.style.bottom = 'calc(50% - 50px)';
-imgDecorationElement.style.right = 0;
-imgDecorationElement.style.transition = '5.5s';
+imgDecorationElement.style.bottom = 'calc(50%)';
+imgDecorationElement.style.transform = 'translateY(50%)'
+imgDecorationElement.style.right = padding;
+imgDecorationElement.style.width = '100px';
 imageDecorationContainer.appendChild(imgDecorationElement)
 
 toolbox.querySelectorAll('.align-buttons button')
@@ -42,17 +46,17 @@ toolbox.querySelectorAll('.align-buttons button')
                 const imageDecoration = document.querySelector('.img-decoration-container img');
                 if (alignValue === 'flex-end') {
                     document.querySelector('.img-decoration-container .img-decoration-2')?.remove();
-                    imageDecoration.style.left = 0;
+                    imageDecoration.style.left = padding;
                     imageDecoration.style.right = 'auto';
                 } else if (alignValue === 'flex-start') {
                     document.querySelector('.img-decoration-container .img-decoration-2')?.remove();
                     imageDecoration.style.left = 'auto';
-                    imageDecoration.style.right = 0;
+                    imageDecoration.style.right = padding;
                 } else if (alignValue === 'center') {
                     imageDecoration.style.left = 'auto';
-                    imageDecoration.style.right = 0;
+                    imageDecoration.style.right = padding;
                     const clonedImageDecoration = imageDecoration.cloneNode(true);
-                    clonedImageDecoration.style.left = 0;
+                    clonedImageDecoration.style.left = padding;
                     clonedImageDecoration.style.right = 'auto';
                     clonedImageDecoration.className = 'img-decoration-2';
                     imageDecorationContainer.appendChild(clonedImageDecoration)

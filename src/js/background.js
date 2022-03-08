@@ -58,9 +58,6 @@ toolboxBackground.querySelectorAll('.border-inputs input')
 function setPatternValues() {
     selectedPatternOpacity = toolboxBackground.querySelector('.pattern-inputs input#pattern-opacity-input').value;
     selectedPatternSize = toolboxBackground.querySelector('.pattern-inputs input#pattern-size-input').value;
-
-    headerImage.style.backgroundImage = getBackgroundSvg(selectedPattern, selectedPatternColor, selectedPatternOpacity);
-    headerImage.style.backgroundSize = `${selectedPatternSize}px`;
 }
 
 toolboxBackground.querySelectorAll('.pattern-inputs input[type="range"]')
@@ -68,6 +65,7 @@ toolboxBackground.querySelectorAll('.pattern-inputs input[type="range"]')
         input.addEventListener('input', (e) => {
             e.target.nextElementSibling.value = e.target.value
             setPatternValues();
+            setPatternBackground();
         });
     })
 

@@ -22,6 +22,16 @@
             border: none;
             overflow: hidden;
             background-size: 100px;
+            transition: 0.25s ease;
+
+            .title,
+            .subtitle {
+                transition: 0.25s ease;
+            }
+
+            img {
+                transition: 0.15s;
+            }
         }
 
         .options-container {
@@ -207,15 +217,15 @@
                     // }
                 }
             }
-            .font-selectors-container{
-                > div{
+            .font-selectors-container {
+                > div {
                     &:not(:last-child) {
                         margin-bottom: 10px;
                     }
                 }
             }
-            .font-size-inputs{
-                input{
+            .font-size-inputs {
+                input {
                     &:not(:last-child) {
                         margin-bottom: 15px;
                     }

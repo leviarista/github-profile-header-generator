@@ -1,15 +1,15 @@
 /* ************** Elements ************** */
 
-var headerImageContainer = document.querySelector('.header-image-container');
-var headerImage = document.querySelector('#github-header-image');
-var title = headerImage.querySelector('.title');
-var subtitle = headerImage.querySelector('.subtitle');
+let headerImageContainer = document.querySelector('.header-image-container');
+let headerImage = document.querySelector('#github-header-image');
+let title = headerImage.querySelector('.title');
+let subtitle = headerImage.querySelector('.subtitle');
 
-var toolbox = document.querySelector('.toolbox');
+let toolbox = document.querySelector('.toolbox');
 
 /* ************** Options ************** */
 
-var selectedTheme = 'github';
+let selectedTheme = 'github';
 
 // Init
 document.querySelector('.toolbox .size-inputs input#width-input').value = headerImageContainer.clientWidth;
@@ -27,12 +27,14 @@ document.querySelector('.download-button')
                 // height: (headerImage.style.height * 2)
             })
             .then(function (canvas) {
-                document.body.before(canvas);
-                // var imageURL = canvas.toDataURL("image/png");
-                // let a = document.createElement("a");
-                // a.href = imageURL;
-                // a.download = 'github-header-image';
-                // a.click();
+                // for testing 
+                // document.body.before(canvas);
+
+                let imageURL = canvas.toDataURL("image/png");
+                let a = document.createElement("a");
+                a.href = imageURL;
+                a.download = 'github-header-image';
+                a.click();
             });
     })
 
