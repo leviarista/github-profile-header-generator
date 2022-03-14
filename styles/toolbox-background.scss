@@ -69,14 +69,22 @@
     }
 
     .patterns-buttons {
+        max-width: 550px;
+        margin: auto;
+
         button {
             width: 50px;
             height: 50px;
             padding: 0;
             margin-left: 5px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
             img {
-                width: 45px;
+                max-width: 45px;
+                max-height: 45px;
                 border-radius: var(--input-border-radius);
             }
 
@@ -107,7 +115,7 @@
 
         .patterns-buttons {
             button {
-                margin-bottom: 10px;
+                margin-bottom: 5px;
             }
         }
     }
