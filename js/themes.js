@@ -33,6 +33,7 @@ imgDecorationElement.style.bottom = 'calc(50%)';
 imgDecorationElement.style.transform = 'translateY(50%)'
 imgDecorationElement.style.right = padding;
 imgDecorationElement.style.width = '100px';
+imgDecorationElement.alt = 'Header image decoration'
 imageDecorationContainer.appendChild(imgDecorationElement)
 
 toolbox.querySelectorAll('.align-buttons button')

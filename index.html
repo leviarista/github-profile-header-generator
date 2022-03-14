@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -5,13 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Github Profile Header Generator</title>
+    <meta name="author" content="Leví Arista">
+    <meta name="description" content="A simple but nice header image generator for your Github profile">
+    <meta name="keywords"
+        content="github profile header generator, github profile header, github header generator, github profile generator">
     <!-- Styles -->
     <link rel="stylesheet" href="./styles/index.scss">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="preload" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="preload" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
 
     <!-- Favicon -->
@@ -26,13 +34,13 @@
 
     <header class="header">
         <h1>
-            <img src="./images/github-logo-40.svg" alt="Github logo" /><br />
+            <img src="./images/github-logo-40.svg" width="40" height="40" alt="Github logo" /><br />
             Github <br />
             <span>Profile Header Generator</span>
         </h1>
-        <h4>
+        <h2>
             A simple but nice header image generator <br /> for your Github profile
-        </h4>
+        </h2>
     </header>
 
     <section class="theme-selector-box">
@@ -93,8 +101,9 @@
                 </div>
                 <div class="color-selectors-container">
                     <div>
-                        <label for="bg-color-selector">Background color:</label>
-                        <input type="color" id="bg-color-selector" name="bg-color-selector" value="#4078c0"><br><br>
+                        <label for="main-bg-color-selector">Background color:</label>
+                        <input type="color" id="main-bg-color-selector" name="main-bg-color-selector"
+                            value="#4078c0"><br><br>
                     </div>
                     <div>
                         <label for="title-color-selector">Title color:</label>
@@ -111,15 +120,17 @@
                     Text align:
                     <button type="button" class="left-align-button btn" aria-label="Left align button"
                         data-align-value="flex-start">
-                        <img src="./images/icons/left-align.svg" alt="Left align button" /><br />
+                        <img src="./images/icons/left-align.svg" width="24" height="24" alt="Left align button" /><br />
                     </button>
                     <button type="button" class="center-align-button btn" aria-label="Center align button"
                         data-align-value="center">
-                        <img src="./images/icons/center-align.svg" alt="Center align button" /><br />
+                        <img src="./images/icons/center-align.svg" width="24" height="24"
+                            alt="Center align button" /><br />
                     </button>
                     <button type="button" class="right-align-button btn" aria-label="Right align button"
                         data-align-value="flex-end">
-                        <img src="./images/icons/right-align.svg" alt="Right align button" /><br />
+                        <img src="./images/icons/right-align.svg" width="24" height="24"
+                            alt="Right align button" /><br />
                     </button>
                 </div>
                 <div class="font-selectors-container">
@@ -179,8 +190,9 @@
             <div class="toolbox-background">
                 <div class="bg-color-selectors">
                     <div>
-                        <label for="bg-color-selector">Background color:</label>
-                        <input type="color" id="bg-color-selector" name="bg-color-selector" value="#4078c0"><br><br>
+                        <label for="background-bg-color-selector">Background color:</label>
+                        <input type="color" id="background-bg-color-selector" name="background-bg-color-selector"
+                            value="#4078c0"><br><br>
                     </div>
                     <div>
                         <label for="border-color-selector">Border color:</label>
@@ -300,16 +312,16 @@
     <footer class="footer">
         <a href="https://github.com/leviarista/github-profile-header-generator" target="_blank"
             rel="noopener noreferrer">
-            Look it at Github <img src="./images/github-logo-20.svg" alt="Github logo" />
+            Look it at Github <img src="./images/github-logo-20.svg" width="20" height="20" alt="Github logo" />
         </a>
     </footer>
 
-    <script type="module" src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-    <script type="module" src="./js/themes.js"></script>
-    <script type="module" src="./js/main.js"></script>
-    <script type="module" src="./js/background.js"></script>
-    <script type="module" src="./js/decorations.js"></script>
-    <script type="module" src="./js/tabs.js"></script>
+    <script defer type="module" src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script defer type="module" src="./js/themes.js"></script>
+    <script defer type="module" src="./js/main.js"></script>
+    <script defer type="module" src="./js/background.js"></script>
+    <script defer type="module" src="./js/decorations.js"></script>
+    <script defer type="module" src="./js/tabs.js"></script>
 </body>
 
 </html>

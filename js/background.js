@@ -17,13 +17,13 @@ setPatternBackground();
 /* ************** Color selectors ************** */
 
 function setBgColorValues() {
-    let bgColorSelector = toolboxBackground.querySelector('.bg-color-selectors input#bg-color-selector');
+    let bgColorSelector = toolboxBackground.querySelector('.bg-color-selectors input#background-bg-color-selector');
     let borderColorSelector = toolboxBackground.querySelector('.bg-color-selectors input#border-color-selector');
 
     headerImage.style.backgroundColor = bgColorSelector.value;
     headerImage.style.borderColor = borderColorSelector.value;
 
-    let mainTabBgColorSelector = document.querySelector('.color-selectors-container input#bg-color-selector');
+    let mainTabBgColorSelector = document.querySelector('.color-selectors-container input#main-bg-color-selector');
     mainTabBgColorSelector.value = bgColorSelector.value;
 }
 

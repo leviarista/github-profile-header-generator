@@ -74,7 +74,7 @@ toolbox.querySelectorAll('.text-inputs input')
 /* ************** Color selectors ************** */
 
 function setColorValues() {
-    let bgColorSelector = toolbox.querySelector('.color-selectors-container input#bg-color-selector');
+    let bgColorSelector = toolbox.querySelector('.color-selectors-container input#main-bg-color-selector');
     let titleColorSelector = toolbox.querySelector('.color-selectors-container input#title-color-selector');
     let subtitleColorSelector = toolbox.querySelector('.color-selectors-container input#subtitle-color-selector');
 
@@ -82,7 +82,7 @@ function setColorValues() {
     title.style.color = titleColorSelector.value;
     subtitle.style.color = subtitleColorSelector.value;
 
-    let backgroundTabBgColorSelector = document.querySelector('.bg-color-selectors input#bg-color-selector');
+    let backgroundTabBgColorSelector = document.querySelector('.bg-color-selectors input#background-bg-color-selector');
     backgroundTabBgColorSelector.value = bgColorSelector.value;
 }
 
