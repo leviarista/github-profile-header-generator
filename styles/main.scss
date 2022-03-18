@@ -1,3 +1,7 @@
+body {
+    background-color: #4078c0;
+}
+
 .main-container {
     margin: 0 auto;
     padding: 25px 10%;
@@ -84,7 +88,7 @@ input[type="range"] {
     }
 }
 
-output{
+output {
     min-width: 25px;
 }
 
@@ -125,7 +129,7 @@ button {
     a {
         margin-top: 15px;
         display: flex;
-        align-items: flex-start;
+        align-items: center;
         justify-content: center;
         text-align: center;
 
@@ -137,6 +141,12 @@ button {
     img {
         margin-left: 5px;
     }
+    // FF5F5F
+    // 40DCA5
+    // 5F7FFF
+    // FFDD00
+    // BD5FFF
+    // 794bc4
 }
 
 @media (max-width: 768px) {
