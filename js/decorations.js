@@ -47,7 +47,7 @@ function setDecoration(decorationValue) {
         if (otherImageDecoration) {
             otherImageDecoration.style.display = 'block';
             otherImageDecoration.src = `images/decorations/${decorationValue}`;
-            }
+        }
     }
 }
 
@@ -61,6 +61,22 @@ toolboxDecorations.querySelectorAll('.decorations-buttons button')
             setDecoration(decorationValue);
             setDecorationSize();
         });
+    })
+
+/* ************** Upload decoration ************** */
+
+toolboxDecorations.querySelector('#decoration-upload-input')
+    .addEventListener('change', () => {
+        const file = toolboxDecorations.querySelector('#decoration-upload-input').files[0];
+
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function (e) {
+            const decoration = document.querySelector('.img-decoration');
+            decoration.src = this.result;
+            const otherDecoration = document.querySelector('.img-decoration-2');
+            if (otherDecoration) otherDecoration.src = this.result;
+        }
     })
 
 /* ************** ************** ************** */

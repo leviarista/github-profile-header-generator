@@ -98,25 +98,46 @@ toolbox.querySelectorAll('.color-selectors-container input')
 function setSizeValues() {
     let widthInput = toolbox.querySelector('.size-inputs input#width-input');
     let heightInput = toolbox.querySelector('.size-inputs input#height-input');
-    let paddingsInput = toolbox.querySelector('.size-inputs input#paddings-input');
 
     if (Number(widthInput.value) > headerImageContainer.clientWidth) {
         headerImage.style.zoom = headerImageContainer.clientWidth / widthInput.value;
     } else {
         headerImage.style.zoom = 1;
     }
-    headerImage.style.width = widthInput.value;
-    headerImage.style.height = heightInput.value;
-    headerImage.style.padding = paddingsInput.value;
+    headerImage.style.width = `${widthInput.value}px`;
+    headerImage.style.height = `${heightInput.value}px`;
+}
+
+function setPaddingValues() {
+    let paddingInput = toolbox.querySelector('.size-inputs input#paddings-input');
+    let paddingValue = `${paddingInput.value}px`;
+
+    headerImage.style.padding = paddingValue;
+
+    document.querySelectorAll('.img-decoration-container img')
+        .forEach(decoration => {
+            if (decoration.style.left === 'auto'){
+                decoration.style.right = paddingValue;
+            } else {
+                decoration.style.left = paddingValue;
+            }
+    });
 }
 
 toolbox.querySelectorAll('.size-inputs input')
     .forEach(input => {
-        input.addEventListener('click', () => input.select());
+        if (input.type === 'text') {
+            input.addEventListener('click', () => input.select());
 
-        input.addEventListener('keyup', (e) => {
-            setSizeValues();
-        });
+            input.addEventListener('keyup', (e) => {
+                setSizeValues();
+            });
+        } else {
+            input.addEventListener('input', (e) => {
+                e.target.nextElementSibling.value = e.target.value
+                setPaddingValues();
+            });
+        }
     })
 
 /* ************** Align buttons ************** */
@@ -191,8 +212,8 @@ function setFontSizeValues() {
     let titleFontSizeInput = toolbox.querySelector('.font-size-inputs input#title-font-size-input');
     let subtitleFontSizeInput = toolbox.querySelector('.font-size-inputs input#sutitle-font-size-input');
 
-    title.style.fontSize = titleFontSizeInput.value;
-    subtitle.style.fontSize = subtitleFontSizeInput.value;
+    title.style.fontSize = `${titleFontSizeInput.value}px`;
+    subtitle.style.fontSize = `${subtitleFontSizeInput.value}px`;
 }
 
 toolbox.querySelectorAll('.font-size-inputs input')

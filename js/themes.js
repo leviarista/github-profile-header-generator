@@ -31,6 +31,7 @@ imgDecorationElement.src = './images/decorations/octocat.png';
 imgDecorationElement.style.position = 'absolute';
 imgDecorationElement.style.bottom = 'calc(50%)';
 imgDecorationElement.style.transform = 'translateY(50%)'
+imgDecorationElement.style.left = 'auto';
 imgDecorationElement.style.right = padding;
 imgDecorationElement.style.width = '100px';
 imgDecorationElement.alt = 'Header image decoration'
@@ -43,6 +44,8 @@ toolbox.querySelectorAll('.align-buttons button')
                 e.target.parentNode :
                 e.target;
             const alignValue = element.getAttribute('data-align-value');
+            const paddingValue = document.querySelector('#paddings-input').value || 25;
+            const padding = `${paddingValue}px`;
             if (selectedTheme === 'github') {
                 const imageDecoration = document.querySelector('.img-decoration-container img');
                 if (alignValue === 'flex-end') {
@@ -56,11 +59,13 @@ toolbox.querySelectorAll('.align-buttons button')
                 } else if (alignValue === 'center') {
                     imageDecoration.style.left = 'auto';
                     imageDecoration.style.right = padding;
-                    const clonedImageDecoration = imageDecoration.cloneNode(true);
-                    clonedImageDecoration.style.left = padding;
-                    clonedImageDecoration.style.right = 'auto';
-                    clonedImageDecoration.className = 'img-decoration-2';
-                    imageDecorationContainer.appendChild(clonedImageDecoration)
+                    if (!document.querySelector('.img-decoration-container .img-decoration-2')) {
+                        const clonedImageDecoration = imageDecoration.cloneNode(true);
+                        clonedImageDecoration.style.left = padding;
+                        clonedImageDecoration.style.right = 'auto';
+                        clonedImageDecoration.className = 'img-decoration-2';
+                        imageDecorationContainer.appendChild(clonedImageDecoration)
+                    }
                 }
             }
         });

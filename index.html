@@ -63,7 +63,7 @@
                 background-color: #4078c0; color: white;">
                     <div class="title" style="font-size: 40px;">Hey! I am ...</div>
                     <div class="subtitle" style="font-size: 20px; font-family: 'Kalam';">Fullstack developer </div>
-                    <div style="width: 100%" class="img-decoration-container"></div>
+                    <div class="img-decoration-container"></div>
                 </div>
             </div>
             <div class="options-container">
@@ -98,7 +98,9 @@
                     </div>
                     <div>
                         <label for="paddings-input">Padding:</label>
-                        <input type="text" name="paddings-input" id="paddings-input" placeholder="Paddings" value="25">
+                        <input type="range" name="paddings-input" id="paddings-input" placeholder="Paddings" value="25"
+                            min="5" max="100">
+                        <output for="paddings-input">25</output>
                     </div>
                 </div>
                 <div class="color-selectors-container">
@@ -380,6 +382,20 @@
                         data-decoration-value="apple.png">
                         <img src="./images/decorations/apple.png" alt="apple decoration button" />
                     </button>
+                </div>
+                <div class="decorations-upload">
+                    <label for="decoration-size-input">Upload your own decoration:</label>
+                    <input type="file" id="decoration-upload-input" class="btn" aria-label="Upload decoration" />
+                    <div class="preview-decoration" alt="Preview uploaded decoration"></div>
+                    <span class="myoctocats-tip">
+                        <b>💡 TIP 💡</b>
+                        <br />
+                        Use an octocat from the
+                        <a href="https://octodex.github.com/" target="_blank" rel="noopener noreferrer">Github Octodex</a>
+                        <br />
+                        Or build your own at
+                        <a href="https://myoctocat.com/" target="_blank" rel="noopener noreferrer">MyOctocat.com</a>
+                    </span>
                 </div>
             </div>
         </div>

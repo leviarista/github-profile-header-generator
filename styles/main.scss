@@ -88,6 +88,40 @@ input[type="range"] {
     }
 }
 
+input[type="file"] {
+    width: 120px;
+    padding: 0;
+    font-family: "Red Hat Display", sans-serif;
+    color: var(--text-color);
+
+    &::-webkit-file-upload-button {
+        visibility: hidden;
+    }
+    &::before {
+        height: 35px;
+        content: "Select an image";
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.15);
+        padding: 5px 8px;
+        outline: none;
+        white-space: nowrap;
+        cursor: pointer;
+        font-family: "Red Hat Display", sans-serif;
+        color: var(--text-color);    
+    }
+    &:hover::before {
+        border-color: black;
+    }
+    &:active {
+        outline: 0;
+    }
+    &:active::before {
+        background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+    }
+}
+
 output {
     min-width: 25px;
 }

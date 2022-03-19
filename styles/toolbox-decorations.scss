@@ -36,6 +36,30 @@
             }
         }
     }
+
+    .decorations-upload {
+        flex-direction: column;
+
+        input {
+            margin-top: 10px;
+        }
+
+        .myoctocats-tip {
+            margin-top: 15px;
+            padding: 5px 10px;
+            border: 2px solid rgb(255, 255, 255, 0.5);
+            border-radius: var(--input-border-radius);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            text-align: center;
+            line-height: 1.5;
+
+            a {
+                font-weight: 700;
+                text-decoration: underline;
+            }
+        }
+    }
 }
 
 @media (max-width: 768px) {
