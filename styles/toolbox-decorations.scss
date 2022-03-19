@@ -41,18 +41,20 @@
         flex-direction: column;
 
         input {
-            margin-top: 10px;
+            margin-top: 5px;
         }
 
         .myoctocats-tip {
-            margin-top: 15px;
+            margin-top: 10px;
+            margin-bottom: 10px;
             padding: 5px 10px;
-            border: 2px solid rgb(255, 255, 255, 0.5);
+            // border: 2px solid rgb(255, 255, 255, 0.5);
             border-radius: var(--input-border-radius);
-            font-size: 0.8rem;
-            text-transform: uppercase;
+            font-size: 0.9rem;
+            // text-transform: uppercase;
             text-align: center;
             line-height: 1.5;
+            background: rgba(255, 255, 255, 0.15);
 
             a {
                 font-weight: 700;

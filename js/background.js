@@ -112,7 +112,7 @@ function setPatternDefaultSize(patternValue) {
             selectedPatternSize = 40;
             break;
         case 'endless-constellation':
-            selectedPatternSize = 200;
+            selectedPatternSize = 250;
             break;
         case 'floating-cogs':
             selectedPatternSize = 350;

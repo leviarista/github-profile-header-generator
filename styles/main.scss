@@ -110,16 +110,20 @@ input[type="file"] {
         cursor: pointer;
         font-family: "Red Hat Display", sans-serif;
         color: var(--text-color);    
+        border: 1px solid rgb(255, 255, 255, 0.5);
+        border-radius: var(--input-border-radius);
     }
     &:hover::before {
-        border-color: black;
+        border-color: rgb(255, 255, 255);
     }
     &:active {
         outline: 0;
+        transition: all 1s;
+
     }
-    &:active::before {
-        background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
-    }
+    // &:active::before {
+    //     background: -webkit-linear-gradient(top, #e3e3e3, #9976ce);
+    // }
 }
 
 output {

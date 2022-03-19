@@ -116,12 +116,12 @@ function setPaddingValues() {
 
     document.querySelectorAll('.img-decoration-container img')
         .forEach(decoration => {
-            if (decoration.style.left === 'auto'){
+            if (decoration.style.left === 'auto') {
                 decoration.style.right = paddingValue;
             } else {
                 decoration.style.left = paddingValue;
             }
-    });
+        });
 }
 
 toolbox.querySelectorAll('.size-inputs input')
