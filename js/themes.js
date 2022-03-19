@@ -27,13 +27,13 @@ let padding = `${paddingValue}px`;
 const imageDecorationContainer = document.querySelector('.img-decoration-container');
 const imgDecorationElement = document.createElement('img');
 imgDecorationElement.className = 'img-decoration';
-imgDecorationElement.src = './images/decorations/octocat.png';
+imgDecorationElement.src = './images/decorations/my-octocat.png';
 imgDecorationElement.style.position = 'absolute';
 imgDecorationElement.style.bottom = 'calc(50%)';
 imgDecorationElement.style.transform = 'translateY(50%)'
 imgDecorationElement.style.left = 'auto';
 imgDecorationElement.style.right = padding;
-imgDecorationElement.style.width = '100px';
+imgDecorationElement.style.width = '77px';
 imgDecorationElement.alt = 'Header image decoration'
 imageDecorationContainer.appendChild(imgDecorationElement)
 
