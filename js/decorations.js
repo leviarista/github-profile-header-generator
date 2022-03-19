@@ -40,8 +40,7 @@ function setDecoration(decorationValue) {
         if (otherImageDecoration) {
             otherImageDecoration.style.display = 'none';
         }
-    }
-    else {
+    } else {
         imageDecoration.style.display = 'block';
         imageDecoration.src = `images/decorations/${decorationValue}`;
         if (otherImageDecoration) {
