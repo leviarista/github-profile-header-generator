@@ -69,23 +69,19 @@ toolboxBackground.querySelectorAll('.pattern-inputs input[type="range"]')
         });
     })
 
-function setPatternColor() {
-    const patternColor = toolboxBackground.querySelector('.pattern-inputs input#pattern-color-selector').value;
-    selectedPatternColor = patternColor.replace('#', '');
-
-    headerImage.style.backgroundImage = getBackgroundSvg(selectedPattern, selectedPatternColor, selectedPatternOpacity);
-}
-
 toolboxBackground.querySelectorAll('.pattern-inputs input[type="color"]')
     .forEach(input => {
         input.addEventListener('input', (e) => {
-            setPatternColor();
+            setPatternBackground();
         });
     })
 
 /* ************** Patterns ************** */
 
 function setPatternBackground() {
+    const patternColor = toolboxBackground.querySelector('.pattern-inputs input#pattern-color-selector').value;
+    selectedPatternColor = patternColor.replace('#', '');
+
     headerImage.style.backgroundImage = getBackgroundSvg(selectedPattern, selectedPatternColor, selectedPatternOpacity);
     headerImage.style.backgroundSize = `${selectedPatternSize}px`;
 }
@@ -99,6 +95,7 @@ toolboxBackground.querySelectorAll('.patterns-buttons button')
             const patternValue = element.getAttribute('data-pattern-value');
             selectedPattern = patternValue;
             setPatternDefaultSize(patternValue);
+            setPatternValues();
             setPatternBackground();
         });
     })
