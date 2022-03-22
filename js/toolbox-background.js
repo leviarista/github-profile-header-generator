@@ -14,6 +14,13 @@ let selectedPatternColor = 'FFF';
 let selectedPatternSize = '100px';
 setPatternBackground();
 
+/* ************** Set theme button ************** */
+
+// document.querySelector('.set-theme-button').addEventListener('click', () => {
+//     const obj = `   {background: '${document.querySelector('.color-selectors-container input#main-bg-color-selector').value}', title: '${document.querySelector('.color-selectors-container input#title-color-selector').value}', subtitle: '${document.querySelector('.color-selectors-container input#subtitle-color-selector').value}', border: '${document.querySelector('.bg-color-selectors input#border-color-selector').value}', borderSize: ${document.querySelector('.border-inputs input#border-input').value}, borderRadius: ${document.querySelector('.border-inputs input#border-radius-input').value}, textAlign: '${headerImage.style.alignItems}', decoration: '${document.querySelector('.img-decoration-container img').src.split('/').pop().replace('.png', '')}', decorationSize: ${document.querySelector('.decorations-size-inputs input#decoration-size-input').value}, pattern: '${selectedPattern}', patternColor: '${document.querySelector('.pattern-inputs input#pattern-color-selector').value}', patternOpacity: ${document.querySelector('.pattern-inputs input#pattern-opacity-input').value}},    `;
+//     console.log(JSON.stringify(obj).replaceAll('\"', '\''))
+// })
+
 /* ************** Color selectors ************** */
 
 function setBgColorValues() {

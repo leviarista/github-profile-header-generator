@@ -8,7 +8,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     // grid-template-rows: 300px calc(100% - 300px - 25px - 45px) 25px;
-    grid-template-rows: 300px 1fr auto;
+    grid-template-rows: auto 1fr auto;
     grid-gap: 15px 40px;
     grid-auto-flow: row;
     grid-template-areas:
@@ -143,6 +143,7 @@ button {
     justify-content: center;
     flex-direction: column;
     text-align: center;
+    padding-top: 25px;
     filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.5));
 
     img {
@@ -158,6 +159,10 @@ button {
         margin-top: 15px;
         font-size: 14px;
         font-style: italic;
+    }
+
+    .github-button-container {
+        margin-top: 15px;
     }
 }
 
@@ -189,7 +194,7 @@ button {
         }
     }
 
-    img {
+    .icons img {
         max-width: 20px;
         max-height: 20px;
     }

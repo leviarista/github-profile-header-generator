@@ -1,0 +1,43 @@
+.how-to-section {
+    grid-area: section1;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    text-align: center;
+
+    .title {
+        font-family: "Kalam", sans-serif;
+    }
+
+    li {
+        list-style-position: inside;
+        margin-top: 10px;
+
+        img {
+            margin-top: 10px;
+        }
+
+        a {
+            text-decoration: underline;
+        }
+
+        .code {
+            margin: auto;
+            margin-top: 5px;
+            width: fit-content;
+            padding: 5px;
+            background-color: #22272e;
+            border-radius: 5px;
+
+            code {
+                font-size: 0.9rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .how-to-section {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+}

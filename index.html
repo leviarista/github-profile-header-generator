@@ -49,15 +49,37 @@
         <h2>
             A simple but nice header image generator <br /> for your Github profile
         </h2>
+        <p class="github-button-container">
+            <a class="github-button" href="https://github.com/leviarista/github-profile-header-generator"
+                data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-icon="octicon-star" data-size=""
+                data-show-count="true" aria-label="Star leviarista/github-profile-header-generator on GitHub">
+                Star
+            </a>
+        </p>
     </header>
 
-    <!-- <section class="theme-selector-box">
-        Choose a theme:
-        <div class="theme-options-container">
-            <button class="theme-option theme-github" data-theme="github">Github Theme</button>
-            <button class="theme-option theme" data-theme="other" disabled>Soon ...</button>
-        </div>
-    </section> -->
+    <section class="how-to-section">
+        <h2 class="title">How to use it?</h2>
+        <ol>
+            <li>
+                Create a nice github header image. <br />
+                <img src="./images/github-profile-header-generator-demo.gif" alt="Github Profile Header Generator 
+                demo GIF">
+            </li>
+            <li>
+                Create your GitHub profile README <br /> following
+                <a href="https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme"
+                    target="_blank" rel="noopener noreferrer">
+                    <b>this guide</b>.
+                </a>
+            </li>
+            <li>Upload your header to your profile repo.</li>
+            <li>
+                Add this line to your README:
+                <p class="code"><code>[![Header](./[Your header image] "Header")](#)</code></p>
+            </li>
+        </ol>
+    </section>
 
     <section class="toolbox-container">
 
@@ -76,6 +98,7 @@
                 <button type="button" class="dark-mode-button">Dark mode</button>
                 <button type="button" class="randomize-button">Randomize</button>
                 <button type="button" class="download-button">Download</button>
+                <!-- <button type="button" class="set-theme-button" style="background-color: blueviolet;">Set Theme</button> -->
             </div>
         </div>
 
@@ -423,7 +446,7 @@
             kofiwidget2.init('Support us', '#6E5494', 'leviarista');
             kofiwidget2.draw();
         </script>
-        <div>
+        <div class="icons">
             <a href="https://github.com/leviarista/github-profile-header-generator" target="_blank"
                 rel="noopener noreferrer">
                 <img src="./images/github-logo-20.svg" width="20" height="20" alt="Github logo" />
@@ -474,9 +497,11 @@
     <script defer type="module" src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script defer type="module" src="./js/themes.js"></script>
     <script defer type="module" src="./js/main.js"></script>
-    <script defer type="module" src="./js/background.js"></script>
-    <script defer type="module" src="./js/decorations.js"></script>
+    <script defer type="module" src="./js/toolbox-main.js"></script>
+    <script defer type="module" src="./js/toolbox-background.js"></script>
+    <script defer type="module" src="./js/toolbox-decorations.js"></script>
     <script defer type="module" src="./js/tabs.js"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Donations -->
     <!-- <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
         data-id="leviarista" data-description="Support me on Buy me a coffee!" data-message="" data-color="#BD5FFF"
@@ -497,7 +522,6 @@
         window.frames['0'].document.querySelector('.floatingchat-donate-button').style.marginLeft = '5px';
         window.frames['0'].document.querySelector('.floatingchat-donate-button').style.marginBottom = '5px';
     </script> -->
-
 </body>
 
 </html>
