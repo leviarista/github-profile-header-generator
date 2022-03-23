@@ -21,7 +21,7 @@ body {
     background-position: center;
     background-attachment: fixed;
     color: var(--text-color);
-    font-family: "Red Hat Display", Arial, Helvetica, sans-serif;
+    font-family: var(--main-font-familiy);
 }
 
 a:link,
@@ -39,7 +39,7 @@ select,
     border: 1px solid rgb(255, 255, 255, 0.5);
     box-sizing: border-box;
     border-radius: var(--input-border-radius);
-    font-family: "Red Hat Display", sans-serif;
+    font-family: var(--main-font-familiy);
     color: var(--text-color);
 
     &:focus {
@@ -50,7 +50,7 @@ select,
 
     &::placeholder {
         color: #cccccc;
-        font-family: "Red Hat Display", sans-serif;
+        font-family: var(--main-font-familiy);
     }
 }
 
@@ -92,7 +92,7 @@ input[type="range"] {
 input[type="file"] {
     width: 120px;
     padding: 0;
-    font-family: "Red Hat Display", sans-serif;
+    font-family: var(--main-font-familiy);
     color: var(--text-color);
 
     &::-webkit-file-upload-button {
@@ -109,7 +109,7 @@ input[type="file"] {
         outline: none;
         white-space: nowrap;
         cursor: pointer;
-        font-family: "Red Hat Display", sans-serif;
+        font-family: var(--main-font-familiy);
         color: var(--text-color);
         border: 1px solid rgb(255, 255, 255, 0.5);
         border-radius: var(--input-border-radius);
@@ -131,7 +131,7 @@ output {
 }
 
 button {
-    font-family: "Red Hat Display", sans-serif;
+    font-family: var(--main-font-familiy);
     font-size: 14px;
     cursor: pointer;
 }
@@ -151,7 +151,7 @@ button {
     }
 
     span {
-        font-family: "Kalam";
+        font-family: var(--secondary-font-familiy);
         line-height: 1;
     }
 
