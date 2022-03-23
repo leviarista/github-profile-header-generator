@@ -14,6 +14,9 @@ let selectedTheme = 'github';
 // Init
 document.querySelector('.toolbox .size-inputs input#width-input').value = headerImageContainer.clientWidth;
 
+// Demo reset after ended
+document.querySelector('.how-to-section video.demo').onended = (e) => e.target.currentTime = 0;
+
 /* ************** Header image buttons ************** */
 
 // Download button
