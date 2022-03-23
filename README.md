@@ -6,6 +6,23 @@
 
 A simple but nice header image generator for your Github profile Readme. [Website Link](https://agreeable-pond-087f7a90f.1.azurestaticapps.net/).
 
+## How to use it?
+1. Create a nice github header image.  
+2. Create your GitHub profile README following [this guide](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme).
+3. Upload your header to your profile repo.
+4. Add this line to your README:  
+    ```` Markdown
+    ![Header](./[Your header image])
+    ````
+
+## Examples
+
+![Example 1](https://raw.githubusercontent.com/leviarista/github-profile-header-generator/main/social/examples/example-1.png)
+![Example 2](https://raw.githubusercontent.com/leviarista/github-profile-header-generator/main/social/examples/example-2.png)
+![Example 3](https://raw.githubusercontent.com/leviarista/github-profile-header-generator/main/social/examples/example-3.png)
+![Example 4](https://raw.githubusercontent.com/leviarista/github-profile-header-generator/main/social/examples/example-4.png)
+![Example 5](https://raw.githubusercontent.com/leviarista/github-profile-header-generator/main/social/examples/example-5.png)
+
 ## Features list
 
 - Edit title and subtitle texts.
@@ -16,16 +33,10 @@ A simple but nice header image generator for your Github profile Readme. [Websit
 - Set the size and radius of the border.
 - Set background pattern image, its color, size and opacity.
 - Add decorations.
+- Upload your own decoration, octocat or profile pic.
 - Toogle Github  dark and light mode.
 - Download image as png.
-
-## Examples
-
-![Example 1](https://raw.githubusercontent.com/leviarista/github-profile-header-generator/main/social/examples/example-1.png)
-![Example 2](https://raw.githubusercontent.com/leviarista/github-profile-header-generator/main/social/examples/example-2.png)
-![Example 3](https://raw.githubusercontent.com/leviarista/github-profile-header-generator/main/social/examples/example-3.png)
-![Example 4](https://raw.githubusercontent.com/leviarista/github-profile-header-generator/main/social/examples/example-4.png)
-![Example 5](https://raw.githubusercontent.com/leviarista/github-profile-header-generator/main/social/examples/example-5.png)
+- Randomize between predefined themes.
 
 ## Tech used
 
@@ -36,5 +47,5 @@ A simple but nice header image generator for your Github profile Readme. [Websit
 ## Get started
 
  - `npm run dev`- starts dev server
- - `build` - builds for production
- - `preview` - locally previews production build
+ - `npm run build` - builds for production
+ - `npm run preview` - locally previews production build
