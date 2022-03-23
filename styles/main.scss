@@ -21,7 +21,7 @@ body {
     background-position: center;
     background-attachment: fixed;
     color: var(--text-color);
-    font-family: "Red Hat Display", sans-serif;
+    font-family: "Red Hat Display", Arial, Helvetica, sans-serif;
 }
 
 a:link,
@@ -177,7 +177,7 @@ button {
         display: flex;
 
         > a {
-            margin-top: 15px;
+            margin-top: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -188,15 +188,15 @@ button {
             }
 
             &:not(:first-child) {
-                margin-left: 5px;
+                margin-left: 10px;
             }
     
         }
     }
 
     .icons img {
-        max-width: 20px;
-        max-height: 20px;
+        width: 25px;
+        height: 25px;
     }
     // FF5F5F
     // 40DCA5
@@ -208,8 +208,8 @@ button {
 
 @media (max-width: 768px) {
     .main-container {
-        display: flex;
         flex-direction: column;
+        display: flex;
         padding: 25px 5%;
     }
 }
