@@ -1,5 +1,16 @@
-name: Build and Deploy
-on: [push]
+name: Build and Deploy for GH Pages
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**/*.md'
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - main
+    paths-ignore:
+      - '**/*.md'
 jobs:
   build-and-deploy:
     concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
