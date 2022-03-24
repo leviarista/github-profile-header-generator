@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+    <path
+        style="fill:none;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke:#fff;stroke-opacity:1;stroke-miterlimit:4"
+        d="m769 229 268 31.875M927 880 731 737l-211-77-211-122-269 61 255 165-168.5 115.5L40 599l-237-106 299-111-133-153L126.5 79.5-69-63"
+        transform="scale(.0625)" />
+    <path
+        style="fill:none;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke:#fff;stroke-opacity:1;stroke-miterlimit:4"
+        d="m-31 229 268 32 153 121 213 111-294.5 44.5-207-156M370 905l-75-141" transform="scale(.0625)" />
+    <path
+        style="fill:none;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke:#fff;stroke-opacity:1;stroke-miterlimit:4"
+        d="m520 660 58 182 153-105 109-138-237-106-83 167-225 104 14-226 81-156 149-113 230-40L577.5 41.5 370 105 295-36 126.5 79.5 237 261 102 382 40 599-69 737l196 143"
+        transform="scale(.0625)" />
+    <path
+        style="fill:none;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke:#fff;stroke-opacity:1;stroke-miterlimit:4"
+        d="m520-140 58.5 182.5L731-63M603 493l-64-224-302-8 133-156m532 277L539 269M390 382H102"
+        transform="scale(.0625)" />
+    <path
+        style="fill:none;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke:#fff;stroke-opacity:1;stroke-miterlimit:4"
+        d="m-222 42 348.5 37.5L370 105l169 164 38.5-227.5L927 80 769 229l133 153-299 111 128 244M295-36l282.5 77.5M578 842l-283-78M40-201l87 281m-25 302-363-113"
+        transform="scale(.0625)" />
+    <path style="stroke:none;fill-rule:nonzero;fill:#fff;fill-opacity:1"
+        d="M48.375 14.313a.313.313 0 0 1-.625 0 .313.313 0 0 1 .625 0ZM34 16.813a.313.313 0 0 1-.625 0 .313.313 0 0 1 .625 0ZM38 30.813a.313.313 0 0 1-.625 0 .313.313 0 0 1 .625 0ZM46 46.063a.313.313 0 0 1-.625 0 .313.313 0 0 1 .625 0ZM32.813 41.25a.313.313 0 0 1-.625 0c0-.172.14-.313.312-.313s.313.141.313.313ZM19.625 33.625a.313.313 0 0 1-.625 0 .313.313 0 0 1 .625 0ZM18.75 47.75a.313.313 0 0 1-.625 0 .313.313 0 0 1 .625 0ZM2.813 37.438a.313.313 0 0 1-.625 0c0-.172.14-.313.312-.313s.313.14.313.313ZM6.688 23.875a.313.313 0 0 1-.625 0c0-.172.14-.313.312-.313s.313.141.313.313ZM8.25 5a.313.313 0 0 1-.625 0 .313.313 0 0 1 .625 0ZM23.438 6.563a.313.313 0 0 1-.625 0c0-.172.14-.313.312-.313s.313.14.313.313ZM36.438 2.625a.313.313 0 0 1-.625 0c0-.172.14-.313.312-.313s.313.141.313.313ZM15.125 16.313a.313.313 0 0 1-.625 0 .313.313 0 0 1 .625 0ZM24.688 23.875a.313.313 0 0 1-.625 0c0-.172.14-.313.312-.313s.313.141.313.313Zm0 0" />
+</svg>
