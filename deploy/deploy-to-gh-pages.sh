@@ -3,6 +3,10 @@
 # abort on errors
 set -e
 
+# > Install dependencies
+npm install
+echo 'Dependencies installed'
+
 # > Set config for github pages
 cp deploy/vite.config.gh-pages.js vite.config.js
 echo 'Setting vite config file for Github Pages'
