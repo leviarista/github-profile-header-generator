@@ -1,3 +1,6 @@
+import { setFontValues } from './utils/fonts';
+import { getRandomTheme } from './utils/themes';
+
 /* ************** Elements ************** */
 
 let headerImageContainer = document.querySelector('.header-image-container');
@@ -57,46 +60,6 @@ document.querySelector('.dark-mode-button')
 
 /* ************** Randomize ************** */
 
-function getRandomTheme() {
-    const themes = [{
-        background: '#4078C0', title: '#FFFFFF', subtitle: '#FFFFFF', border: '#FFFFFF', borderSize: 0, borderRadius: 7, textAlign: 'flex-start',
-        decoration: 'my-octocat', decorationSize: 77,
-        pattern: 'jigsaw', patternColor: '#FFFFFF', patternOpacity: 0.25
-    }, {
-        background: '#4078C0', title: '#FFFFFF', subtitle: '#05F1FA', border: '#FFFFFF', borderSize: 0, borderRadius: 7, textAlign: 'flex-start',
-        decoration: 'octocat', decorationSize: 100,
-        pattern: 'floating-cogs', patternColor: '#FFFFFF', patternOpacity: 0.25
-    }, {
-        background: '#112137', title: '#FFFFFF', subtitle: '#05F1FA', border: '#eeff00', borderSize: 4, borderRadius: 10, textAlign: 'center',
-        decoration: 'github-mark', decorationSize: 100,
-        pattern: 'i-like-food', patternColor: '#FFFFFF', patternOpacity: 0.25
-    }, {
-        background: '#000000', title: '#FFFFFF', subtitle: '#c671d9', border: '#FFFFFF', borderSize: 0, borderRadius: 15, textAlign: 'center',
-        decoration: 'code', decorationSize: 100,
-        pattern: 'endless-constellation', patternColor: '#87d2ff', patternOpacity: 0.7
-    }, {
-        background: '#ff0066', title: '#FFFFFF', subtitle: '#0f0006', border: '#FFFFFF', borderSize: 0, borderRadius: 15, textAlign: 'flex-end',
-        decoration: 'dev-badge', decorationSize: 100,
-        pattern: 'temple', patternColor: '#FFFFFF', patternOpacity: 0.25
-    }, {
-        background: '#FFFFFF', title: '#f7b3ce', subtitle: '#55c1ae', border: '#88aedc', borderSize: 7, borderRadius: 0, textAlign: 'flex-end',
-        decoration: 'dev-rainbow', decorationSize: 100,
-        pattern: 'bubbles', patternColor: '#f3f095', patternOpacity: 0.7
-    }, {
-        background: '#207e78', title: '#d0b506', subtitle: '#8fd100', border: '#ffffff', borderSize: 0, borderRadius: 7, textAlign: 'center',
-        decoration: 'dev-white', decorationSize: 100,
-        pattern: 'i-like-food', patternColor: '#1b96f3', patternOpacity: 0.45
-    }, {
-        background: '#4078c0', title: '#ffffff', subtitle: '#ffffff', border: '#ffffff', borderSize: 0, borderRadius: 7, textAlign: 'flex-start',
-        decoration: 'my-octocat', decorationSize: 100,
-        pattern: 'jigsaw', patternColor: '#ffffff', patternOpacity: 0.25
-    },
-    ]
-
-    let random = Math.floor(Math.random() * themes.length);
-    return themes[random];
-}
-
 document.querySelector('.randomize-button')
     .addEventListener('click', (e) => {
         const theme = getRandomTheme();
@@ -137,7 +100,7 @@ document.querySelector('.randomize-button')
         const decorationSizeInput = document.querySelector('.decorations-size-inputs input#decoration-size-input');
         decorationSizeInput.value = theme.decorationSize;
         decorationSizeInput.nextElementSibling.value = theme.decorationSize;
-        document.querySelector(`.decorations-buttons button[data-decoration-value="${theme.decoration}.png"]`).click();
+        document.querySelector(`.decorations-buttons button[data-decoration-value="${theme.decoration}"]`).click();
 
         // Patterns
         const patternOpacityInput = document.querySelector('.pattern-inputs input#pattern-opacity-input');
@@ -146,6 +109,11 @@ document.querySelector('.randomize-button')
         patternOpacityInput.nextElementSibling.value = theme.patternOpacity
         patternColorSelector.value = theme.patternColor;
         document.querySelector(`.patterns-buttons button[data-pattern-value="${theme.pattern}"]`).click();
+
+        // Fonts
+        document.querySelector('.font-selectors-container #title-font-selector').value = theme.titleFont ?? 'Red Hat Display';
+        document.querySelector('.font-selectors-container #subtitle-font-selector').value = theme.subtitleFont ?? 'Kalam';
+        setFontValues();
 
     });
 
