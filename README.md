@@ -4,7 +4,7 @@
 
 ## What is it?
 
-A simple but nice header image generator for your Github profile Readme. [Website Link](https://agreeable-pond-087f7a90f.1.azurestaticapps.net/).
+A simple but nice header image generator for your Github profile Readme. [Website Link](https://leviarista.github.io/github-profile-header-generator/).
 
 ## How to use it?
 1. Create a nice github header image.  
@@ -42,7 +42,6 @@ A simple but nice header image generator for your Github profile Readme. [Websit
 
 - [Vite](https://vitejs.dev/)
 - [html2canvas](https://html2canvas.hertzen.com/)
-- [Azure Static Web Apps](https://azure.microsoft.com/en-us/services/app-service/static/)
 
 ## Get started
 
