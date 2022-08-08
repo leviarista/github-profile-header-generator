@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  web:
+    build:
+        dockerfile: Dockerfile
+        context: .
+    image: github-profile-header-generator:latest
+    container_name: github-profile-header-generator
+    ports:
+        - 8008:80
+    restart: always
+    mem_limit: 256m
+    logging:
+      options:
+        "max-size": 2048m
+      
