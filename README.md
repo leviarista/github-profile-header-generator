@@ -48,3 +48,9 @@ A simple but nice header image generator for your Github profile Readme. [Websit
  - `npm run dev`- starts dev server
  - `npm run build` - builds for production
  - `npm run preview` - locally previews production build
+
+## Get started with Docker
+
+```bash
+docker-compose up -d --build --force-recreate
+```
