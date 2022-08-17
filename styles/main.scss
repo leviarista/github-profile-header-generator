@@ -54,6 +54,22 @@ select,
     }
 }
 
+textarea{
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgb(255, 255, 255, 0.5);
+    box-sizing: border-box;
+    border-radius: var(--input-border-radius);
+    font-family: var(--main-font-familiy);
+    color: var(--text-color);
+
+    &:focus {
+        box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.7);
+        outline: transparent;
+    }
+}
+
+
 input[type="range"] {
     // width: 100%;
     height: 10px;
@@ -98,6 +114,7 @@ input[type="file"] {
     &::-webkit-file-upload-button {
         visibility: hidden;
     }
+
     &::before {
         height: 35px;
         content: "Select an image";
@@ -114,13 +131,16 @@ input[type="file"] {
         border: 1px solid rgb(255, 255, 255, 0.5);
         border-radius: var(--input-border-radius);
     }
+
     &:hover::before {
         border-color: rgb(255, 255, 255);
     }
+
     &:active {
         outline: 0;
         transition: all 1s;
     }
+
     // &:active::before {
     //     background: -webkit-linear-gradient(top, #e3e3e3, #9976ce);
     // }
@@ -177,10 +197,10 @@ button {
     flex-direction: column;
     justify-content: space-between;
 
-    > div {
+    >div {
         display: flex;
 
-        > a {
+        >a {
             margin-top: 10px;
             display: flex;
             align-items: center;
@@ -194,7 +214,7 @@ button {
             &:not(:first-child) {
                 margin-left: 10px;
             }
-    
+
         }
     }
 
@@ -202,12 +222,35 @@ button {
         width: 25px;
         height: 25px;
     }
+
     // FF5F5F
     // 40DCA5
     // 5F7FFF
     // FFDD00
     // BD5FFF
     // 794bc4
+    // 6E5494
+
+    .feedback-button {
+        background-color: #6E5494;
+        box-shadow: 1px 1px 0px rgb(0 0 0 / 20%);
+        line-height: 35px !important;
+        min-width: 135px;
+        display: inline-block !important;
+        padding: 2px 12px !important;
+        text-align: center !important;
+        border-radius: 7px;
+        color: #fff;
+        cursor: pointer;
+        overflow-wrap: break-word;
+        vertical-align: middle;
+        border: 0 none #fff !important;
+        // font-family: 'Quicksand', Helvetica, Century Gothic, sans-serif !important;
+        text-decoration: none;
+        text-shadow: none;
+        font-weight: 600 !important;
+        font-size: 14px !important;
+    }
 }
 
 @media (max-width: 768px) {

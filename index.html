@@ -500,6 +500,9 @@
             kofiwidget2.init('Support us', '#6E5494', 'leviarista');
             kofiwidget2.draw();
         </script> -->
+        <a class="feedback-button" href="#feedback-modal">
+            Send feedback
+        </a>
         <div class="icons">
             <a href="https://github.com/leviarista/github-profile-header-generator" target="_blank"
                 rel="noopener noreferrer">
@@ -543,6 +546,28 @@
                 The name “GitHub” as well as related names, marks, emblems and images are registered trademarks
                 of GitHub.
             </div>
+        </div>
+    </div>
+
+    <div id="feedback-modal" class="modal">
+        <div>
+            <a href="#" title="Close" class="modal-close">
+                <img src="./images/icons/close.svg" width="15" height="15" alt="close icon" />
+            </a>
+            <div class="modal-title"><b>Feedback</b></div><br />
+            <p>
+                Questions? Comments? Issues? I will be glad to hear you.
+            </p><br />
+            <p>
+            <form action="https://data.endpoint.space/cl6xuvmzi001809jwkhohqdld" method="POST">
+                <input type="text" name="name" placeholder="Name" />
+                <input type="email" name="email" placeholder="Email" /><br />
+                <textarea name="Message" cols="30" rows="10"></textarea><br />
+                <button class="btn" type="submit">
+                    Send
+                </button>
+            </form>
+            </p>
         </div>
     </div>
 

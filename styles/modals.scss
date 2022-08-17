@@ -17,7 +17,7 @@
         pointer-events: auto;
     }
 
-    & > div {
+    &>div {
         width: 450px;
         margin-top: 15px;
         max-width: calc(100% - 30px);
@@ -49,4 +49,34 @@
     position: absolute;
     right: 15px;
     top: 15px;
+}
+
+#feedback-modal {
+    input {
+        width: calc(50% - 2px);
+        margin-bottom: 5px;
+    }
+    textarea{
+        width: 100%;
+
+        &::-webkit-scrollbar {
+            width: 14px;
+            cursor: pointer;
+        }
+    
+        &::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            // -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+        }
+    
+        &::-webkit-scrollbar-thumb {
+            border-radius: var(--input-border-radius);
+            background-color: rgba(255, 255, 255, 0.75);
+            //
+        }
+    }
+    button {
+        display: block;
+        margin-left: auto
+    }
 }
