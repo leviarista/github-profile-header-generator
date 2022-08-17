@@ -16,6 +16,10 @@ let selectedTheme = 'github';
 
 // Init
 document.querySelector('.toolbox .size-inputs input#width-input').value = headerImageContainer.clientWidth;
+let titleFontSelect = toolbox.querySelector('.font-selectors-container #title-font-selector');
+let subtitleFontSelect = toolbox.querySelector('.font-selectors-container #subtitle-font-selector');
+titleFontSelect.value='Red Hat Display';
+subtitleFontSelect.value='Kalam';
 
 // Demo reset after ended
 document.querySelector('.how-to-section video.demo').onended = (e) => e.target.currentTime = 0;

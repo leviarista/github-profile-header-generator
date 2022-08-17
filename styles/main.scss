@@ -126,6 +126,10 @@ input[type="file"] {
     // }
 }
 
+input[type="color"] {
+    border-radius: 2px;
+}
+
 output {
     min-width: 25px;
 }

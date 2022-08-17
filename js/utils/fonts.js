@@ -9,35 +9,48 @@ let toolbox = document.querySelector('.toolbox');
 
 /* ************** Fonts ************** */
 
+function listFonts() {
+    let { fonts } = document;
+    const it = fonts.entries();
+
+    let arr = [];
+    let done = false;
+
+    while (!done) {
+        const font = it.next();
+        if (!font.done) {
+            arr.push(font.value[0].family);
+        } else {
+            done = font.done;
+        }
+    }
+
+    return [...new Set(arr)];
+}
+
 function setFontValues() {
     let titleFontSelect = toolbox.querySelector('.font-selectors-container #title-font-selector');
     let subtitleFontSelect = toolbox.querySelector('.font-selectors-container #subtitle-font-selector');
 
-    if (!document.fonts.check(`14px ${titleFontSelect.value}`)) {
-        let font = getFont(titleFontSelect.value)
-        font.load().then(function (loadedFont) {
+    document.fonts.ready.then(() => {
+        let titleFont = getFont(titleFontSelect.value)
+        titleFont.load().then(function (loadedFont) {
             document.fonts.add(loadedFont)
             console.log('Font loaded an added');
             title.style.fontFamily = `"${titleFontSelect.value}"`;
         }).catch(function (error) {
             console.log('Failed to load font: ' + error)
         })
-    } else {
-        title.style.fontFamily = `"${titleFontSelect.value}"`;
-    }
 
-    if (!document.fonts.check(`14px ${subtitleFontSelect.value}`)) {
-        let font = getFont(subtitleFontSelect.value)
-        font.load().then(function (loadedFont) {
+        let subTitlefont = getFont(subtitleFontSelect.value)
+        subTitlefont.load().then(function (loadedFont) {
             document.fonts.add(loadedFont)
             console.log('Font loaded an added');
             subtitle.style.fontFamily = `"${subtitleFontSelect.value}"`;
         }).catch(function (error) {
             console.log('Failed to load font: ' + error)
         })
-    } else {
-        subtitle.style.fontFamily = `"${subtitleFontSelect.value}"`;
-    }
+    });
 }
 
 function getFont(fontName) {
