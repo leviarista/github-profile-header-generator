@@ -2,15 +2,14 @@
     --button-border-radius: 7px;
     --input-border-radius: 7px;
     --text-color: white;
-    --paddings: 25px;
+    --paddings: 3rem;
     --github-dark-mode-color: #0d1117;
     --github-light-mode-color: white;
     --main-font-familiy: "Red Hat Display", Arial, Helvetica, sans-serif;   
-    --secondary-font-familiy: "Kalam";
 }
 
 @media (max-width: 768px) {
     :root {
-        --paddings: 15px;
+        --paddings: 1rem;
     }
 }

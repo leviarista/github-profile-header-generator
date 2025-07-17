@@ -18,8 +18,8 @@ let selectedTheme = 'github';
 document.querySelector('.toolbox .size-inputs input#width-input').value = headerImageContainer.clientWidth;
 let titleFontSelect = toolbox.querySelector('.font-selectors-container #title-font-selector');
 let subtitleFontSelect = toolbox.querySelector('.font-selectors-container #subtitle-font-selector');
-titleFontSelect.value='Red Hat Display';
-subtitleFontSelect.value='Kalam';
+titleFontSelect.value = 'Red Hat Display';
+subtitleFontSelect.value = 'Kalam';
 
 // Demo reset after ended
 document.querySelector('.how-to-section video.demo').onended = (e) => e.target.currentTime = 0;
@@ -53,12 +53,20 @@ document.querySelector('.dark-mode-button')
     .addEventListener('click', (e) => {
         let resultBox = document.querySelector('.result-box');
         const toogleDarkModeButton = document.querySelector('.dark-mode-button');
+        const toogleRandomizeButton = document.querySelector('.randomize-button');
+        const toogleDownloadButton = document.querySelector('.download-button');
+
+        const size = 20;
 
         resultBox.classList.toggle('light-mode');
         if (resultBox.className.includes('light')) {
-            toogleDarkModeButton.innerText = 'Light Mode'
+            toogleDarkModeButton.innerHTML = `<img src="./images/icons/light-dark-black.svg" width="${size}" />GH Light`
+            toogleRandomizeButton.innerHTML = `<img src="./images/icons/random-black.svg" width="${size}" />Random`
+            toogleDownloadButton.innerHTML = `<img src="./images/icons/download.svg" width="${size}" />Download`
         } else {
-            toogleDarkModeButton.innerText = 'Dark Mode'
+            toogleDarkModeButton.innerHTML = `<img src="./images/icons/light-dark.svg" width="${size}" />GH Dark`
+            toogleRandomizeButton.innerHTML = `<img src="./images/icons/random.svg" width="${size}" />Random`
+            toogleDownloadButton.innerHTML = `<img src="./images/icons/download.svg" width="${size}" />Download`
         }
     });
 

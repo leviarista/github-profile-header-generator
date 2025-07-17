@@ -1,6 +1,6 @@
 {
   "name": "github-profile-header-generator",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A simple but nice header image generator for your Github profile",
   "scripts": {
     "dev": "vite",
@@ -19,8 +19,10 @@
   },
   "homepage": "https://github.com/leviarista/github-profile-header-generator#readme",
   "devDependencies": {
-    "sass": "^1.49.9",
-    "vite": "^2.8.0"
+    "sass": "^1.89.2",
+    "vite": "^7.0.3",
+    "vite-plugin-handlebars": "^1.5.0",
+    "vite-plugin-html-inject": "^1.1.2"
   },
   "dependencies": {
     "html2canvas": "^1.4.1"
