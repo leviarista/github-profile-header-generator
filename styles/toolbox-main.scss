@@ -1,7 +1,7 @@
 .toolbox-container {
     .result-box {
         // height: 300px;
-        padding: 1rem 2rem 2rem 2rem;
+        padding: 2rem 2rem 0.5rem 2rem;
         background: var(--github-dark-mode-color);
         transition: 0.5s ease;
         user-select: none;
@@ -67,7 +67,7 @@
             gap: 35px;
             justify-content: space-between;
             // flex-wrap: wrap;
-            padding: 5px 0;
+            padding: 0.5rem 0 0 0;
 
             >div:first-child {
                 display: flex;
@@ -233,7 +233,7 @@
         }
 
         .result-box {
-            padding: 1rem 1rem 1.5rem 1rem;
+            padding: 1rem 1rem 0.5rem 1rem;
 
             #github-header-image {
                 height: 250px;
