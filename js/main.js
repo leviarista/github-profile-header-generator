@@ -1,8 +1,6 @@
 import { setFontValues } from './utils/fonts';
 import { getRandomTheme } from './utils/themes';
-import * as htmlToImage from 'html-to-image';
-import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
-import domtoimage from 'dom-to-image';
+import { snapdom } from '@zumer/snapdom';
 
 /* ************** Elements ************** */
 
@@ -30,136 +28,52 @@ document.querySelector('.how-to-section video.demo').onended = (e) => e.target.c
 /* ************** Header image buttons ************** */
 
 // Download button
-// document.querySelector('.download-button')
-//     .addEventListener('click', () => {
-//         html2canvas(
-//             document.querySelector('#github-header-image'),
-//             {
-//                 // removeContainer: true,
-//                 // backgroundColor: null,
-//                 letterRendering: true,
-//                 // logging: true,
-//                 // useCORS: true,
-//                 foreignObjectRendering: false,
-//                 // onclone: (document, element) => {
-//                 //     // const title = element.querySelector('.title').style.letterSpacing = '0.10rem';
-//                 //     const title = element.querySelector('.title')
-//                 //     if (getComputedStyle(title).getPropertyValue("font-family") === 'Ubuntu') {
-//                 //         title.style.letterSpacing = '1px';
-//                 //     }
-//                 //     if (getComputedStyle(title).getPropertyValue("font-family") === 'Martel') {
-//                 //         title.style.letterSpacing = '2px';
-//                 //     }
-//                 //     if (getComputedStyle(title).getPropertyValue("font-family") === 'MavenPro') {
-//                 //         title.style.letterSpacing = '0.2rem';
-//                 //     }
-//                 //     // title.style.letterSpacing = '2px';
-//                 //     // console.log("🚀 ~ title:", title)
-//                 //     // const title = element.querySelector('.subtitle').style.style.letterSpacing = '5px';
-//                 // }
-//                 // widtH: (headerImage.clientWidth * 2),
-//                 // height: (headerImage.style.height * 2)
-//             })
-//             .then(function (canvas) {
-//                 // for testing 
-//                 const container = document.querySelector('.header-image-container')
-
-//                 const prevImage = container.children[1];
-//                 if (prevImage) container.removeChild(prevImage);
-
-//                 container.appendChild(canvas);
-
-//                 // let imageURL = canvas.toDataURL("image/png");
-//                 // let a = document.createElement("a");
-//                 // a.href = imageURL;
-//                 // a.download = 'github-header-image';
-//                 // a.click();
-//             });
-//     })
-
-// document.querySelector('.download-button')
-//     .addEventListener('click', () => {
-//         htmlToImage
-//             .toPng(document.querySelector('#github-header-image'))
-//             .then((dataUrl) => {
-//                 const img = new Image();
-//                 img.src = dataUrl;
-//                 img.width = 900
-//                 document.querySelector('.header-image-container').appendChild(img);
-//             })
-//             .catch((err) => {
-//                 console.error('oops, something went wrong!', err);
-//             });
-//     })
-
 document.querySelector('.download-button')
     .addEventListener('click', async () => {
         document.querySelector('.download-button img').src = './images/icons/loading.gif'
 
         try {
             const el = document.querySelector('#github-header-image');
-
-            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-                console.log('Running on localhost! Appending image instead of downloading ...');
-                const png = await snapdom.toPng(el, { embedFonts: true });
-                const container = document.querySelector('.header-image-container')
-
-                const prevImage = container.children[1];
-                if (prevImage) container.removeChild(prevImage);
-
-                container.appendChild(png);
-            } else {
-                await snapdom.download(el, {
-                    embedFonts: true,
-                    format: 'png',
-                    filename: 'github-header-banner',
-                    scale: 2
-                });
-            }
+            await snapdom.download(el, {
+                embedFonts: true,
+                format: 'png',
+                filename: 'github-header-banner',
+                scale: 2
+            });
             document.querySelector('.download-button img').src = './images/icons/download.svg'
         } catch (error) {
             console.error('Image capture or download failed:', error);
         }
     })
 
-// document.addEventListener("DOMContentLoaded", (event) => {
-//     const displayButton = document.querySelector('.display-button');
+document.addEventListener("DOMContentLoaded", (event) => {
+    const displayButton = document.querySelector('.display-button');
+    const testFontsTab = document.querySelector('.tablinks[data-name="test-fonts-section"]');
 
-//     if (displayButton && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
-//         displayButton.style.display = "block"; // or "flex", "grid", etc.
-//         console.log('Running on localhost! display appending image option  ...');
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        if (displayButton) {
 
-//         document.querySelector('.display-button')
-//             .addEventListener('click', async () => {
-//                 const el = document.querySelector('#github-header-image');
-//                 const png = await snapdom.toPng(el, { embedFonts: true });
-//                 const container = document.querySelector('.header-image-container')
+            displayButton.style.display = "block"; // or "flex", "grid", etc.
+            console.log('Running on localhost! display appending image option  ...');
 
-//                 const prevImage = container.children[1];
-//                 if (prevImage) container.removeChild(prevImage);
+            document.querySelector('.display-button')
+                .addEventListener('click', async () => {
+                    const el = document.querySelector('#github-header-image');
+                    const png = await snapdom.toPng(el, { embedFonts: true });
+                    const container = document.querySelector('.header-image-container')
 
-//                 container.appendChild(png);
-//             })
-//     }
+                    const prevImage = container.children[1];
+                    if (prevImage) container.removeChild(prevImage);
 
-// });
+                    container.appendChild(png);
+                })
+        }
+        if (testFontsTab) {
+            testFontsTab.style.display = "block"
+        }
+    }
 
-
-// document.querySelector('.download-button')
-//     .addEventListener('click', () => {
-//         var node = document.getElementById('github-header-image');
-
-//         domtoimage.toPng(node)
-//             .then(function (dataUrl) {
-//                 console.log("🚀 ~ dataUrl:", dataUrl)
-//                 var img = new Image();
-//                 img.src = dataUrl;
-//                 document.querySelector('.header-image-container').appendChild(img);
-//             })
-//             .catch(function (error) {
-//                 console.error('oops, something went wrong!', error);
-//             });
-//     })
+});
 
 // Toogle Dark Mode button
 document.querySelector('.dark-mode-button')

@@ -6,7 +6,7 @@
         transition: 0.5s ease;
         user-select: none;
         position: relative;
-        z-index: 10;
+        z-index: 20;
 
         &.light-mode {
             background: var(--github-light-mode-color);
