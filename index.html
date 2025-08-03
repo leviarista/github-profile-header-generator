@@ -14,11 +14,17 @@
         <load src="partials/toolbox/result.html" />
 
         <div class="tab">
-            <button class="tablinks" data-name="presets-section" id="defaultOpenTag">Presets</button>
+            <button class="tablinks" data-name="presets-section">
+                Themes
+                <div
+                    style="position: absolute; background-color: rgba(255, 255, 255, 1); top: 5px; color: #585c9c; padding: 2px 5px; font-size: 10px; font-weight: bold; border-radius: 5px; transform: translateX(-40px)">
+                    NEW
+                </div>
+            </button>
             <button class="tablinks" data-name="main-section" id="defaultOpenTag">Main</button>
             <button class="tablinks" data-name="background-section">Background</button>
             <button class="tablinks" data-name="decorations-section">Decorations</button>
-            <button class="tablinks" data-name="test-fonts-section" style="display: none;">Test Fonts (local)</button>
+            <button class="tablinks" data-name="test-fonts-section" style="display: none;">Test Fonts</button>
         </div>
 
         <div class="toolbox-tools scrollable">
@@ -32,6 +38,7 @@
 
     <load src="partials/modals/info.html" />
     <load src="partials/modals/feedback.html" />
+    <load src="partials/modals/special-message.html" />
 
     <load src="partials/scripts.html" />
 </body>
