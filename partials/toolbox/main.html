@@ -1,0 +1,133 @@
+<div id="main-section" class="tabcontent scrollable">
+    <div class="toolbox">
+        <div class="text-inputs">
+            <input type="text" name="title" id="title-input" placeholder="Title" value="Hey! I am ..."
+                aria-label="Title">
+            <input type="text" name="subtitle" id="subtitle-input" placeholder="Subtitle" value="Fullstack developer"
+                aria-label="Subtitle">
+        </div>
+        <div class="size-inputs">
+            <div>
+                <label for="width-input">Width:</label>
+                <input type="text" name="width-input" id="width-input" placeholder="Width" value="">
+            </div>
+            <div>
+                <label for="height-input">Height:</label>
+                <input type="text" name="height-input" id="height-input" placeholder="Height" value="230">
+            </div>
+            <div>
+                <label for="paddings-input">Padding:</label>
+                <input type="range" name="paddings-input" id="paddings-input" placeholder="Paddings" value="25" min="5"
+                    max="100">
+                <output for="paddings-input">25</output>
+            </div>
+        </div>
+        <div class="color-selectors-container">
+            <div>
+                <label for="main-bg-color-selector">Background color:</label>
+                <input type="color" id="main-bg-color-selector" name="main-bg-color-selector" value="#4078C0"><br><br>
+            </div>
+            <div>
+                <label for="title-color-selector">Title color:</label>
+                <input type="color" id="title-color-selector" name="title-color-selector" value="#FFFFFF"><br><br>
+            </div>
+            <div>
+                <label for="subtitle-color-selector">Subtitle color:</label>
+                <input type="color" id="subtitle-color-selector" name="subtitle-color-selector" value="#FFFFFF"><br><br>
+            </div>
+        </div>
+        <div class="align-buttons">
+            Text align:
+            <button type="button" class="left-align-button btn" aria-label="Left align button"
+                data-align-value="flex-start">
+                <img src="./images/icons/left-align.svg" width="24" height="24" alt="Left align button" /><br />
+            </button>
+            <button type="button" class="center-align-button btn" aria-label="Center align button"
+                data-align-value="center">
+                <img src="./images/icons/center-align.svg" width="24" height="24" alt="Center align button" /><br />
+            </button>
+            <button type="button" class="right-align-button btn" aria-label="Right align button"
+                data-align-value="flex-end">
+                <img src="./images/icons/right-align.svg" width="24" height="24" alt="Right align button" /><br />
+            </button>
+        </div>
+        <div class="font-selectors-container">
+            <div>
+                <label for="title-font-selector">Title font:</label>
+                <select name="title-font-selector" id="title-font-selector">
+                    <option value="Red Hat Display" selected>Red Hat Display</option>
+                    <option value="Ubuntu">Ubuntu</option>
+                    <option value="Maven Pro">Maven Pro</option>
+                    <option value="Poppins">Poppins</option>
+                    <option value="Anonymous Pro">Anonymous Pro</option>
+                    <option value="Source Code Pro">Source Code Pro</option>
+                    <option value="Quattrocento">Quattrocento</option>
+                    <option value="Della Respira">Della Respira</option>
+                    <option value="Lancelot">Lancelot</option>
+                    <option value="Life Savers">Life Savers</option>
+                    <option value="Athiti">Athiti</option>
+                    <option value="Electrolize">Electrolize</option>
+                    <option value="Passero One">Passero One</option>
+                    <option value="Pixelify Sans">Pixelify Sans</option>
+                    <option value="Kalam">Kalam</option>
+                    <option value="Playball">Playball</option>
+                    <!-- <option value="Arial">Arial</option> -->
+                    <option value="Verdana">Verdana</option>
+                    <!-- <option value="Helvetica">Helvetica</option> -->
+                    <option value="Tahoma">Tahoma</option>
+                    <option value="Trebuchet MS">Trebuchet MS</option>
+                    <!-- <option value="Times New Roman">Times New Roman</option> -->
+                    <!-- <option value="Georgia">Georgia</option> -->
+                    <option value="Garamond">Garamond</option>
+                    <option value="Courier New">Courier New</option>
+                    <option value="Brush Script MT">Brush Script MT</option>
+                </select>
+            </div>
+            <div>
+                <label for="subtitle-font-selector">Subtitle font:</label>
+                <select name="subtitle-font-selector" id="subtitle-font-selector">
+                    <option value="Red Hat Display" selected>Red Hat Display</option>
+                    <option value="Ubuntu">Ubuntu</option>
+                    <option value="Maven Pro">Maven Pro</option>
+                    <option value="Poppins">Poppins</option>
+                    <option value="Anonymous Pro">Anonymous Pro</option>
+                    <option value="Source Code Pro">Source Code Pro</option>
+                    <option value="Quattrocento">Quattrocento</option>
+                    <option value="Della Respira">Della Respira</option>
+                    <option value="Lancelot">Lancelot</option>
+                    <option value="Life Savers">Life Savers</option>
+                    <option value="Athiti">Athiti</option>
+                    <option value="Electrolize">Electrolize</option>
+                    <option value="Passero One">Passero One</option>
+                    <option value="Pixelify Sans">Pixelify Sans</option>
+                    <option value="Kalam">Kalam</option>
+                    <option value="Playball">Playball</option>
+                    <!-- <option value="Arial">Arial</option> -->
+                    <option value="Verdana">Verdana</option>
+                    <!-- <option value="Helvetica">Helvetica</option> -->
+                    <option value="Tahoma">Tahoma</option>
+                    <option value="Trebuchet MS">Trebuchet MS</option>
+                    <!-- <option value="Times New Roman">Times New Roman</option> -->
+                    <!-- <option value="Georgia">Georgia</option> -->
+                    <option value="Garamond">Garamond</option>
+                    <option value="Courier New">Courier New</option>
+                    <option value="Brush Script MT">Brush Script MT</option>
+                </select>
+            </div>
+        </div>
+        <div class="font-size-inputs">
+            <div>
+                <label for="title-font-size-input">Title font size:</label>
+                <input type="range" name="title-font-size-input" id="title-font-size-input"
+                    placeholder="Title font size" value="40" min="5" max="150">
+                <output for="title-font-size-input">40</output>
+            </div>
+            <div>
+                <label for="sutitle-font-size-input">Subitle font size:</label>
+                <input type="range" name="sutitle-font-size-input" id="sutitle-font-size-input"
+                    placeholder="Subitle font size" value="20" min="5" max="150">
+                <output for="sutitle-font-size-input">20</output>
+            </div>
+        </div>
+    </div>
+</div>

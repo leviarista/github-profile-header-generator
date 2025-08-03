@@ -1,25 +1,25 @@
-import { getBackgroundSvg } from './utils/background-patterns';
+import { getBackgroundSvg } from './data/patterns';
 
 /* ************** Elements ************** */
 
-let headerImageContainer = document.querySelector('.header-image-container');
-let headerImage = document.querySelector('#github-header-image');
-let title = headerImage.querySelector('.title');
-let subtitle = headerImage.querySelector('.subtitle');
+let bannerImageContainer = document.querySelector('.header-image-container');
+let bannerImage = document.querySelector('#github-header-image');
+let title = bannerImage.querySelector('.title');
+let subtitle = bannerImage.querySelector('.subtitle');
 
 let toolboxBackground = document.querySelector('.toolbox-background');
 
 // init
-let selectedPattern = 'jigsaw';
-let selectedPatternOpacity = 0.25;
+let selectedPattern = 'bubbles';
+let selectedPatternOpacity = 0.15;
 let selectedPatternColor = 'FFF';
-let selectedPatternSize = '100px';
+let selectedPatternSize = '200px';
 setPatternBackground();
 
 /* ************** Set theme button ************** */
 
 // document.querySelector('.log-theme-button').addEventListener('click', () => {
-//     let obj = `   {background: '${document.querySelector('.color-selectors-container input#main-bg-color-selector').value}', title: '${document.querySelector('.color-selectors-container input#title-color-selector').value}', subtitle: '${document.querySelector('.color-selectors-container input#subtitle-color-selector').value}', border: '${document.querySelector('.bg-color-selectors input#border-color-selector').value}', borderSize: ${document.querySelector('.border-inputs input#border-input').value}, borderRadius: ${document.querySelector('.border-inputs input#border-radius-input').value}, textAlign: '${headerImage.style.alignItems}', decoration: '${document.querySelector('.img-decoration-container img').src.split('/').pop().replace('.png', '')}.png', decorationSize: ${document.querySelector('.decorations-size-inputs input#decoration-size-input').value}, pattern: '${selectedPattern}', patternColor: '${document.querySelector('.pattern-inputs input#pattern-color-selector').value}', patternOpacity: ${document.querySelector('.pattern-inputs input#pattern-opacity-input').value}, titleFont: '${document.querySelector('.font-selectors-container #title-font-selector').value}', subtitleFont: '${document.querySelector('.font-selectors-container #subtitle-font-selector').value}'},    `;
+//     let obj = `   {background: '${document.querySelector('.color-selectors-container input#main-bg-color-selector').value}', title: '${document.querySelector('.color-selectors-container input#title-color-selector').value}', subtitle: '${document.querySelector('.color-selectors-container input#subtitle-color-selector').value}', border: '${document.querySelector('.bg-color-selectors input#border-color-selector').value}', borderSize: ${document.querySelector('.border-inputs input#border-input').value}, borderRadius: ${document.querySelector('.border-inputs input#border-radius-input').value}, textAlign: '${bannerImage.style.alignItems}', decoration: '${document.querySelector('.img-decoration-container img').src.split('/').pop().replace('.png', '')}.png', decorationSize: ${document.querySelector('.decorations-size-inputs input#decoration-size-input').value}, pattern: '${selectedPattern}', patternColor: '${document.querySelector('.pattern-inputs input#pattern-color-selector').value}', patternOpacity: ${document.querySelector('.pattern-inputs input#pattern-opacity-input').value}, titleFont: '${document.querySelector('.font-selectors-container #title-font-selector').value}', subtitleFont: '${document.querySelector('.font-selectors-container #subtitle-font-selector').value}'},    `;
 //     console.log(JSON.stringify(obj).replaceAll('\"', '\''))
 // })
 
@@ -29,8 +29,8 @@ function setBgColorValues() {
     let bgColorSelector = toolboxBackground.querySelector('.bg-color-selectors input#background-bg-color-selector');
     let borderColorSelector = toolboxBackground.querySelector('.bg-color-selectors input#border-color-selector');
 
-    headerImage.style.backgroundColor = bgColorSelector.value;
-    headerImage.style.borderColor = borderColorSelector.value;
+    bannerImage.style.backgroundColor = bgColorSelector.value;
+    bannerImage.style.borderColor = borderColorSelector.value;
 
     let mainTabBgColorSelector = document.querySelector('.color-selectors-container input#main-bg-color-selector');
     mainTabBgColorSelector.value = bgColorSelector.value;
@@ -50,8 +50,8 @@ function setBorderValues() {
     let borderRadiusInput = toolboxBackground.querySelector('.border-inputs input#border-radius-input');
     let borderColorSelector = toolboxBackground.querySelector('.bg-color-selectors input#border-color-selector');
 
-    headerImage.style.border = `solid ${borderColorSelector.value} ${borderInput.value}px`;
-    headerImage.style.borderRadius = `${borderRadiusInput.value}px`;
+    bannerImage.style.border = `solid ${borderColorSelector.value} ${borderInput.value}px`;
+    bannerImage.style.borderRadius = `${borderRadiusInput.value}px`;
 }
 
 toolboxBackground.querySelectorAll('.border-inputs input')
@@ -91,8 +91,8 @@ function setPatternBackground() {
     const patternColor = toolboxBackground.querySelector('.pattern-inputs input#pattern-color-selector').value;
     selectedPatternColor = patternColor.replace('#', '');
 
-    headerImage.style.backgroundImage = getBackgroundSvg(selectedPattern, selectedPatternColor, selectedPatternOpacity);
-    headerImage.style.backgroundSize = `${selectedPatternSize}px`;
+    bannerImage.style.backgroundImage = getBackgroundSvg(selectedPattern, selectedPatternColor, selectedPatternOpacity);
+    bannerImage.style.backgroundSize = `${selectedPatternSize}px`;
 }
 
 toolboxBackground.querySelectorAll('.patterns-buttons button')

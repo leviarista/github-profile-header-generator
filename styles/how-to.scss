@@ -1,8 +1,8 @@
 .how-to-section {
-    grid-area: section1;
-    margin-top: 25px;
+    margin-top: 2rem;
     margin-bottom: 25px;
     text-align: center;
+    flex-grow: 1;
 
     .title {
         font-family: "Kalam", sans-serif;

@@ -1,11 +1,8 @@
-/* ************** Elements ************** */
+import { getMainElements } from "./helpers/elements";
 
-let headerImageContainer = document.querySelector('.header-image-container');
-let headerImage = document.querySelector('#github-header-image');
-let title = headerImage.querySelector('.title');
-let subtitle = headerImage.querySelector('.subtitle');
-
-let toolboxDecorations = document.querySelector('.toolbox-decorations');
+const {
+    toolboxDecorations,
+} = getMainElements();
 
 /* ************** Decorations inputs ************** */
 

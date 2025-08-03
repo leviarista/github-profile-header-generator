@@ -1,27 +1,53 @@
 .toolbox-container {
-    grid-area: section2;
-    // text-align: center;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 10px;
-    box-shadow: 0px 0px 5px 2px rgba(255, 255, 255, 0.25);
-    overflow: auto;
-
     .result-box {
         // height: 300px;
-        padding: var(--paddings);
-        border-radius: 10px 10px 0px 0px;
+        padding: 2rem 2rem 0.5rem 2rem;
         background: var(--github-dark-mode-color);
         transition: 0.5s ease;
+        user-select: none;
+        position: relative;
+        z-index: 20;
 
         &.light-mode {
             background: var(--github-light-mode-color);
+
+            .dark-mode-button,
+            .randomize-button {
+                color: black !important;
+
+                &:hover {
+                    // box-shadow: 0px 0px 5px 2px rgba(255, 255, 255, 0.25);
+                    text-shadow: 0px 0px 10px #929292 !important;
+                }
+            }
+        }
+
+        .header-image-container {
+            width: 100%;
+            flex-grow: 1;
+            // max-width: calc(1280px - 296px - 24px);
+            max-width: calc(850px);
+            margin: auto;
+            width: 100%;
+            filter: drop-shadow(0px 0px 5px rgba(125, 125, 125, 0.5));
         }
 
         #github-header-image {
+            width: 100%;
+            height: 230px;
+            padding: 25px;
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            flex-direction: column;
+            background-color: #446BAF;
+            color: white;
+            border-radius: 7px;
             margin: 0 auto;
             border: none;
             overflow: hidden;
-            background-size: 100px;
+            background-size: 200px;
             transition: 0.25s ease;
 
             .title,
@@ -35,47 +61,77 @@
         }
 
         .options-container {
+            max-width: calc(850px);
+            margin: auto;
+            user-select: none;
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            padding: var(--paddings) 0 0 0;
+            align-items: center;
+            gap: 35px;
+            justify-content: space-between;
+            // flex-wrap: wrap;
+            padding: 1rem 0 0.5rem 0;
+            overflow: auto;
 
-            button {
-                width: 155px;
+            >div:first-child {
+                display: flex;
+                gap: 2rem;
+            }
+
+            .dark-mode-button,
+            .randomize-button,
+            .download-button {
+                background-color: transparent;
+                display: flex;
+                gap: 7px;
+                justify-content: center;
+                align-items: center;
+                width: fit-content;
                 height: 35px;
-                border: 1px solid #ffffff;
-                border-radius: var(--button-border-radius);
+                // border: 1px solid #ffffff;
+                // border-radius: var(--button-border-radius);
                 color: var(--text-color);
-                text-transform: uppercase;
-                font-size: 12px;
+                // text-transform: uppercase;
+                text-align: center;
                 font-weight: 600;
+                white-space: nowrap;
                 transition: all 0.25s ease-in-out;
+                cursor: pointer;
+
+                img {
+                    transition: all ease 500ms;
+                }
 
                 &:hover {
-                    box-shadow: 0px 0px 5px 2px rgba(255, 255, 255, 0.25);
-                }
+                    // box-shadow: 0px 0px 5px 2px rgba(255, 255, 255, 0.25);
+                    text-shadow: 0px 0px 10px rgb(255, 255, 255);
 
-                &:not(:last-child) {
-                    margin-right: 15px;
+                    img {
+                        transform: scale(1.2);
+                    }
                 }
             }
 
-            .dark-mode-button {
-                background: #2e384d;
-            }
-            .download-button {
-                background: #2D8655;
-            }
-            .randomize-button {
-                background: #862D5A;
+            .download-button,
+            .display-button,
+            .miniature-button {
+                background-color: #2D8655 !important;
+                // border: 1px solid #ffffff;
+                border-radius: var(--button-border-radius);
+                padding: 5px 15px;
             }
         }
+    }
+
+    .toolbox-tools {
+        height: calc(100vh - 230px - 3rem - 35px - 1rem);
+        overflow: auto;
+        padding: 1rem 1rem 4rem 1rem;
     }
 
     .toolbox {
         box-sizing: border-box;
 
-        > div {
+        >div {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -113,7 +169,7 @@
         }
 
         .size-inputs {
-            > div {
+            >div {
                 &:not(:last-child) {
                     margin-right: 15px;
                 }
@@ -173,21 +229,6 @@
             }
         }
     }
-
-    &::-webkit-scrollbar {
-        width: 0.4em;
-    }
-
-    &::-webkit-scrollbar-track {
-        background: rgba(0, 0, 0, 0.1);
-        // -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
-    }
-
-    &::-webkit-scrollbar-thumb {
-        border-radius: 10px;
-        background-color: rgba(255, 255, 255, 0.75);
-        //
-    }
 }
 
 @media (max-width: 768px) {
@@ -197,15 +238,23 @@
         }
 
         .result-box {
+            padding: 1rem 1rem 0.5rem 1rem;
+
+            #github-header-image {
+                height: 250px;
+            }
+
             .options-container {
-                button {
-                    width: 100%;
-                    &:not(:last-child) {
-                        margin-bottom: 10px;
-                        margin-right: 0;
-                    }
+                gap: 10px;
+
+                >div:first-child {
+                    gap: 10px;
                 }
             }
+        }
+
+        .toolbox-tools {
+            height: auto;
         }
 
         .toolbox {
@@ -217,13 +266,15 @@
                     // }
                 }
             }
+
             .font-selectors-container {
-                > div {
+                >div {
                     &:not(:last-child) {
                         margin-bottom: 10px;
                     }
                 }
             }
+
             .font-size-inputs {
                 input {
                     &:not(:last-child) {
@@ -233,4 +284,22 @@
             }
         }
     }
+}
+
+@media (max-width: 360px) {
+    .toolbox-container {
+        .result-box {
+            .options-container {
+                flex-wrap: wrap;
+                gap: 10px;
+                justify-content: center;
+
+                >div:first-child {
+                    gap: 10px;
+                }
+            }
+        }
+
+    }
+
 }

@@ -1,0 +1,40 @@
+#presets-section {
+    text-align: center;
+
+    .toolbox-presets {
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        .theme-button {
+            width: 185px;
+            display: flex;
+            cursor: pointer;
+
+            img {
+                max-width: 100%;
+                object-fit: contain;
+                transition: all ease-in-out 300ms;
+
+                &:hover {
+                    filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.5));
+                }
+            }
+
+            &-white {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: rgba(255, 255, 255, 0.15);
+                border: 1px solid rgb(255, 255, 255, 0.5);
+                border-radius: 5px;
+
+                &:hover {
+                    filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.5));
+                }
+            }
+        }
+    }
+}

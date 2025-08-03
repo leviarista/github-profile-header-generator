@@ -1,13 +1,15 @@
-import { setFontValues } from './utils/fonts';
+import { getMainElements } from './helpers/elements';
+import { setFontValues } from './helpers/fonts';
 
 /* ************** Elements ************** */
 
-let headerImageContainer = document.querySelector('.header-image-container');
-let headerImage = document.querySelector('#github-header-image');
-let title = headerImage.querySelector('.title');
-let subtitle = headerImage.querySelector('.subtitle');
-
-let toolbox = document.querySelector('.toolbox');
+const {
+    bannerImageContainer,
+    bannerImage,
+    bannerTitle,
+    bannerSubtitle,
+    toolbox,
+} = getMainElements();
 
 /* ************** Info text inputs ************** */
 
@@ -15,8 +17,8 @@ function setInfoValues() {
     let titleInput = toolbox.querySelector('.text-inputs input#title-input');
     let subtitleInput = toolbox.querySelector('.text-inputs input#subtitle-input');
 
-    title.innerText = titleInput.value || '';
-    subtitle.innerText = subtitleInput.value || '';
+    bannerTitle.innerText = titleInput.value || '';
+    bannerSubtitle.innerText = subtitleInput.value || '';
 }
 
 toolbox.querySelectorAll('.text-inputs input')
@@ -35,9 +37,9 @@ function setColorValues() {
     let titleColorSelector = toolbox.querySelector('.color-selectors-container input#title-color-selector');
     let subtitleColorSelector = toolbox.querySelector('.color-selectors-container input#subtitle-color-selector');
 
-    headerImage.style.backgroundColor = bgColorSelector.value;
-    title.style.color = titleColorSelector.value;
-    subtitle.style.color = subtitleColorSelector.value;
+    bannerImage.style.backgroundColor = bgColorSelector.value;
+    bannerTitle.style.color = titleColorSelector.value;
+    bannerSubtitle.style.color = subtitleColorSelector.value;
 
     let backgroundTabBgColorSelector = document.querySelector('.bg-color-selectors input#background-bg-color-selector');
     backgroundTabBgColorSelector.value = bgColorSelector.value;
@@ -56,20 +58,20 @@ function setSizeValues() {
     let widthInput = toolbox.querySelector('.size-inputs input#width-input');
     let heightInput = toolbox.querySelector('.size-inputs input#height-input');
 
-    if (Number(widthInput.value) > headerImageContainer.clientWidth) {
-        headerImage.style.zoom = headerImageContainer.clientWidth / widthInput.value;
+    if (Number(widthInput.value) > bannerImageContainer.clientWidth) {
+        bannerImage.style.zoom = bannerImageContainer.clientWidth / widthInput.value;
     } else {
-        headerImage.style.zoom = 1;
+        bannerImage.style.zoom = 1;
     }
-    headerImage.style.width = `${widthInput.value}px`;
-    headerImage.style.height = `${heightInput.value}px`;
+    bannerImage.style.width = `${widthInput.value}px`;
+    bannerImage.style.height = `${heightInput.value}px`;
 }
 
 function setPaddingValues() {
     let paddingInput = toolbox.querySelector('.size-inputs input#paddings-input');
     let paddingValue = `${paddingInput.value}px`;
 
-    headerImage.style.padding = paddingValue;
+    bannerImage.style.padding = paddingValue;
 
     document.querySelectorAll('.img-decoration-container img')
         .forEach(decoration => {
@@ -99,9 +101,23 @@ toolbox.querySelectorAll('.size-inputs input')
 
 /* ************** Align buttons ************** */
 
-function setAlignValues(alignValue) {
-    headerImage.style.alignItems = alignValue;
-}
+// Github theme
+
+let paddingValue = document.querySelector('#paddings-input').value || 25;
+let padding = `${paddingValue}px`;
+
+const imageDecorationContainer = document.querySelector('.img-decoration-container');
+const imgDecorationElement = document.createElement('img');
+imgDecorationElement.className = 'img-decoration';
+imgDecorationElement.src = './images/decorations/my-octocat.png';
+imgDecorationElement.style.position = 'absolute';
+imgDecorationElement.style.bottom = 'calc(50%)';
+imgDecorationElement.style.transform = 'translateY(50%)'
+imgDecorationElement.style.left = 'auto';
+imgDecorationElement.style.right = padding;
+imgDecorationElement.style.width = '77px';
+imgDecorationElement.alt = 'Header image decoration'
+imageDecorationContainer.appendChild(imgDecorationElement)
 
 toolbox.querySelectorAll('.align-buttons button')
     .forEach(button => {
@@ -110,7 +126,30 @@ toolbox.querySelectorAll('.align-buttons button')
                 e.target.parentNode :
                 e.target;
             const alignValue = element.getAttribute('data-align-value');
-            setAlignValues(alignValue);
+            bannerImage.style.alignItems = alignValue;
+
+            const paddingValue = document.querySelector('#paddings-input').value || 25;
+            const padding = `${paddingValue}px`;
+            const imageDecoration = document.querySelector('.img-decoration-container img');
+            if (alignValue === 'flex-end') {
+                document.querySelector('.img-decoration-container .img-decoration-2')?.remove();
+                imageDecoration.style.left = padding;
+                imageDecoration.style.right = 'auto';
+            } else if (alignValue === 'flex-start') {
+                document.querySelector('.img-decoration-container .img-decoration-2')?.remove();
+                imageDecoration.style.left = 'auto';
+                imageDecoration.style.right = padding;
+            } else if (alignValue === 'center') {
+                imageDecoration.style.left = 'auto';
+                imageDecoration.style.right = padding;
+                if (!document.querySelector('.img-decoration-container .img-decoration-2')) {
+                    const clonedImageDecoration = imageDecoration.cloneNode(true);
+                    clonedImageDecoration.style.left = padding;
+                    clonedImageDecoration.style.right = 'auto';
+                    clonedImageDecoration.className = 'img-decoration-2';
+                    imageDecorationContainer.appendChild(clonedImageDecoration)
+                }
+            }
         });
     })
 
@@ -129,8 +168,8 @@ function setFontSizeValues() {
     let titleFontSizeInput = toolbox.querySelector('.font-size-inputs input#title-font-size-input');
     let subtitleFontSizeInput = toolbox.querySelector('.font-size-inputs input#sutitle-font-size-input');
 
-    title.style.fontSize = `${titleFontSizeInput.value}px`;
-    subtitle.style.fontSize = `${subtitleFontSizeInput.value}px`;
+    bannerTitle.style.fontSize = `${titleFontSizeInput.value}px`;
+    bannerSubtitle.style.fontSize = `${subtitleFontSizeInput.value}px`;
 }
 
 toolbox.querySelectorAll('.font-size-inputs input')

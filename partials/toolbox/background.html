@@ -1,0 +1,120 @@
+<div id="background-section" class="tabcontent scrollable">
+    <div class="toolbox-background">
+        <div class="bg-color-selectors">
+            <div>
+                <label for="background-bg-color-selector">Background color:</label>
+                <input type="color" id="background-bg-color-selector" name="background-bg-color-selector"
+                    value="#4078C0"><br><br>
+            </div>
+            <div>
+                <label for="border-color-selector">Border color:</label>
+                <input type="color" id="border-color-selector" name="border-color-selector" value="#FFFFFF"><br><br>
+            </div>
+        </div>
+        <div class="border-inputs">
+            <div>
+                <label for="border-input">Border (px):</label>
+                <input type="range" name="border-input" id="border-input" value="0" min="0">
+                <output for="border-input">0</output>
+            </div>
+            <div>
+                <label for="border-radius-input">Border radius (px):</label>
+                <input type="range" name="border-radius-input" id="border-radius-input" value="7" min="0" max="200">
+                <output for="border-radius-input">7</output>
+            </div>
+        </div>
+        <div class="pattern-inputs">
+            <div>
+                <label for="pattern-color-selector">Pattern color:</label>
+                <input type="color" id="pattern-color-selector" name="pattern-color-selector" value="#FFFFFF">
+            </div>
+            <div>
+                <label for="pattern-size-input">Pattern size (px):</label>
+                <input type="range" name="pattern-size-input" id="pattern-size-input" value="100" min="10" max="500">
+                <output for="pattern-size-input">100</output>
+            </div>
+            <div>
+                <label for="pattern-opacity-input">Pattern opacity (px):</label>
+                <input type="range" name="pattern-opacity-input" id="pattern-opacity-input" step="0.05" width="50"
+                    value="0.25" min="0" max="1">
+                <output for="pattern-opacity-input">0.25</output>
+            </div>
+        </div>
+        <div>Patterns:</div>
+        <div class="patterns-buttons">
+            <button type="button" class="btn" aria-label="none pattern button" data-pattern-value="none">
+                None
+            </button>
+            <button type="button" class="btn" aria-label="jigsaw pattern button" data-pattern-value="jigsaw">
+                <img src="./images/patterns/jigsaw-thumbnail.svg" alt="jigsaw pattern button" />
+            </button>
+            <button type="button" class="btn" aria-label="github pattern button" data-pattern-value="github">
+                <img src="./images/patterns/github-thumbnail.svg" alt="github pattern button" />
+            </button>
+            <button type="button" class="btn" aria-label="endless-constellation pattern button"
+                data-pattern-value="endless-constellation">
+                <img src="./images/patterns/endless-constellation-thumbnail.svg"
+                    alt="endless-constellation pattern button" style="width: 55px;" />
+            </button>
+            <button type="button" class="btn" aria-label="floating-cogs pattern button"
+                data-pattern-value="floating-cogs">
+                <img src="./images/patterns/floating-cogs-thumbnail.svg" alt="floating-cogs pattern button"
+                    style="width: 55px;" />
+            </button>
+            <button type="button" class="btn" aria-label="bubbles pattern button" data-pattern-value="bubbles">
+                <img src="./images/patterns/bubbles-thumbnail.svg" alt="bubbles pattern button" />
+            </button>
+            <button type="button" class="btn" aria-label="lisbon pattern button" data-pattern-value="lisbon">
+                <img src="./images/patterns/lisbon-thumbnail.svg" alt="lisbon pattern button" />
+            </button>
+            <button type="button" class="btn" aria-label="temple pattern button" data-pattern-value="temple">
+                <img src="./images/patterns/temple-thumbnail.svg" alt="temple pattern button" />
+            </button>
+            <button type="button" class="btn" aria-label="topography pattern button" data-pattern-value="topography">
+                <img src="./images/patterns/topography-thumbnail.svg" alt="topography pattern button"
+                    style="width: 55px;" />
+            </button>
+            <button type="button" class="btn" aria-label="falling-triangles pattern button"
+                data-pattern-value="falling-triangles">
+                <img src="./images/patterns/falling-triangles-thumbnail.svg" alt="falling-triangles pattern button" />
+            </button>
+            <button type="button" class="btn" aria-label="glamorous pattern button" data-pattern-value="glamorous">
+                <img src="./images/patterns/glamorous-thumbnail.svg" alt="glamorous pattern button" />
+            </button>
+            <button type="button" class="btn" aria-label="i-like-food pattern button" data-pattern-value="i-like-food">
+                <img src="./images/patterns/i-like-food-thumbnail.svg" alt="i-like-food pattern button"
+                    style="width: 55px;" />
+            </button>
+            <button type="button" class="btn" aria-label="leaf pattern button" data-pattern-value="leaf">
+                <img src="./images/patterns/leaf-thumbnail.svg" alt="leaf pattern button" />
+            </button>
+            <button type="button" class="btn" aria-label="circuit-board pattern button"
+                data-pattern-value="circuit-board">
+                <img src="./images/patterns/circuit-board-thumbnail.svg" alt="circuit-board pattern button" />
+            </button>
+            <button type="button" class="btn" aria-label="overlapping-circles pattern button"
+                data-pattern-value="overlapping-circles">
+                <img src="./images/patterns/overlapping-circles-thumbnail.svg"
+                    alt="overlapping-circles pattern button" />
+            </button>
+            <button type="button" class="btn" aria-label="endless-clouds pattern button"
+                data-pattern-value="endless-clouds">
+                <img src="./images/patterns/endless-clouds-thumbnail.svg" alt="endless-clouds pattern button" />
+            </button>
+            <!-- <button type="button" class="btn" aria-label="random-shapes pattern button"
+                data-pattern-value="random-shapes">
+                <img src="./images/patterns/random-shapes-thumbnail.svg" alt="random-shapes pattern button" />
+            </button> -->
+            <button type="button" class="btn" aria-label="bathroom-floor pattern button"
+                data-pattern-value="bathroom-floor">
+                <img src="./images/patterns/bathroom-floor-thumbnail.svg" alt="random-shapes pattern button"
+                    style="width: 30px;" />
+            </button>
+            <button type="button" class="btn" aria-label="squares-in-squares pattern button"
+                data-pattern-value="squares-in-squares">
+                <img src="./images/patterns/squares-in-squares-thumbnail.svg" alt="squares-in-squares pattern button"
+                    style="width: 30px;" />
+            </button>
+        </div>
+    </div>
+</div>
