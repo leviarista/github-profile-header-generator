@@ -10,13 +10,13 @@
     <meta name="description" content="A simple but nice header image generator for your Github profile">
     <meta name="keywords"
         content="github profile header generator, github profile header, github header generator, github profile generator">
-    <meta name="image" content="https://leviarista.github.io/github-profile-header-generator/gphg-logo.png">
+    <meta name="image" content="https://leviarista.github.io/github-profile-header-generator/gphg.png">
 
     <!-- Social Media Meta Tags -->
     <!-- Schema.org for Google -->
     <meta itemprop="name" content="Github Profile Header Generator">
     <meta itemprop="description" content="A simple but nice header image generator for your Github profile">
-    <meta itemprop="image" content="https://leviarista.github.io/github-profile-header-generator/gphg-logo.png">
+    <meta itemprop="image" content="https://leviarista.github.io/github-profile-header-generator/gphg.png">
     <!-- Twitter -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Github Profile Header Generator">
@@ -35,572 +35,646 @@
     <meta name="og:type" content="website">
 
     <!-- Styles -->
-    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
-        rel="preload" as="style">
+        rel="preload" as="style" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="preload" as="style"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet" crossorigin="anonymous">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anonymous+Pro&family=Athiti&family=Della+Respira&family=Electrolize&family=Kalam&family=Lancelot&family=Life+Savers&family=Maven+Pro&family=Passero+One&family=Pixelify+Sans&family=Playball&family=Poppins&family=Quattrocento&family=Red+Hat+Display&family=Source+Code+Pro&family=Ubuntu&display=swap"
         rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="preload" as="style">
-    <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/github-profile-header-generator/assets/favicon.1a25eb11.ico" />
-    <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,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">
-    <link rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAvtJREFUOE9VU29olHUc/3x+z+26dk19YZeQBdEfX4r9AUslRrg16GzRttDQQGHFNBG3u3m+8YReuJ3OFVhgBUFQ5o3NtVnS1B1I0JuWSq8SSVz0omKoO5x39/x+H/nd3Ry9eb7Pw/N8vr/Pv4cAQH8BcCibjURLa16AxTZjuBnA0wAF6k/nMA3q89+uR67m8522DnmAxZH+8aYKy4cN0O3o4hRBCCJFR8jIn3NHFl9EEc32D7bPPzi8p+f0IyuX8SSBdwhD/6WDI6oLAOMC+S0kJQfn4PJlzHcPDuyaZ0fn6eDZpyIf0ShF6QoNJyR0CXgS0BwcyMAsh9NfgE5BfFPAWkHHHmr8PcP9B86sC6ACgCbIfZYbeHt3X2osEdA+GjRwDgLC0Kyw4b1/h4a2/pdKj52AUQ+A22WnDdyXHj0GY/ZTFKBPjw+076lq8wK0aFV9EtiXHvsE5B5vvRFy/DAzPiNpHcCirHn1RC4583+Yd2Rp0+7e719iFNOQ4pAu8/3MRFFCPIBmF2JNz32Vbb5XzUY1Fn56uM/E372XnY49XJr/w4mrCSxwV+ZsCCmA8Ped8t1nRo53LdQAtZBUh9dYCW90TzQmVvA6DVYJtNxx4IdZAKtJFithsOmbXMvlJdKLXVhSsT09+SJpCjCIw+omt/b/mAfVIRcIxp6ysVj3yOHXipLqRrI2IWxJjTfFg9iXcOrw/YI0yq7+c+0y/E5y31KRtaK9JQRfu9BOnjna9o+X09l3YVXFVNoajNkpuFd8twBZWb7LZPbXxsjC3KSIx+WQITFIYllo3esTudZqIsn0T+sDwykI8aqxNUaXSkWbpH9Kps4/rwBjTm7UMfzYhYbLb9y+mR/psv79lr1Tj9lGXIGQ8N2m0Swt3po8unlm8UdEW9/5l12DOSmnsqBrYSn4oDDcfMtLaOk7l0AkchUIEoCuidw5daT5Z1+9elpVTmg9WHgiDF0vwJa7ldLGX4Zb5ySiuffiSkZxCU5TrlQaKgy33ajVgrgPOTZt8H48v0wAAAAASUVORK5CYII=">
-    <link rel="apple-touch-icon" sizes="180x180" href="/github-profile-header-generator/assets/apple-touch-icon.91ad7150.png">
+    <link rel="icon" type="image/x-icon" href="/github-profile-header-generator/assets/favicon-C3rBgeQc.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/github-profile-header-generator/assets/favicon-32x32-Bv6Qjmt7.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/github-profile-header-generator/assets/favicon-16x16-DVCC6Jnb.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/github-profile-header-generator/assets/apple-touch-icon-DHdLA7Bt.png">
 
     <link rel="manifest" href="./site.webmanifest">
 
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
     <!-- Analytics -->
-    <script>
-        if (!sessionStorage.getItem("_swa") && document.referrer.indexOf(location.protocol + "//" + location.host) !== 0) {
-            fetch("https://counter.dev/track?" + new URLSearchParams({ referrer: document.referrer, screen: screen.width + "x" + screen.height, user: "levi.gphg", utcoffset: "-5" }))
-        };
-        sessionStorage.setItem("_swa", "1");
-    </script>
-    <script data-goatcounter="https://levi-gphg.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-  <script type="module" crossorigin src="/github-profile-header-generator/assets/index.086378bb.js"></script>
-  <link rel="stylesheet" href="/github-profile-header-generator/assets/index.7ea006fc.css">
+    <!-- <script src="https://cdn.counter.dev/script.js" data-id="4c163d75-71a1-43ff-adea-40e6a4f56cfe"
+        data-utcoffset="-5"></script>
+    <script data-goatcounter="https://levi-gphg.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script> -->
+  <script type="module" crossorigin src="/github-profile-header-generator/assets/index-DUVpoSjJ.js"></script>
+  <link rel="stylesheet" crossorigin href="/github-profile-header-generator/assets/index-DRU2voz8.css">
 </head>
 
 <body class="main-container">
-
-    <header class="header">
-        <h1>
-            <img src="/github-profile-header-generator/assets/github-logo-40.13998a6b.svg" width="40" height="40" alt="Github logo" /><br />
-            Github <br />
-            <span>Profile Header Generator</span>
-        </h1>
-        <h2>
-            A simple but nice header image generator <br /> for your Github profile
-        </h2>
-        <p class="github-button-container">
-            <a class="github-button" href="https://github.com/leviarista/github-profile-header-generator"
-                data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-icon="octicon-star" data-size=""
-                data-show-count="true" aria-label="Star leviarista/github-profile-header-generator on GitHub">
-                Star
+    <div class="left-container scrollable">
+        <header class="header">
+    <h1>
+        <img src="data:image/svg+xml,%3csvg%20id='Capa_1'%20data-name='Capa%201'%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20585%20618'%3e%3cdefs%3e%3cstyle%3e.cls-1{fill:%23fff;}.cls-2{fill:%234e6db3;}.cls-3{fill:%23605fa1;}.cls-4{fill:%23dcc48e;}%3c/style%3e%3c/defs%3e%3crect%20class='cls-1'%20x='55'%20width='475'%20height='618'%20rx='37.97'/%3e%3crect%20class='cls-2'%20x='73.16'%20y='15'%20width='439'%20height='586'%20rx='37.97'/%3e%3crect%20class='cls-1'%20y='116'%20width='585'%20height='181'%20rx='48.97'/%3e%3crect%20class='cls-3'%20x='12.5'%20y='131'%20width='560'%20height='151'%20rx='37.97'/%3e%3cpolygon%20class='cls-1'%20points='292.5%20140%20343.02%20244.52%20456%20261.28%20374.25%20342.64%20393.55%20457.51%20292.5%20403.28%20191.45%20457.51%20210.75%20342.64%20129%20261.28%20241.98%20244.52%20292.5%20140'/%3e%3cpolygon%20class='cls-4'%20points='292.5%20178.58%20332.61%20259.85%20422.28%20272.88%20357.39%20336.13%20372.71%20425.45%20292.5%20383.28%20212.29%20425.45%20227.61%20336.13%20162.72%20272.88%20252.4%20259.85%20292.5%20178.58'/%3e%3c/svg%3e" width="40" height="40" alt="Github logo" /><br />
+        Github Profile <br />
+        Header Generator
+    </h1>
+    <h2>
+        A simple but nice header image generator <br /> for your Github profile or project.
+    </h2>
+    <p class="github-button-container">
+        <a class="github-button" href="https://github.com/leviarista/github-profile-header-generator"
+            data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-icon="octicon-star" data-size="large"
+            data-show-count="true" aria-label="Star leviarista/github-profile-header-generator on GitHub">
+            Star
+        </a>
+    </p>
+</header>
+        <section class="how-to-section">
+    <h2 class="title">How to use it?</h2>
+    <ol>
+        <li>
+            Create a nice github header image. <br />
+            <video class="demo" src="/github-profile-header-generator/assets/github-profile-header-generator-demo-seaU0OOm.webm" autoplay muted
+                poster="data:image/png;base64,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">
+                Github Profile Header Generator Demo
+            </video>
+        </li>
+        <li>
+            Create your GitHub profile README <br /> following
+            <a href="https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme"
+                target="_blank" rel="noopener noreferrer">
+                <b>this guide</b>.
             </a>
-        </p>
-    </header>
-
-    <section class="how-to-section">
-        <h2 class="title">How to use it?</h2>
-        <ol>
-            <li>
-                Create a nice github header image. <br />
-                <video class="demo" src="/github-profile-header-generator/assets/github-profile-header-generator-demo.fa83aca2.webm" autoplay muted
-                    poster="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAA+CAMAAABZTaSoAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAABIUExURT55wVWKyabB4out2EyDxkR9wxobHkF7wkqBxUd/xG2YzrnO6PfDr8/d7z5wpisyOzNagylBXlra78ezppmMiE2r0GBVUmh1iKxsdwUAAAdqSURBVGje3VqJYvKsEoUAHZZmsWr7/m96z7AkEUms/ftZvbRqZJDhMAsDgxC5OCeENXgwNn25KMQkTakdOVORjSU04Se0i20vyY5yl+iC216WmTXpFmu3Yt0aGcXfzZ1ZLvExPlXtrdNWxzrSDn+XQ+U6m+pMJFODHOuY6Gw9C7usHYZWWINYz9LMOhMA25QmeDCpN6Pz9OHD5NERHrJIXCZDGLQml1qde3FrMjrLU6mbrJNkwTqTmfVMpjKya9aUp8pUypBpJpErdUitoSRpdqma49TaOkqza1ylDGkqDaWhVqwTeZN16gysTc06aV0TSFTebSBcGZltACl20wRCdoP18htrNoHMdrOwviER2pWIMDsSwTD3JIJh7kuEdiVyxTq7gSYQ1FojNoFgTjRtAwFRiwaQbCPo2opNIBhXHlkTCKahZs2uAEWmD5N9iJbpA4q6Ijsq5FRr2eaW1q44v9Qapm7XrWHHmZxqTWKtF/IOa1ux1nTJGqgoFu34HTDRPwo8aCyZbHItz8PSOupo/hkXC0+ZyOaCbEutdavOZvI+61wL604PuTNRj6zS+qIsV9qQtb5tUbPWZ2VpawMm0a1Uq9JT9JzUuK2nDIS2DW5ZJ7MfMtmGmkC4qz1HY/cdTXGB1ARizcqdXQPRZQXZdIG1Q/2nQPQ+EP1rQMwcabRVa4402qo1RxrU9OUl0thQrcx6Q7UK6w3V0jkAosy7hBK8aOcAgyONrJ8xwMjGUgIMfsimMYcSbCy5Qw5yigKXMCU6JJojjezhC2tasXZr1lQCUEvDzLrAjkEl/7KaBsGjT8sZRxq6EhDpEmCwL9FVDMlxUg4wYqRRxZBx9FmDt1i7FuvhcBjgxfQ0vk05yLFr1jw5dWQdaxJaLRpk9n+RWWzTJMeJ5jZEjb6TuXCbPdaXIzu8vY3TNOHjbaIU9F/8+qkl4hbW09tSDi2J3GUjdG0jtmUjOmv+TRtx37aRwxrI0LCRF/Fabg0kiaT2Wq+xjgwjxj+O/P72eTwN/25BpJtA6OdALMFExtP7+/H0+ckfw40FsYpoilr/faylAQQA5vJ1FWulGNMqxWGkUhchqOm84Eqqol97V/TrfiP6BZDxCAD9e3yDRKrot2wKup7PKLoAbiha89bB6V4560Jw2BRwNQc8C/mb+xH9K/sRk4AcFXAcu/d3d7Fxms+bBCDwFHVBCKmUNF7im/S9Qm3XQb6Eak/kPYTGLR6+Qxyiah1PjAavr0GI1p6dusDuEUB8H0LvGZfsVVAuAREydB3k0/ddzw16+Z09u9s9RSntvrlnP7x9sjTi//v7qQaS+3EYX4/xBWgTo/K9F6qXwUNoQAeJoEPVMxX4DF7JRe1H3jdOUcw9pyjDdGHsaoiG1JBI71EYAaYeIgmd65UOCv1EiTgVUK2Bz/Te2KAefa41DYevBcfRmmqXVk4aYeZsDgFzzYi06iEQA7Ng1UJzBaBdBKILEDZt8SsnjdQ6abTVSeM0TKeoVcfj0cPKvfKS1qxFlggcE4CYEKT00mhYgyCvkwdgf6Ydq5ZPriwC0UDlyXqznAdzkNM6+3V6DnLuPPvlY2euGwbSw3A6nT7HAX15BbsPXlwdRavAM6k6WDVsxWP4eEvjhWqRiT4g6OCNCYooElRwvte+l+TWp/GOGqfxUb8o7livyKacxttrF7c6jccvIbpDDLS0V+F0PH5OkbVez5rk3hB8kfResq9ifyxtisjQXEPf4FChLhy2R62xUjgpDAT8ECDsA4fDGENG4xVEM76Nwm2nFeDBrVQslbV884E+9MTWaQVxR1qhqVp6N62wZDTMNI68LRkPg/WnGEWa/bQCYQWhp0srDFCrYUpB8PT1xUAmfSOtYOn50gocyE9xfzVCMgf8Hyah67RC88zbPFVagWUxiahQw/T1mU4grtIK2kuAg+ddhfEIuNiO4IPzWu3/NK0QN+1xnzgObpiGZlrBqE5JBCGqg0Z4z2J11Hm2cIsPDpYN+Q4eCcOCRUe1fXRaYdnsDtrUG+OcVtBdh5gWaPiv73xQKviuAyIVEDt2TOO3oELgJ8b4O2kF++20gl6QDJtpBRkUwqsQgfhOdoi3EMQHRL0dkOAbCsj80CEa4zXx8WmFYQFCW2kF2QFLXyZd8agVJKOx0GP4yndJVhxQdvws/yKtEM8fko1spRV4YYdpSBQs4D6+8TfNtYjP8MS1DoGjYr8g6U/SCkUk4/ZpfHY08JhpEa2X1zKVWtGWH3pAWoGGDGR65bQCLG0quhUPf+9MK4hnSSvI83lcThrPZ/OiaYXzx0dWrOGM1fDj4/yiaQWNocecwvSRyvlV0wrmDKGcB5lhSHrVtALFCl4hZImMXjKt8I1k6P9hevqZ0wr35dntC1/h+Mmlmj9IK9y8VPPn15zsL11z2r14Zh9x8czedfHMzSMjcd9VQPEfrgL+alrhxlXAklb4yeXMh6YVri5n2rsuZ77OddmnuMD8rbSC2L/A3Dj7tXr3SrltXin/Z2kF50pdi/V1WuEpLvnbn1/y/x+J1Z6mhlo5xgAAAABJRU5ErkJggg==">
-                    Github Profile Header Generator Demo
-                </video>
-            </li>
-            <li>
-                Create your GitHub profile README <br /> following
-                <a href="https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme"
-                    target="_blank" rel="noopener noreferrer">
-                    <b>this guide</b>.
-                </a>
-            </li>
-            <li>Upload your header to your profile repo.</li>
-            <li>
-                Add this line to your README:
-                <p class="code"><code>![Header](./your-header-image-name.png)</code></p>
-            </li>
-        </ol>
-    </section>
+        </li>
+        <li>Upload your header to your profile/projecy repo.</li>
+        <li>
+            Add this line to your README:
+            <p class="code"><code>![Header](./your-header-image-name.png)</code></p>
+        </li>
+    </ol>
+</section>
+        <footer class="footer">
+    <div class="links">
+        <a href="https://github.com/leviarista/github-profile-header-generator/discussions" target="_blank"
+            rel="noopener noreferrer">
+            <b><u>Feedback</u></b>
+        </a>
+        <a href="https://github.com/leviarista/github-profile-header-generator/issues" target="_blank"
+            rel="noopener noreferrer">
+            <b><u>Issues</u></b>
+        </a>
+    </div>
+    <div class="icons">
+        <a href="https://github.com/leviarista/github-profile-header-generator" target="_blank"
+            rel="noopener noreferrer">
+            <img src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.9995%202.72328e-07C5.09549%20-0.000645831%200.915044%203.64728%200.129877%208.61239C-0.655291%2013.5775%202.18666%2018.3937%206.83945%2019.983C7.34056%2020.0755%207.51996%2019.7599%207.51996%2019.4886C7.51996%2019.2449%207.51195%2018.5993%207.50894%2017.741C4.72774%2018.3578%204.14042%2016.3655%204.14042%2016.3655C3.95733%2015.7456%203.56372%2015.2135%203.03095%2014.8657C2.12894%2014.2294%203.1001%2014.2438%203.1001%2014.2438C3.74221%2014.3341%204.30735%2014.7243%204.63052%2015.3005C4.90406%2015.8107%205.36492%2016.1876%205.91068%2016.3477C6.45644%2016.5077%207.04191%2016.4375%207.537%2016.1527C7.58353%2015.6326%207.80915%2015.1464%208.17342%2014.7814C5.95447%2014.5234%203.62127%2013.6434%203.62127%209.71344C3.60895%208.69696%203.97696%207.71431%204.64956%206.96769C4.34523%206.08291%204.38107%205.11243%204.74978%204.2538C4.74978%204.2538%205.58866%203.97728%207.49792%205.30338C9.13542%204.84285%2010.8636%204.84285%2012.5011%205.30338C14.4113%203.97625%2015.2492%204.2538%2015.2492%204.2538C15.6196%205.11203%2015.6555%206.08318%2015.3494%206.96769C16.0245%207.71424%2016.3922%208.69947%2016.3757%209.71755C16.3757%2013.6578%2014.0405%2014.5234%2011.8135%2014.7773C12.2939%2015.2811%2012.5403%2015.9722%2012.4901%2016.675C12.4901%2018.0463%2012.478%2019.1524%2012.478%2019.4886C12.478%2019.763%2012.6564%2020.0817%2013.1666%2019.981C17.8174%2018.389%2020.6563%2013.5725%2019.8695%208.60868C19.0827%203.64488%2014.9025%20-0.00115049%209.9995%202.72328e-07Z'%20fill='white'/%3e%3c/svg%3e" alt="Github logo" />
+        </a>
+        <!-- <a href="#" target="_blank" rel="noopener noreferrer">
+            <img src="./images/icons/product-hunt.svg" width="20" height="20" alt="Product Hunt logo" />
+        </a> -->
+        <a href="https://ko-fi.com/L3L1BO773" target="_blank" rel="noopener noreferrer">
+            <img src="https://storage.ko-fi.com/cdn/cup-border.png" alt="Buy Me a Coffee at ko-fi.com" style="width: 37px;" />
+        </a>
+        <a href="#special-message-modal" >
+            <img src="./images/icons/heart-circle.svg" alt="info icon"
+                style="background-color: #FFF; border-radius: 50%;" />
+        </a>
+        <a href="#info-modal">
+            <img src="./images/icons/info.svg" alt="info icon" />
+        </a>
+    </div>
+</footer>
+    </div>
 
     <section class="toolbox-container">
-
-        <div class="result-box dark-mode">
-            <div class="header-image-container"
-                style="width: 100%; filter: drop-shadow(0px 0px 5px rgba(125, 125, 125, 0.5));">
-                <div id="github-header-image" style="width: 100%; height: 200px; padding: 25px; position: relative;
-                display: flex; align-items: flex-start; justify-content: center; flex-direction: column;
-                background-color: #4078C0; color: white; border-radius: 7px;">
-                    <div class="title" style="font-size: 40px;">Hey! I am ...</div>
-                    <div class="subtitle" style="font-size: 20px; font-family: 'Kalam';">Fullstack developer </div>
-                    <div class="img-decoration-container"></div>
-                </div>
+        <div class="result-box">
+    <div class="header-image-container">
+        <div id="github-header-image">
+            <div class="title" style="font-size: 40px;">Hey! I am ...</div>
+            <div class="subtitle" style="font-size: 20px; font-family: 'Kalam';">Fullstack developer </div>
+            <div class="img-decoration-container"></div>
+        </div>
+    </div>
+    <div class="options-container">
+        <div>
+            <div role="button" class="dark-mode-button">
+                <img src="./images/icons/light-dark.svg" width="20" />
+                GH Dark
             </div>
-            <div class="options-container">
-                <button type="button" class="dark-mode-button">GH Dark mode</button>
-                <button type="button" class="randomize-button">Randomize</button>
-                <button type="button" class="download-button">Download</button>
-                <!-- <button type="button" class="log-theme-button" style="background-color: blueviolet;">Log Theme</button> -->
+            <div role="button" class="randomize-button">
+                <img src="./images/icons/random.svg" width="20" />
+                Random
             </div>
         </div>
+        <div style="display: flex; gap: 5px;">
+            <div role="button" class="display-button"
+                style="display: none; background-color: #7a7777 !important; cursor: pointer;">
+                Display
+            </div>
+            <div role="button" class="miniature-button"
+                style="display: none; background-color: #7a7777 !important; cursor: pointer;">
+                Miniature
+            </div>
+        </div>
+        <div role="button" class="download-button">
+            <img src="./images/icons/download.svg" width="20" />
+            Download
+        </div>
+        <!-- <button type="button" class="log-theme-button" style="background-color: blueviolet;">Log Theme</button> -->
+    </div>
+</div>
 
         <div class="tab">
+            <button class="tablinks" data-name="presets-section">
+                Themes
+                <div
+                    style="position: absolute; background-color: rgba(255, 255, 255, 1); top: 5px; color: #585c9c; padding: 2px 5px; font-size: 10px; font-weight: bold; border-radius: 5px; transform: translateX(-40px)">
+                    NEW
+                </div>
+            </button>
             <button class="tablinks" data-name="main-section" id="defaultOpenTag">Main</button>
             <button class="tablinks" data-name="background-section">Background</button>
             <button class="tablinks" data-name="decorations-section">Decorations</button>
+            <button class="tablinks" data-name="test-fonts-section" style="display: none;">Test Fonts</button>
         </div>
 
-        <div id="main-section" class="tabcontent">
-            <div class="toolbox">
-                <div class="text-inputs">
-                    <input type="text" name="title" id="title-input" placeholder="Title" value="Hey! I am ..."
-                        aria-label="Title">
-                    <input type="text" name="subtitle" id="subtitle-input" placeholder="Subtitle"
-                        value="Fullstack developer" aria-label="Subtitle">
-                </div>
-                <div class="size-inputs">
-                    <div>
-                        <label for="width-input">Width:</label>
-                        <input type="text" name="width-input" id="width-input" placeholder="Width" value="">
-                    </div>
-                    <div>
-                        <label for="height-input">Height:</label>
-                        <input type="text" name="height-input" id="height-input" placeholder="Height" value="200">
-                    </div>
-                    <div>
-                        <label for="paddings-input">Padding:</label>
-                        <input type="range" name="paddings-input" id="paddings-input" placeholder="Paddings" value="25"
-                            min="5" max="100">
-                        <output for="paddings-input">25</output>
-                    </div>
-                </div>
-                <div class="color-selectors-container">
-                    <div>
-                        <label for="main-bg-color-selector">Background color:</label>
-                        <input type="color" id="main-bg-color-selector" name="main-bg-color-selector"
-                            value="#4078C0"><br><br>
-                    </div>
-                    <div>
-                        <label for="title-color-selector">Title color:</label>
-                        <input type="color" id="title-color-selector" name="title-color-selector"
-                            value="#FFFFFF"><br><br>
-                    </div>
-                    <div>
-                        <label for="subtitle-color-selector">Subtitle color:</label>
-                        <input type="color" id="subtitle-color-selector" name="subtitle-color-selector"
-                            value="#FFFFFF"><br><br>
-                    </div>
-                </div>
-                <div class="align-buttons">
-                    Text align:
-                    <button type="button" class="left-align-button btn" aria-label="Left align button"
-                        data-align-value="flex-start">
-                        <img src="/github-profile-header-generator/assets/left-align.00375a35.svg" width="24" height="24" alt="Left align button" /><br />
-                    </button>
-                    <button type="button" class="center-align-button btn" aria-label="Center align button"
-                        data-align-value="center">
-                        <img src="/github-profile-header-generator/assets/center-align.e9481855.svg" width="24" height="24"
-                            alt="Center align button" /><br />
-                    </button>
-                    <button type="button" class="right-align-button btn" aria-label="Right align button"
-                        data-align-value="flex-end">
-                        <img src="/github-profile-header-generator/assets/right-align.9bdb6593.svg" width="24" height="24"
-                            alt="Right align button" /><br />
-                    </button>
-                </div>
-                <div class="font-selectors-container">
-                    <div>
-                        <label for="title-font-selector">Title font:</label>
-                        <select name="title-font-selector" id="title-font-selector">
-                            <option value="Red Hat Display" selected>Red Hat Display</option>
-                            <option value="Kalam">Kalam</option>
-                            <option value="Poppins">Poppins</option>
-                            <option value="Athiti">Athiti</option>
-                            <option value="MavenPro">MavenPro</option>
-                            <option value="Ubuntu">Ubuntu</option>
-                            <option value="IstokWeb">IstokWeb</option>
-                            <option value="Courgette">Courgette</option>
-                            <option value="Quattrocento">Quattrocento</option>
-                            <option value="DellaRespira">DellaRespira</option>
-                            <option value="Lato">Lato</option>
-                            <option value="Martel">Martel</option>
-                            <option value="Lancelot">Lancelot</option>
-                            <option value="Playball">Playball</option>
-                            <option value="LifeSavers">LifeSavers</option>
-                            <option value="Arial">Arial</option>
-                            <option value="Verdana">Verdana</option>
-                            <!-- <option value="Helvetica">Helvetica</option> -->
-                            <option value="Tahoma">Tahoma</option>
-                            <option value="Trebuchet MS">Trebuchet MS</option>
-                            <!-- <option value="Times New Roman">Times New Roman</option> -->
-                            <!-- <option value="Georgia">Georgia</option> -->
-                            <option value="Garamond">Garamond</option>
-                            <option value="Courier New">Courier New</option>
-                            <option value="Brush Script MT">Brush Script MT</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="subtitle-font-selector">Subtitle font:</label>
-                        <select name="subtitle-font-selector" id="subtitle-font-selector">
-                            <option value="Red Hat Display">Red Hat Display</option>
-                            <option value="Kalam" selected>Kalam</option>
-                            <option value="Poppins">Poppins</option>
-                            <option value="Athiti">Athiti</option>
-                            <option value="MavenPro">MavenPro</option>
-                            <option value="Ubuntu">Ubuntu</option>
-                            <option value="IstokWeb">IstokWeb</option>
-                            <option value="Courgette">Courgette</option>
-                            <option value="Quattrocento">Quattrocento</option>
-                            <option value="DellaRespira">DellaRespira</option>
-                            <option value="Lato">Lato</option>
-                            <option value="Martel">Martel</option>
-                            <option value="Lancelot">Lancelot</option>
-                            <option value="Playball">Playball</option>
-                            <option value="LifeSavers">LifeSavers</option>
-                            <option value="Arial">Arial</option>
-                            <option value="Verdana">Verdana</option>
-                            <!-- <option value="Helvetica">Helvetica</option> -->
-                            <option value="Tahoma">Tahoma</option>
-                            <option value="Trebuchet MS">Trebuchet MS</option>
-                            <!-- <option value="Times New Roman">Times New Roman</option> -->
-                            <!-- <option value="Georgia">Georgia</option> -->
-                            <option value="Garamond">Garamond</option>
-                            <option value="Courier New">Courier New</option>
-                            <option value="Brush Script MT">Brush Script MT</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="font-size-inputs">
-                    <div>
-                        <label for="title-font-size-input">Title font size:</label>
-                        <input type="range" name="title-font-size-input" id="title-font-size-input"
-                            placeholder="Title font size" value="40" min="5" max="150">
-                        <output for="title-font-size-input">40</output>
-                    </div>
-                    <div>
-                        <label for="sutitle-font-size-input">Subitle font size:</label>
-                        <input type="range" name="sutitle-font-size-input" id="sutitle-font-size-input"
-                            placeholder="Subitle font size" value="20" min="5" max="150">
-                        <output for="sutitle-font-size-input">20</output>
-                    </div>
-                </div>
+        <div class="toolbox-tools scrollable">
+            <div id="presets-section" class="tabcontent scrollable">
+    <p>Choose a preset theme or customize your own with the options above.</p>
+    <br>
+    <div class="toolbox-presets">
+        <div role="button" class="theme-button theme-button-white">
+            Create my own
+        </div>
+        <a href="https://github.com/leviarista/github-profile-header-generator" target="_blank"
+            rel="noopener noreferrer" class="theme-button theme-button-white">
+            Upload theme
+        </a>
+    </div>
+</div>
+            <div id="main-section" class="tabcontent scrollable">
+    <div class="toolbox">
+        <div class="text-inputs">
+            <input type="text" name="title" id="title-input" placeholder="Title" value="Hey! I am ..."
+                aria-label="Title">
+            <input type="text" name="subtitle" id="subtitle-input" placeholder="Subtitle" value="Fullstack developer"
+                aria-label="Subtitle">
+        </div>
+        <div class="size-inputs">
+            <div>
+                <label for="width-input">Width:</label>
+                <input type="text" name="width-input" id="width-input" placeholder="Width" value="">
+            </div>
+            <div>
+                <label for="height-input">Height:</label>
+                <input type="text" name="height-input" id="height-input" placeholder="Height" value="230">
+            </div>
+            <div>
+                <label for="paddings-input">Padding:</label>
+                <input type="range" name="paddings-input" id="paddings-input" placeholder="Paddings" value="25" min="5"
+                    max="100">
+                <output for="paddings-input">25</output>
             </div>
         </div>
-
-        <div id="background-section" class="tabcontent">
-            <div class="toolbox-background">
-                <div class="bg-color-selectors">
-                    <div>
-                        <label for="background-bg-color-selector">Background color:</label>
-                        <input type="color" id="background-bg-color-selector" name="background-bg-color-selector"
-                            value="#4078C0"><br><br>
-                    </div>
-                    <div>
-                        <label for="border-color-selector">Border color:</label>
-                        <input type="color" id="border-color-selector" name="border-color-selector"
-                            value="#FFFFFF"><br><br>
-                    </div>
-                </div>
-                <div class="border-inputs">
-                    <div>
-                        <label for="border-input">Border (px):</label>
-                        <input type="range" name="border-input" id="border-input" value="0" min="0">
-                        <output for="border-input">0</output>
-                    </div>
-                    <div>
-                        <label for="border-radius-input">Border radius (px):</label>
-                        <input type="range" name="border-radius-input" id="border-radius-input" value="7" min="0"
-                            max="200">
-                        <output for="border-radius-input">7</output>
-                    </div>
-                </div>
-                <div class="pattern-inputs">
-                    <div>
-                        <label for="pattern-color-selector">Pattern color:</label>
-                        <input type="color" id="pattern-color-selector" name="pattern-color-selector" value="#FFFFFF">
-                    </div>
-                    <div>
-                        <label for="pattern-size-input">Pattern size (px):</label>
-                        <input type="range" name="pattern-size-input" id="pattern-size-input" value="100" min="10"
-                            max="500">
-                        <output for="pattern-size-input">100</output>
-                    </div>
-                    <div>
-                        <label for="pattern-opacity-input">Pattern opacity (px):</label>
-                        <input type="range" name="pattern-opacity-input" id="pattern-opacity-input" step="0.05"
-                            width="50" value="0.25" min="0" max="1">
-                        <output for="pattern-opacity-input">0.25</output>
-                    </div>
-                </div>
-                <div class="patterns-buttons">
-                    Patterns:
-                    <button type="button" class="btn" aria-label="none pattern button" data-pattern-value="none">
-                        None
-                    </button>
-                    <button type="button" class="btn" aria-label="jigsaw pattern button" data-pattern-value="jigsaw">
-                        <img src="./images/patterns/jigsaw-thumbnail.svg" alt="jigsaw pattern button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="github pattern button" data-pattern-value="github">
-                        <img src="./images/patterns/github-thumbnail.svg" alt="github pattern button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="endless-constellation pattern button"
-                        data-pattern-value="endless-constellation">
-                        <img src="./images/patterns/endless-constellation-thumbnail.svg"
-                            alt="endless-constellation pattern button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="floating-cogs pattern button"
-                        data-pattern-value="floating-cogs">
-                        <img src="./images/patterns/floating-cogs-thumbnail.svg" alt="floating-cogs pattern button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="bubbles pattern button" data-pattern-value="bubbles">
-                        <img src="./images/patterns/bubbles-thumbnail.svg" alt="bubbles pattern button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="lisbon pattern button" data-pattern-value="lisbon">
-                        <img src="./images/patterns/lisbon-thumbnail.svg" alt="lisbon pattern button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="temple pattern button" data-pattern-value="temple">
-                        <img src="./images/patterns/temple-thumbnail.svg" alt="temple pattern button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="topography pattern button"
-                        data-pattern-value="topography">
-                        <img src="./images/patterns/topography-thumbnail.svg" alt="topography pattern button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="falling-triangles pattern button"
-                        data-pattern-value="falling-triangles">
-                        <img src="./images/patterns/falling-triangles-thumbnail.svg"
-                            alt="falling-triangles pattern button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="glamorous pattern button"
-                        data-pattern-value="glamorous">
-                        <img src="./images/patterns/glamorous-thumbnail.svg" alt="glamorous pattern button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="i-like-food pattern button"
-                        data-pattern-value="i-like-food">
-                        <img src="./images/patterns/i-like-food-thumbnail.svg" alt="i-like-food pattern button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="leaf pattern button" data-pattern-value="leaf">
-                        <img src="./images/patterns/leaf-thumbnail.svg" alt="leaf pattern button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="circuit-board pattern button"
-                        data-pattern-value="circuit-board">
-                        <img src="./images/patterns/circuit-board-thumbnail.svg" alt="circuit-board pattern button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="overlapping-circles pattern button"
-                        data-pattern-value="overlapping-circles">
-                        <img src="./images/patterns/overlapping-circles-thumbnail.svg"
-                            alt="overlapping-circles pattern button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="endless-clouds pattern button"
-                        data-pattern-value="endless-clouds">
-                        <img src="./images/patterns/endless-clouds-thumbnail.svg" alt="endless-clouds pattern button" />
-                    </button>
-                    <!-- <button type="button" class="btn" aria-label="random-shapes pattern button"
-                        data-pattern-value="random-shapes">
-                        <img src="./images/patterns/random-shapes-thumbnail.svg" alt="random-shapes pattern button" />
-                    </button> -->
-                </div>
+        <div class="color-selectors-container">
+            <div>
+                <label for="main-bg-color-selector">Background color:</label>
+                <input type="color" id="main-bg-color-selector" name="main-bg-color-selector" value="#4078C0"><br><br>
+            </div>
+            <div>
+                <label for="title-color-selector">Title color:</label>
+                <input type="color" id="title-color-selector" name="title-color-selector" value="#FFFFFF"><br><br>
+            </div>
+            <div>
+                <label for="subtitle-color-selector">Subtitle color:</label>
+                <input type="color" id="subtitle-color-selector" name="subtitle-color-selector" value="#FFFFFF"><br><br>
             </div>
         </div>
-
-        <div id="decorations-section" class="tabcontent">
-            <div class="toolbox-decorations">
-                <div class="decorations-size-inputs">
-                    <div>
-                        <label for="decoration-size-input">Decoration size (px):</label>
-                        <input type="range" name="decoration-size-input" id="decoration-size-input" value="100" min="10"
-                            max="500">
-                        <output for="decoration-size-input">100</output>
-                    </div>
-                </div>
-                <div class="decorations-buttons">
-                    Decorations:
-                    <button type="button" class="btn" aria-label="no decorations" data-decoration-value="none">
-                        None
-                    </button>
-                    <button type="button" class="btn" aria-label="my-octocat decoration button"
-                        data-decoration-value="my-octocat.png">
-                        <img src="./images/decorations/my-octocat-thumbnail.png" alt="my-octocat decoration button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="octocat decoration button"
-                        data-decoration-value="octocat.png">
-                        <img src="./images/decorations/octocat-thumbnail.png" alt="octocat decoration button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="github-mark decoration button"
-                        data-decoration-value="github-mark.png">
-                        <img src="./images/decorations/github-mark-thumbnail.png" alt="github-mark decoration button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="dev-badge decoration button"
-                        data-decoration-value="dev-badge.png">
-                        <img src="./images/decorations/dev-badge-thumbnail.png" alt="dev-badge decoration button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="dev-rainbow decoration button"
-                        data-decoration-value="dev-rainbow.png">
-                        <img src="./images/decorations/dev-rainbow-thumbnail.png" alt="dev-rainbow decoration button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="dev-white decoration button"
-                        data-decoration-value="dev-white.png">
-                        <img src="./images/decorations/dev-white-thumbnail.png" alt="dev-white decoration button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="code decoration button"
-                        data-decoration-value="code.png">
-                        <img src="./images/decorations/code-thumbnail.png" alt="code decoration button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="terminal decoration button"
-                        data-decoration-value="terminal.png">
-                        <img src="./images/decorations/terminal-thumbnail.png" alt="terminal decoration button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="programming decoration button"
-                        data-decoration-value="programming.png">
-                        <img src="./images/decorations/programming-thumbnail.png" alt="programming decoration button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="rocket decoration button"
-                        data-decoration-value="rocket.png">
-                        <img src="./images/decorations/rocket-thumbnail.png" alt="rocket decoration button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="terminal-circle decoration button"
-                        data-decoration-value="terminal-circle.png">
-                        <img src="./images/decorations/terminal-circle-thumbnail.png"
-                            alt="terminal-circle decoration button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="binary-code decoration button"
-                        data-decoration-value="binary-code.png">
-                        <img src="./images/decorations/binary-code-thumbnail.png" alt="binary-code decoration button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="coding-screen decoration button"
-                        data-decoration-value="coding-screen.png">
-                        <img src="./images/decorations/coding-screen-thumbnail.png"
-                            alt="coding-screen decoration button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="coding decoration button"
-                        data-decoration-value="coding.png">
-                        <img src="./images/decorations/coding-thumbnail.png" alt="coding decoration button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="idea decoration button"
-                        data-decoration-value="idea.png">
-                        <img src="./images/decorations/idea-thumbnail.png" alt="idea decoration button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="tabs decoration button"
-                        data-decoration-value="tabs.png">
-                        <img src="./images/decorations/tabs-thumbnail.png" alt="tabs decoration button" />
-                    </button>
-                    <button type="button" class="btn" aria-label="apple decoration button"
-                        data-decoration-value="apple.png">
-                        <img src="./images/decorations/apple-thumbnail.png" alt="apple decoration button" />
-                    </button>
-                </div>
-                <div class="decorations-upload">
-                    <label for="decoration-size-input">Upload your own decoration:</label>
-                    <input type="file" id="decoration-upload-input" class="btn" aria-label="Upload decoration" />
-                    <div class="preview-decoration" alt="Preview uploaded decoration"></div>
-                    <span class="myoctocats-tip">
-                        💡Use an octocat from the
-                        <a href="https://octodex.github.com/" target="_blank" rel="noopener noreferrer">Github
-                            Octodex</a>
-                        <br />
-                        💡Or build your own at
-                        <a href="https://myoctocat.com/" target="_blank" rel="noopener noreferrer">MyOctocat.com</a>
-                        <br />
-                        &emsp; (My octocat looks like broken but you can copy the svg result)
-                    </span>
-                </div>
+        <div class="align-buttons">
+            Text align:
+            <button type="button" class="left-align-button btn" aria-label="Left align button"
+                data-align-value="flex-start">
+                <img src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M15%2015H3V17H15V15ZM15%207H3V9H15V7ZM3%2013H21V11H3V13ZM3%2021H21V19H3V21ZM3%203V5H21V3H3Z'%20fill='%23FFFFFF'/%3e%3c/svg%3e" width="24" height="24" alt="Left align button" /><br />
+            </button>
+            <button type="button" class="center-align-button btn" aria-label="Center align button"
+                data-align-value="center">
+                <img src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M7%2015V17H17V15H7ZM3%2021H21V19H3V21ZM3%2013H21V11H3V13ZM7%207V9H17V7H7ZM3%203V5H21V3H3Z'%20fill='%23FFFFFF'/%3e%3c/svg%3e" width="24" height="24" alt="Center align button" /><br />
+            </button>
+            <button type="button" class="right-align-button btn" aria-label="Right align button"
+                data-align-value="flex-end">
+                <img src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M3%2021H21V19H3V21ZM9%2017H21V15H9V17ZM3%2013H21V11H3V13ZM9%209H21V7H9V9ZM3%203V5H21V3H3Z'%20fill='%23FFFFFF'/%3e%3c/svg%3e" width="24" height="24" alt="Right align button" /><br />
+            </button>
+        </div>
+        <div class="font-selectors-container">
+            <div>
+                <label for="title-font-selector">Title font:</label>
+                <select name="title-font-selector" id="title-font-selector">
+                    <option value="Red Hat Display" selected>Red Hat Display</option>
+                    <option value="Ubuntu">Ubuntu</option>
+                    <option value="Maven Pro">Maven Pro</option>
+                    <option value="Poppins">Poppins</option>
+                    <option value="Anonymous Pro">Anonymous Pro</option>
+                    <option value="Source Code Pro">Source Code Pro</option>
+                    <option value="Quattrocento">Quattrocento</option>
+                    <option value="Della Respira">Della Respira</option>
+                    <option value="Lancelot">Lancelot</option>
+                    <option value="Life Savers">Life Savers</option>
+                    <option value="Athiti">Athiti</option>
+                    <option value="Electrolize">Electrolize</option>
+                    <option value="Passero One">Passero One</option>
+                    <option value="Pixelify Sans">Pixelify Sans</option>
+                    <option value="Kalam">Kalam</option>
+                    <option value="Playball">Playball</option>
+                    <!-- <option value="Arial">Arial</option> -->
+                    <option value="Verdana">Verdana</option>
+                    <!-- <option value="Helvetica">Helvetica</option> -->
+                    <option value="Tahoma">Tahoma</option>
+                    <option value="Trebuchet MS">Trebuchet MS</option>
+                    <!-- <option value="Times New Roman">Times New Roman</option> -->
+                    <!-- <option value="Georgia">Georgia</option> -->
+                    <option value="Garamond">Garamond</option>
+                    <option value="Courier New">Courier New</option>
+                    <option value="Brush Script MT">Brush Script MT</option>
+                </select>
+            </div>
+            <div>
+                <label for="subtitle-font-selector">Subtitle font:</label>
+                <select name="subtitle-font-selector" id="subtitle-font-selector">
+                    <option value="Red Hat Display" selected>Red Hat Display</option>
+                    <option value="Ubuntu">Ubuntu</option>
+                    <option value="Maven Pro">Maven Pro</option>
+                    <option value="Poppins">Poppins</option>
+                    <option value="Anonymous Pro">Anonymous Pro</option>
+                    <option value="Source Code Pro">Source Code Pro</option>
+                    <option value="Quattrocento">Quattrocento</option>
+                    <option value="Della Respira">Della Respira</option>
+                    <option value="Lancelot">Lancelot</option>
+                    <option value="Life Savers">Life Savers</option>
+                    <option value="Athiti">Athiti</option>
+                    <option value="Electrolize">Electrolize</option>
+                    <option value="Passero One">Passero One</option>
+                    <option value="Pixelify Sans">Pixelify Sans</option>
+                    <option value="Kalam">Kalam</option>
+                    <option value="Playball">Playball</option>
+                    <!-- <option value="Arial">Arial</option> -->
+                    <option value="Verdana">Verdana</option>
+                    <!-- <option value="Helvetica">Helvetica</option> -->
+                    <option value="Tahoma">Tahoma</option>
+                    <option value="Trebuchet MS">Trebuchet MS</option>
+                    <!-- <option value="Times New Roman">Times New Roman</option> -->
+                    <!-- <option value="Georgia">Georgia</option> -->
+                    <option value="Garamond">Garamond</option>
+                    <option value="Courier New">Courier New</option>
+                    <option value="Brush Script MT">Brush Script MT</option>
+                </select>
             </div>
         </div>
-
+        <div class="font-size-inputs">
+            <div>
+                <label for="title-font-size-input">Title font size:</label>
+                <input type="range" name="title-font-size-input" id="title-font-size-input"
+                    placeholder="Title font size" value="40" min="5" max="150">
+                <output for="title-font-size-input">40</output>
+            </div>
+            <div>
+                <label for="sutitle-font-size-input">Subitle font size:</label>
+                <input type="range" name="sutitle-font-size-input" id="sutitle-font-size-input"
+                    placeholder="Subitle font size" value="20" min="5" max="150">
+                <output for="sutitle-font-size-input">20</output>
+            </div>
+        </div>
+    </div>
+</div>
+            <div id="background-section" class="tabcontent scrollable">
+    <div class="toolbox-background">
+        <div class="bg-color-selectors">
+            <div>
+                <label for="background-bg-color-selector">Background color:</label>
+                <input type="color" id="background-bg-color-selector" name="background-bg-color-selector"
+                    value="#4078C0"><br><br>
+            </div>
+            <div>
+                <label for="border-color-selector">Border color:</label>
+                <input type="color" id="border-color-selector" name="border-color-selector" value="#FFFFFF"><br><br>
+            </div>
+        </div>
+        <div class="border-inputs">
+            <div>
+                <label for="border-input">Border (px):</label>
+                <input type="range" name="border-input" id="border-input" value="0" min="0">
+                <output for="border-input">0</output>
+            </div>
+            <div>
+                <label for="border-radius-input">Border radius (px):</label>
+                <input type="range" name="border-radius-input" id="border-radius-input" value="7" min="0" max="200">
+                <output for="border-radius-input">7</output>
+            </div>
+        </div>
+        <div class="pattern-inputs">
+            <div>
+                <label for="pattern-color-selector">Pattern color:</label>
+                <input type="color" id="pattern-color-selector" name="pattern-color-selector" value="#FFFFFF">
+            </div>
+            <div>
+                <label for="pattern-size-input">Pattern size (px):</label>
+                <input type="range" name="pattern-size-input" id="pattern-size-input" value="100" min="10" max="500">
+                <output for="pattern-size-input">100</output>
+            </div>
+            <div>
+                <label for="pattern-opacity-input">Pattern opacity (px):</label>
+                <input type="range" name="pattern-opacity-input" id="pattern-opacity-input" step="0.05" width="50"
+                    value="0.25" min="0" max="1">
+                <output for="pattern-opacity-input">0.25</output>
+            </div>
+        </div>
+        <div>Patterns:</div>
+        <div class="patterns-buttons">
+            <button type="button" class="btn" aria-label="none pattern button" data-pattern-value="none">
+                None
+            </button>
+            <button type="button" class="btn" aria-label="jigsaw pattern button" data-pattern-value="jigsaw">
+                <img src="./images/patterns/jigsaw-thumbnail.svg" alt="jigsaw pattern button" />
+            </button>
+            <button type="button" class="btn" aria-label="github pattern button" data-pattern-value="github">
+                <img src="./images/patterns/github-thumbnail.svg" alt="github pattern button" />
+            </button>
+            <button type="button" class="btn" aria-label="endless-constellation pattern button"
+                data-pattern-value="endless-constellation">
+                <img src="./images/patterns/endless-constellation-thumbnail.svg"
+                    alt="endless-constellation pattern button" style="width: 55px;" />
+            </button>
+            <button type="button" class="btn" aria-label="floating-cogs pattern button"
+                data-pattern-value="floating-cogs">
+                <img src="./images/patterns/floating-cogs-thumbnail.svg" alt="floating-cogs pattern button"
+                    style="width: 55px;" />
+            </button>
+            <button type="button" class="btn" aria-label="bubbles pattern button" data-pattern-value="bubbles">
+                <img src="./images/patterns/bubbles-thumbnail.svg" alt="bubbles pattern button" />
+            </button>
+            <button type="button" class="btn" aria-label="lisbon pattern button" data-pattern-value="lisbon">
+                <img src="./images/patterns/lisbon-thumbnail.svg" alt="lisbon pattern button" />
+            </button>
+            <button type="button" class="btn" aria-label="temple pattern button" data-pattern-value="temple">
+                <img src="./images/patterns/temple-thumbnail.svg" alt="temple pattern button" />
+            </button>
+            <button type="button" class="btn" aria-label="topography pattern button" data-pattern-value="topography">
+                <img src="./images/patterns/topography-thumbnail.svg" alt="topography pattern button"
+                    style="width: 55px;" />
+            </button>
+            <button type="button" class="btn" aria-label="falling-triangles pattern button"
+                data-pattern-value="falling-triangles">
+                <img src="./images/patterns/falling-triangles-thumbnail.svg" alt="falling-triangles pattern button" />
+            </button>
+            <button type="button" class="btn" aria-label="glamorous pattern button" data-pattern-value="glamorous">
+                <img src="./images/patterns/glamorous-thumbnail.svg" alt="glamorous pattern button" />
+            </button>
+            <button type="button" class="btn" aria-label="i-like-food pattern button" data-pattern-value="i-like-food">
+                <img src="./images/patterns/i-like-food-thumbnail.svg" alt="i-like-food pattern button"
+                    style="width: 55px;" />
+            </button>
+            <button type="button" class="btn" aria-label="leaf pattern button" data-pattern-value="leaf">
+                <img src="./images/patterns/leaf-thumbnail.svg" alt="leaf pattern button" />
+            </button>
+            <button type="button" class="btn" aria-label="circuit-board pattern button"
+                data-pattern-value="circuit-board">
+                <img src="./images/patterns/circuit-board-thumbnail.svg" alt="circuit-board pattern button" />
+            </button>
+            <button type="button" class="btn" aria-label="overlapping-circles pattern button"
+                data-pattern-value="overlapping-circles">
+                <img src="./images/patterns/overlapping-circles-thumbnail.svg"
+                    alt="overlapping-circles pattern button" />
+            </button>
+            <button type="button" class="btn" aria-label="endless-clouds pattern button"
+                data-pattern-value="endless-clouds">
+                <img src="./images/patterns/endless-clouds-thumbnail.svg" alt="endless-clouds pattern button" />
+            </button>
+            <!-- <button type="button" class="btn" aria-label="random-shapes pattern button"
+                data-pattern-value="random-shapes">
+                <img src="./images/patterns/random-shapes-thumbnail.svg" alt="random-shapes pattern button" />
+            </button> -->
+            <button type="button" class="btn" aria-label="bathroom-floor pattern button"
+                data-pattern-value="bathroom-floor">
+                <img src="./images/patterns/bathroom-floor-thumbnail.svg" alt="random-shapes pattern button"
+                    style="width: 30px;" />
+            </button>
+            <button type="button" class="btn" aria-label="squares-in-squares pattern button"
+                data-pattern-value="squares-in-squares">
+                <img src="./images/patterns/squares-in-squares-thumbnail.svg" alt="squares-in-squares pattern button"
+                    style="width: 30px;" />
+            </button>
+        </div>
+    </div>
+</div>
+            <div id="decorations-section" class="tabcontent scrollable">
+    <div class="toolbox-decorations">
+        <div class="decorations-size-inputs">
+            <div>
+                <label for="decoration-size-input">Decoration size (px):</label>
+                <input type="range" name="decoration-size-input" id="decoration-size-input" value="100" min="10"
+                    max="500">
+                <output for="decoration-size-input">100</output>
+            </div>
+        </div>
+        <div>Decorations:</div>
+        <div class="decorations-buttons">
+            <button type="button" class="btn" aria-label="no decorations" data-decoration-value="none">
+                None
+            </button>
+            <button type="button" class="btn" aria-label="my-octocat decoration button"
+                data-decoration-value="my-octocat.png">
+                <img src="./images/decorations/my-octocat-thumbnail.png" alt="my-octocat decoration button" />
+            </button>
+            <button type="button" class="btn" aria-label="octocat decoration button"
+                data-decoration-value="octocat.png">
+                <img src="./images/decorations/octocat-thumbnail.png" alt="octocat decoration button" />
+            </button>
+            <button type="button" class="btn" aria-label="github-mark decoration button"
+                data-decoration-value="github-mark.png">
+                <img src="./images/decorations/github-mark-thumbnail.png" alt="github-mark decoration button" />
+            </button>
+            <button type="button" class="btn" aria-label="dev-badge decoration button"
+                data-decoration-value="dev-badge.png">
+                <img src="./images/decorations/dev-badge-thumbnail.png" alt="dev-badge decoration button" />
+            </button>
+            <button type="button" class="btn" aria-label="dev-rainbow decoration button"
+                data-decoration-value="dev-rainbow.png">
+                <img src="./images/decorations/dev-rainbow-thumbnail.png" alt="dev-rainbow decoration button" />
+            </button>
+            <button type="button" class="btn" aria-label="dev-white decoration button"
+                data-decoration-value="dev-white.png">
+                <img src="./images/decorations/dev-white-thumbnail.png" alt="dev-white decoration button" />
+            </button>
+            <button type="button" class="btn" aria-label="code decoration button" data-decoration-value="code.png">
+                <img src="./images/decorations/code-thumbnail.png" alt="code decoration button" />
+            </button>
+            <button type="button" class="btn" aria-label="terminal decoration button"
+                data-decoration-value="terminal.png">
+                <img src="./images/decorations/terminal-thumbnail.png" alt="terminal decoration button" />
+            </button>
+            <button type="button" class="btn" aria-label="programming decoration button"
+                data-decoration-value="programming.png">
+                <img src="./images/decorations/programming-thumbnail.png" alt="programming decoration button" />
+            </button>
+            <button type="button" class="btn" aria-label="rocket decoration button" data-decoration-value="rocket.png">
+                <img src="./images/decorations/rocket-thumbnail.png" alt="rocket decoration button" />
+            </button>
+            <button type="button" class="btn" aria-label="terminal-circle decoration button"
+                data-decoration-value="terminal-circle.png">
+                <img src="./images/decorations/terminal-circle-thumbnail.png" alt="terminal-circle decoration button" />
+            </button>
+            <button type="button" class="btn" aria-label="binary-code decoration button"
+                data-decoration-value="binary-code.png">
+                <img src="./images/decorations/binary-code-thumbnail.png" alt="binary-code decoration button" />
+            </button>
+            <button type="button" class="btn" aria-label="coding-screen decoration button"
+                data-decoration-value="coding-screen.png">
+                <img src="./images/decorations/coding-screen-thumbnail.png" alt="coding-screen decoration button" />
+            </button>
+            <button type="button" class="btn" aria-label="coding decoration button" data-decoration-value="coding.png">
+                <img src="./images/decorations/coding-thumbnail.png" alt="coding decoration button" />
+            </button>
+            <button type="button" class="btn" aria-label="idea decoration button" data-decoration-value="idea.png">
+                <img src="./images/decorations/idea-thumbnail.png" alt="idea decoration button" />
+            </button>
+            <button type="button" class="btn" aria-label="tabs decoration button" data-decoration-value="tabs.png">
+                <img src="./images/decorations/tabs-thumbnail.png" alt="tabs decoration button" />
+            </button>
+            <button type="button" class="btn" aria-label="apple decoration button" data-decoration-value="apple.png">
+                <img src="./images/decorations/apple-thumbnail.png" alt="apple decoration button" />
+            </button>
+        </div>
+        <div class="decorations-upload">
+            <label for="decoration-size-input">Upload your own decoration:</label>
+            <input type="file" id="decoration-upload-input" class="btn" aria-label="Upload decoration" />
+            <div class="preview-decoration" alt="Preview uploaded decoration"></div>
+            <span class="myoctocats-tip">
+                💡Use an octocat from the
+                <a href="https://octodex.github.com/" target="_blank" rel="noopener noreferrer">Github
+                    Octodex</a>
+                <br />
+                💡Or build your own at
+                <a href="https://myoctocat.com/" target="_blank" rel="noopener noreferrer">MyOctocat.com</a>
+                <!-- <br />
+                &emsp; (My octocat looks like broken but you can copy the svg result) -->
+            </span>
+        </div>
+    </div>
+</div>
+            <!-- <link
+    href="https://fonts.googleapis.com/css2?family=Anonymous+Pro&family=Athiti&family=Courgette&family=Dancing+Script&family=Della+Respira&family=Electrolize&family=Fira+Code&family=Inconsolata&family=Istok+Web&family=Kalam&family=Lancelot&family=Lato&family=Life+Savers&family=Martel&family=Maven+Pro&family=Open+Sans&family=Passero+One&family=Pixelify+Sans&family=Playball&family=Playwrite+HU&family=Poppins&family=Quattrocento&family=Red+Hat+Display&family=Source+Code+Profamily=Ubuntu&family=Ubuntu+Sans&
+    display=swap"
+    rel="stylesheet"> -->
+<div id="test-fonts-section" class="tabcontent scrollable">
+    <div class="red-hat-display"> Hey! I'm Leví Arista. username/project - red-hat-display</div>
+    <!-- <div class="open-sans"> Hey! I'm Leví Arista. username/project - open-sans</div> -->
+    <!-- <div class="maven-pro"> Hey! I'm Leví Arista. username/project - maven-pro</div> -->
+    <!-- <div class="lato"> Hey! I'm Leví Arista. username/project - lato</div> -->
+    <!-- <div class="ubuntu-sans"> Hey! I'm Leví Arista. username/project - ubuntu-sans</div> -->
+    <div class="ubuntu"> Hey! I'm Leví Arista. username/project - ubuntu</div>
+    <!-- <div class="istok-web"> Hey! I'm Leví Arista. username/project - istok-web [X]</div> -->
+    <!-- <div class="inconsolata"> Hey! I'm Leví Arista. username/project - inconsolata [x]</div> -->
+    <div class="poppins"> Hey! I'm Leví Arista. username/project - poppins</div>
+    <div class="anonymous-pro"> Hey! I'm Leví Arista. username/project - anonymous-pro</div>
+    <div class="source-code-pro"> Hey! I'm Leví Arista. username/project - source-code-pro</div>
+    <!-- <div class="fira-code"> Hey! I'm Leví Arista. username/project - fira-code [x]</div> -->
+    <!-- <div class="playwrite-hu"> Hey! I'm Leví Arista. username/project - playwrite-hu [x]</div> -->
+    <!-- <div class="martel"> Hey! I'm Leví Arista. username/project - martel [x]</div> -->
+    <div class="quattrocento"> Hey! I'm Leví Arista. username/project - quattrocento</div>
+    <div class="della-respira"> Hey! I'm Leví Arista. username/project - della-respira</div>
+    <div class="lancelot"> Hey! I'm Leví Arista. username/project - lancelot</div>
+    <div class="life-savers"> Hey! I'm Leví Arista. username/project - life-savers</div>
+    <div class="athiti"> Hey! I'm Leví Arista. username/project - athiti</div>
+    <div class="electrolize"> Hey! I'm Leví Arista. username/project - electrolize</div>
+    <div class="passero-one"> Hey! I'm Leví Arista. username/project - passero-one</div>
+    <div class="pixelify-sans"> Hey! I'm Leví Arista. username/project - pixelify-sans</div>
+    <div class="kalam"> Hey! I'm Leví Arista. username/project - kalam</div>
+    <div class="playball"> Hey! I'm Leví Arista. username/project - playball</div>
+    <!-- <div class="dancing-script"> Hey! I'm Leví Arista. username/project - dancing-script</div> -->
+    <!-- <div class="courgette"> Hey! I'm Leví Arista. username/project - courgette [X]</div> -->
+</div>
+        </div>
     </section>
 
-    <footer class="footer">
-        <!-- <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
-        <script type='text/javascript'>
-            kofiwidget2.init('Support us', '#6E5494', 'leviarista');
-            kofiwidget2.draw();
-        </script> -->
-        <a class="feedback-button" href="#feedback-modal">
-            Send feedback
-        </a>
-        <div class="icons">
-            <a href="https://github.com/leviarista/github-profile-header-generator" target="_blank"
-                rel="noopener noreferrer">
-                <img src="/github-profile-header-generator/assets/github-logo-20.fa9119b8.svg" width="20" height="20" alt="Github logo" />
-            </a>
-            <!-- <a href="#" target="_blank" rel="noopener noreferrer">
-                <img src="./images/icons/product-hunt.svg" width="20" height="20" alt="Github logo" />
-            </a> -->
-            <a href="#info-modal">
-                <img src="/github-profile-header-generator/assets/info.3c4fc460.svg" width="20" height="20" alt="info icon" />
-            </a>
-        </div>
-    </footer>
-
     <div id="info-modal" class="modal">
-        <div>
-            <a href="#" title="Close" class="modal-close">
-                <img src="/github-profile-header-generator/assets/close.14835540.svg" width="15" height="15" alt="close icon" />
+    <div>
+        <a href="#" title="Close" class="modal-close">
+            <img src="./images/icons/close.svg" width="15" height="15" alt="close icon" />
+        </a>
+        <div class="modal-title"><b>Info & Credits</b></div><br />
+        <p>
+            Many of the patterns are here thanks to
+            <a href="https://heropatterns.com/" target="_blank" rel="noopener noreferrer">Hero Patterns
             </a>
-            <div class="modal-title"><b>Info & Credits</b></div><br />
-            <p>
-                Many of the patterns are here thanks to
-                <a href="https://heropatterns.com/" target="_blank" rel="noopener noreferrer">Hero Patterns
-                </a>
-                and
-                <a href="https://www.svgbackgrounds.com/" target="_blank" rel="noopener noreferrer">
-                    SVGBackgrounds.com
-                </a>
-            </p><br />
-            <p>
-                Code icons created by <a href="https://www.flaticon.com/free-icons/code" title="code icons"
-                    target="_blank" rel="noopener noreferrer">Freepik - Flaticon</a>
-            </p><br />
-            <div class="modal-info-text"><br />
-                This website is not affiliated, associated, authorized, endorsed by, or in any way officially
-                connected with GitHub, or any of its subsidiaries or its affiliates. The official GitHub website can
-                be found at
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-                    https://github.com
-                </a><br /><br />
-                The name “GitHub” as well as related names, marks, emblems and images are registered trademarks
-                of GitHub.
-            </div>
+            and
+            <a href="https://www.svgbackgrounds.com/" target="_blank" rel="noopener noreferrer">
+                SVGBackgrounds.com
+            </a>
+        </p><br />
+        <p>
+            Code icons created by <a href="https://www.flaticon.com/free-icons/code" title="code icons" target="_blank"
+                rel="noopener noreferrer">Freepik - Flaticon</a>
+        </p><br />
+        <div class="modal-info-text"><br />
+            This website is not affiliated, associated, authorized, endorsed by, or in any way officially
+            connected with GitHub, or any of its subsidiaries or its affiliates. The official GitHub website can
+            be found at
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                https://github.com
+            </a><br /><br />
+            The name “GitHub” as well as related names, marks, emblems and images are registered trademarks
+            of GitHub.
         </div>
     </div>
-
+</div>
     <div id="feedback-modal" class="modal">
-        <div>
-            <a href="#" title="Close" class="modal-close">
-                <img src="/github-profile-header-generator/assets/close.14835540.svg" width="15" height="15" alt="close icon" />
-            </a>
-            <div class="modal-title"><b>Feedback</b></div><br />
-            <p>
-                Questions? Comments? Issues? I will be glad to hear you.
-            </p><br />
-            <p>
-            <form action="https://data.endpoint.space/cl6xuvmzi001809jwkhohqdld" method="POST">
-                <input type="text" name="name" placeholder="Name" />
-                <input type="email" name="email" placeholder="Email" /><br />
-                <textarea name="Message" cols="30" rows="10"></textarea><br />
-                <button class="btn" type="submit">
-                    Send
-                </button>
-            </form>
-            </p>
-        </div>
+    <div>
+        <a href="#" title="Close" class="modal-close">
+            <img src="./images/icons/close.svg" width="15" height="15" alt="close icon" />
+        </a>
+        <div class="modal-title"><b>Feedback</b></div><br />
+        <p>
+            Questions? Comments? Issues? I will be glad to hear you.
+        </p><br />
+        <p>
+        <form action="https://data.endpoint.space/cl6xuvmzi001809jwkhohqdld" method="POST">
+            <input type="text" name="name" placeholder="Name" />
+            <input type="email" name="email" placeholder="Email" /><br />
+            <textarea name="Message" cols="30" rows="10"></textarea><br />
+            <button class="btn" type="submit">
+                Send
+            </button>
+        </form>
+        </p>
     </div>
+</div>
+    <div id="special-message-modal" class="modal">
+    <div>
+        <a href="#" title="Close" class="modal-close">
+            <img src="./images/icons/close.svg" width="15" height="15" alt="close icon" />
+        </a>
+        <div class="modal-title"><b>Good news!</b></div><br />
+        <div style="display: flex; gap: 5px; flex-direction: column; align-items: center; justify-content: center; font-weight: bold;">
+            <span>Jesus loves you</span>
+            <img src="./images/icons/heart.svg" alt="info icon" style="width: 25px;" />
+        </div>
+        <div style="text-align: center;">
+            <a href="https://gideons.org/find-hope/" target="_blank" rel="noopener noreferrer">
+                <u>Find Hope</u>
+            </a>
+        </div>
+        <br />
+        <div style="text-align: center;">
+            <q>
+                <i>
+                    For God so loved the world, that he gave his only Son, that whoever believes in him should not
+                    perish but have eternal life.
+                </i>
+            </q>
+        </div>
+        <div style="margin-top: 5px; text-align: center;"><b>John 3:16</b></div>
+    </div>
+</div>
 
-    
-    
-    
-    
-    
-    
-    <script defer src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <!-- Donations -->
-    <!-- <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
-        data-id="leviarista" data-description="Support me on Buy me a coffee!" data-message="" data-color="#BD5FFF"
-        data-position="Right" data-x_margin="18" data-y_margin="18"></script> -->
-    <!-- <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-    <script>
-        kofiWidgetOverlay.draw('leviarista', {
-            'type': 'floating-chat',
-            'floating-chat.donateButton.text': 'Support us',
-            'floating-chat.donateButton.background-color': '#BD5FFF',
-            'floating-chat.donateButton.text-color': '#fff'
-        });
-        document.querySelector('iframe').style.width = '95px';
-        window.frames['0'].document.querySelector('.floatingchat-donate-button span').remove();
-        window.frames['0'].document.querySelector('.floatingchat-donate-button').style.padding = '0 10px';
-        window.frames['0'].document.querySelector('.floatingchat-donate-button').style.height = '59px';
-        window.frames['0'].document.querySelector('.floatingchat-donate-button').style.boxShadow = '0px 0px 5px 2px rgba(255, 255, 255, 0.25)';
-        window.frames['0'].document.querySelector('.floatingchat-donate-button').style.marginLeft = '5px';
-        window.frames['0'].document.querySelector('.floatingchat-donate-button').style.marginBottom = '5px';
-    </script> -->
+<script defer src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@zumer/snapdom/dist/snapdom.min.js"></script>
 </body>
 
 </html>
