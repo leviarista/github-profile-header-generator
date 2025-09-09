@@ -27,7 +27,7 @@ subtitleFontSelect.value = 'Kalam';
 // Demo reset after ended
 document.querySelector('.how-to-section video.demo').onended = (e) => e.target.currentTime = 0;
 
-/* ************** Header image buttons ************** */
+/* ************** Header image options ************** */
 
 // Download button
 document.querySelector('.download-button')
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         }
         if (miniatureButton) {
             miniatureButton.style.display = "block";
-            console.log('Running on localhost! display appending image option  ...');
+            // console.log('Running on localhost! display appending image option  ...');
 
             miniatureButton.addEventListener('click', async () => {
                 const png = await snapdom.toPng(el, { embedFonts: true, scale: 0.25 });
@@ -113,7 +113,7 @@ document.querySelector('.dark-mode-button')
         }
     });
 
-/* ************** Randomize ************** */
+// Randomize
 
 document.querySelector('.randomize-button')
     .addEventListener('click', (e) => {

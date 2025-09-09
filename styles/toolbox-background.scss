@@ -71,19 +71,21 @@
     .patterns-buttons {
         max-width: 550px;
         margin: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 70px);
+        gap: 5px;
 
         button {
             width: 70px;
             height: 70px;
             padding: 0;
-            margin-left: 5px;
-            margin-bottom: 5px;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all ease-in-out 300ms;
 
             img {
+                width: 100%;
                 max-width: 55px;
                 max-height: 55px;
             }
@@ -117,10 +119,10 @@
             }
         }
 
-        .patterns-buttons {
-            button {
-                margin-bottom: 5px;
-            }
-        }
+        // .patterns-buttons {
+        //     button {
+        //         margin-bottom: 5px;
+        //     }
+        // }
     }
 }

@@ -192,15 +192,8 @@
         }
 
         .font-selectors-container {
-            div {
-                &:not(:last-child) {
-                    margin-right: 15px;
-                }
-
-                input {
-                    margin-left: 5px;
-                }
-            }
+            column-gap: 1rem;
+            row-gap: 0.5rem;
 
             select {
                 cursor: pointer;
@@ -238,10 +231,10 @@
         }
 
         .result-box {
-            padding: 1rem 1rem 0.5rem 1rem;
+            padding: 2rem 1rem 0.5rem 1rem;
 
             #github-header-image {
-                height: 250px;
+                height: 230px;
             }
 
             .options-container {
@@ -254,7 +247,8 @@
         }
 
         .toolbox-tools {
-            height: auto;
+            height: calc(100vh - 230px - 3rem - 35px - 2rem - 2rem);
+            min-height: 300px;
         }
 
         .toolbox {
@@ -264,14 +258,6 @@
                     // &:not(:last-child) {
                     //     margin-bottom: 10px;
                     // }
-                }
-            }
-
-            .font-selectors-container {
-                >div {
-                    &:not(:last-child) {
-                        margin-bottom: 10px;
-                    }
                 }
             }
 
