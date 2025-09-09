@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="70px" height="70px" viewBox="0 0 70 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="squares-in-squares" fill="#FFFFFF">
-            <path d="M-3.55271368e-15,0 L35,0 L35,35 L-3.55271368e-15,35 L-3.55271368e-15,0 Z M5,5 L30,5 L30,30 L5,30 L5,5 Z M10,10 L25,10 L25,25 L10,25 L10,10 Z M15,15 L20,15 L20,20 L15,20 L15,15 Z M40,5 L65,5 L65,30 L40,30 L40,5 Z M45,10 L60,10 L60,25 L45,25 L45,10 Z M50,15 L55,15 L55,20 L50,20 L50,15 Z" id="Combined-Shape"></path>
-            <path d="M5,35 L40,35 L40,70 L5,70 L5,35 Z M10,40 L35,40 L35,65 L10,65 L10,40 Z M15,45 L30,45 L30,60 L15,60 L15,45 Z M20,50 L25,50 L25,55 L20,55 L20,50 Z M45,40 L70,40 L70,65 L45,65 L45,40 Z M50,45 L65,45 L65,60 L50,60 L50,45 Z M55,50 L60,50 L60,55 L55,55 L55,50 Z" id="Combined-Shape-Copy" transform="translate(37.500000, 52.500000) scale(-1, 1) translate(-37.500000, -52.500000) "></path>
-        </g>
-    </g>
-</svg>
+<svg width="105" height="105" viewBox="0 0 105 105" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H35V35H0V0ZM5 5H30V30H5V5ZM10 10H25V25H10V10ZM15 15H20V20H15V15ZM40 5H65V30H40V5ZM45 10H60V25H45V10ZM50 15H55V20H50V15Z" fill="white"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M70 35H35V70H70V35ZM65 40H40V65H65V40ZM60 45H45V60H60V45ZM55 50H50V55H55V50ZM30 40H5V65H30V40ZM25 45H10V60H25V45ZM20 50H15V55H20V50Z" fill="white"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 70H35V105H0V70ZM5 75H30V100H5V75ZM10 80H25V95H10V80ZM15 85H20V90H15V85ZM40 75H65V100H40V75ZM45 80H60V95H45V80ZM50 85H55V90H50V85Z" fill="white"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M95 25H80V10H95V25ZM85 20H90V15H85V20Z" fill="white"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M105 35H70V0H105V35ZM75 30H100V5H75V30Z" fill="white"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M95 95H80V80H95V95ZM85 90H90V85H85V90Z" fill="white"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M105 105H70V70H105V105ZM75 100H100V75H75V100Z" fill="white"/>
+    <path d="M100 65H75V40H100V65ZM80 60H95V45H80V60ZM90 55H85V50H90V55Z" fill="white"/>
+    </svg>
+    

@@ -1,5 +1,6 @@
 import themes from "../data/themes.json";
 import { getMainElements } from "./elements";
+import { getPattern } from '../data/patterns';
 
 const {
     bannerImageContainer,
@@ -37,31 +38,36 @@ function updateBanner({
     pattern,
     patternColor,
     patternOpacity,
+    patternSize,
     titleFont,
     subtitleFont
 }) {
     if (background) bannerImage.style.backgroundColor = background;
     if (titleColor) bannerTitle.style.color = titleColor;
     if (subtitleColor) bannerSubtitle.style.color = subtitleColor;
-    if (borderColor || borderSize || borderRadius) {
+    if (borderColor && borderSize && borderRadius) {
         bannerImage.style.border = `solid ${borderColor} ${borderSize}px`;
         bannerImage.style.borderRadius = `${borderRadius}px`;
     }
+    if (borderColor) bannerImage.style.borderColor = borderColor;
     if (textAlign)
         document.querySelector(`.align-buttons button[data-align-value="${textAlign}"]`).click();
     if (decoration)
         document.querySelector(`.decorations-buttons button[data-decoration-value="${decoration}"]`).click();
     if (decorationSize) { }
-    if (pattern) {
-        document.querySelector(`.patterns-buttons button[data-pattern-value="${pattern}"]`).click();
+    if (pattern || patternColor || patternOpacity || patternSize) {
+        const formatedColor = patternColor.replace('#', '');
+
+        bannerImage.style.backgroundImage = getPattern(pattern, formatedColor, patternOpacity);
+        bannerImage.style.backgroundSize = `${patternSize}px`;
     }
-    if (patternColor || patternOpacity) {
-    }
+    // if (patternColor || patternOpacity) {
+    // }
     if (titleFont || subtitleFont) {
-        document.fonts.ready.then(() => {
-            bannerTitle.style.fontFamily = `"${titleFont}"`;
-            bannerSubtitle.style.fontFamily = `"${subtitleFont}"`;
-        });
+        // document.fonts.ready.then(() => {
+        bannerTitle.style.fontFamily = `"${titleFont}"`;
+        bannerSubtitle.style.fontFamily = `"${subtitleFont}"`;
+        // });
     }
 }
 
@@ -112,9 +118,7 @@ function updateUIOptions({
         decorationSizeInput.value = decorationSize;
         decorationSizeInput.nextElementSibling.value = decorationSize;
     }
-    if (pattern) {
-
-    }
+    if (pattern) { }
     if (patternColor || patternOpacity) {
         const patternOpacityInput = document.querySelector('.pattern-inputs input#pattern-opacity-input');
         const patternColorSelector = document.querySelector('.pattern-inputs input#pattern-color-selector');
@@ -129,9 +133,10 @@ function updateUIOptions({
 }
 
 function setTheme(theme) {
-    logTheme(theme);
+    // logTheme(theme);
     updateUIOptions(theme);
     updateBanner(theme);
+    document.querySelector(`.patterns-buttons button[data-pattern-value="${theme.pattern}"]`).click();
 }
 
 function logTheme(theme) {
@@ -141,4 +146,4 @@ function logTheme(theme) {
     }
 }
 
-export { getAllThemes, getTheme, getRandomTheme, setTheme };
+export { getAllThemes, getTheme, getRandomTheme, setTheme, updateBanner };

@@ -19,8 +19,18 @@ document.querySelectorAll('.tab .tablinks')
     .forEach(button => {
         button.addEventListener('click', (e) => {
             const name = e.target.getAttribute('data-name');
+            localStorage.setItem('openTab', name)
             openTab(e, name);
         });
     })
 
-document.getElementById("defaultOpenTag").click();
+/* ************** Open tab ************** */
+
+document.addEventListener("DOMContentLoaded", (event) => {
+    const openTab = localStorage.getItem('openTab');
+    if (openTab) {
+        document.querySelector(`[data-name="${openTab}"]`).click();
+    } else {
+        document.getElementById("defaultOpenTag").click();
+    }
+});

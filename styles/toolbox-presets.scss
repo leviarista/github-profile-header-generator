@@ -1,5 +1,6 @@
 #presets-section {
     text-align: center;
+    padding: 0;
 
     .toolbox-presets {
         padding: 10px;
@@ -24,6 +25,7 @@
             }
 
             &-white {
+                min-height: 45px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -37,4 +39,18 @@
             }
         }
     }
+}
+
+@media (max-width: 768px) {
+    #presets-section {
+    
+        .toolbox-presets {
+            padding: 0;
+            gap: 10px;
+    
+            .theme-button {
+                width: 165px;
+            }
+        }
+    }    
 }

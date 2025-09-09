@@ -12,6 +12,8 @@
         "pattern": "bubbles",
         "patternColor": "#FFFFFF",
         "patternOpacity": 0.15,
+        "titleFont": "Tahoma",
+        "subtitleFont": "Quattrocento",
         "previewImage": "theme-1-preview.png"
     },
     {

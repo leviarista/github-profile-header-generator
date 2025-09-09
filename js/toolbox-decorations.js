@@ -1,5 +1,7 @@
 import { getMainElements } from "./helpers/elements";
 
+/* ************** Elements ************** */
+
 const {
     toolboxDecorations,
 } = getMainElements();
