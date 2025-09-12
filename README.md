@@ -4,8 +4,8 @@
 
 ## What is it?
 
-A simple but nice header image generator for your Github profile Readme.  
-You can use it for your repo banners too!
+A simple but nice header image generator for your __Github profile Readme__.  
+You can use it for your __repo banners__ too!
 
 [Create my banner!](https://leviarista.github.io/github-profile-header-generator/)
 
