@@ -1,7 +1,7 @@
-import { getAllThemes, setTheme } from "./helpers/helpers";
+import { getAllPresets, setPreset } from "./presets";
 import { getMainElements } from "./helpers/elements"
 
-const themes = getAllThemes();
+const themes = getAllPresets();
 const { toolboxPresets } = getMainElements();
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
             img.alt = 'Theme image';
 
             img.addEventListener('click', (e) => {
-                setTheme(theme);
+                setPreset(theme);
             });
 
             div.appendChild(img);

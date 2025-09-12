@@ -1,5 +1,5 @@
+import { getSavedThemeProp, updateBanner } from './banner';
 import { getPatternDefaultSize } from './data/patterns';
-import { updateBanner } from './helpers/helpers';
 import { getMainElements } from './helpers/elements';
 
 /* ************** Elements ************** */
@@ -8,12 +8,10 @@ const {
     toolboxBackground,
 } = getMainElements();
 
-// init
-let selectedPattern = 'bubbles';
-let selectedPatternOpacity = 0.15;
-let selectedPatternColor = 'FFF';
-let selectedPatternSize = 200;
-setPatternBackground();
+let selectedPattern = getSavedThemeProp('pattern');
+let selectedPatternOpacity;
+let selectedPatternColor;
+let selectedPatternSize;
 
 /* ************** Color selectors ************** */
 
@@ -24,7 +22,7 @@ function setBgColorValues() {
     updateBanner({
         background: bgColorSelector.value,
         borderColor: borderColorSelector.value,
-    })
+    });
 
     let mainTabBgColorSelector = document.querySelector('.color-selectors-container input#main-bg-color-selector');
     mainTabBgColorSelector.value = bgColorSelector.value;

@@ -1,13 +1,13 @@
 function getMainElements() {
-    let bannerImageContainer = document.querySelector('.header-image-container');
-    let bannerImage = document.querySelector('#github-header-image');
-    let bannerTitle = bannerImage.querySelector('.title');
-    let bannerSubtitle = bannerImage.querySelector('.subtitle');
+    const bannerImageContainer = document.querySelector('.header-image-container');
+    const bannerImage = document.querySelector('#github-header-image');
+    const bannerTitle = bannerImage.querySelector('.title');
+    const bannerSubtitle = bannerImage.querySelector('.subtitle');
 
-    let toolbox = document.querySelector('.toolbox');
-    let toolboxBackground = document.querySelector('.toolbox-background');
-    let toolboxDecorations = document.querySelector('.toolbox-decorations');
-    let toolboxPresets = document.querySelector('.toolbox-presets');
+    const toolbox = document.querySelector('.toolbox');
+    const toolboxBackground = document.querySelector('.toolbox-background');
+    const toolboxDecorations = document.querySelector('.toolbox-decorations');
+    const toolboxPresets = document.querySelector('.toolbox-presets');
 
     return {
         bannerImageContainer,

@@ -7,12 +7,14 @@
         user-select: none;
         position: relative;
         z-index: 20;
+        border-bottom: solid 1px #373737;
 
         &.light-mode {
             background: var(--github-light-mode-color);
 
             .dark-mode-button,
-            .randomize-button {
+            .randomize-button,
+            .reset-button {
                 color: black !important;
 
                 &:hover {
@@ -41,7 +43,7 @@
             align-items: flex-start;
             justify-content: center;
             flex-direction: column;
-            background-color: #446BAF;
+            background-color: #62518d;
             color: white;
             border-radius: 7px;
             margin: 0 auto;
@@ -79,7 +81,8 @@
 
             .dark-mode-button,
             .randomize-button,
-            .download-button {
+            .download-button,
+            .reset-button {
                 background-color: transparent;
                 display: flex;
                 gap: 7px;
@@ -272,7 +275,7 @@
     }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 410px) {
     .toolbox-container {
         .result-box {
             .options-container {
@@ -285,7 +288,6 @@
                 }
             }
         }
-
     }
 
 }
