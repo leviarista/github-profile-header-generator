@@ -1,4 +1,6 @@
+import { updateBanner } from "./banner";
 import { getMainElements } from "./helpers/elements";
+import { saveImageOnLocalStorage } from "./helpers/helpers";
 
 /* ************** Elements ************** */
 
@@ -11,13 +13,9 @@ const {
 function setDecorationSize() {
     let selectedDecorationSize = toolboxDecorations.querySelector('.decorations-size-inputs input#decoration-size-input').value;
 
-    const imageDecoration = document.querySelector('.img-decoration-container .img-decoration');
-    imageDecoration.style.width = `${selectedDecorationSize}px`;
-
-    const otherImageDecoration = document.querySelector('.img-decoration-container .img-decoration-2');
-    if (otherImageDecoration) {
-        otherImageDecoration.style.width = `${selectedDecorationSize}px`;
-    }
+    updateBanner({
+        decorationSize: selectedDecorationSize,
+    });
 }
 
 toolboxDecorations.querySelectorAll('.decorations-size-inputs input[type="range"]')
@@ -30,25 +28,6 @@ toolboxDecorations.querySelectorAll('.decorations-size-inputs input[type="range"
 
 /* ************** Decorations ************** */
 
-function setDecoration(decorationValue) {
-    const imageDecoration = document.querySelector('.img-decoration-container .img-decoration');
-    const otherImageDecoration = document.querySelector('.img-decoration-container .img-decoration-2');
-
-    if (decorationValue === 'none') {
-        imageDecoration.style.display = 'none';
-        if (otherImageDecoration) {
-            otherImageDecoration.style.display = 'none';
-        }
-    } else {
-        imageDecoration.style.display = 'block';
-        imageDecoration.src = `images/decorations/${decorationValue}`;
-        if (otherImageDecoration) {
-            otherImageDecoration.style.display = 'block';
-            otherImageDecoration.src = `images/decorations/${decorationValue}`;
-        }
-    }
-}
-
 toolboxDecorations.querySelectorAll('.decorations-buttons button')
     .forEach(button => {
         button.addEventListener('click', (e) => {
@@ -56,7 +35,10 @@ toolboxDecorations.querySelectorAll('.decorations-buttons button')
                 e.target.parentNode :
                 e.target;
             const decorationValue = element.getAttribute('data-decoration-value');
-            setDecoration(decorationValue);
+            updateBanner({
+                decoration: decorationValue,
+                decorationLocal: false
+            });
             setDecorationSize();
         });
     })
@@ -70,10 +52,13 @@ toolboxDecorations.querySelector('#decoration-upload-input')
         let reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = function (e) {
+            updateBanner({
+                decoration: this.result,
+                decorationLocal: true
+            });
+
             const decoration = document.querySelector('.img-decoration');
-            decoration.src = this.result;
-            const otherDecoration = document.querySelector('.img-decoration-2');
-            if (otherDecoration) otherDecoration.src = this.result;
+            saveImageOnLocalStorage(decoration);
         }
     })
 
