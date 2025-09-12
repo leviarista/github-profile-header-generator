@@ -1,6 +1,6 @@
 {
   "name": "github-profile-header-generator",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A simple but nice header image generator for your Github profile",
   "scripts": {
     "dev": "vite",
