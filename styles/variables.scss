@@ -1,11 +1,27 @@
 :root {
     --button-border-radius: 7px;
     --input-border-radius: 7px;
+    --background-color: linear-gradient(180deg,
+            #675494 0%,
+            #605fa1 32.6%,
+            #4e6db3 68.54%,
+            #4078c0 100%);
     --text-color: white;
     --paddings: 3rem;
     --github-dark-mode-color: #0d1117;
     --github-light-mode-color: white;
-    --main-font-familiy: "Red Hat Display", Arial, Helvetica, sans-serif;   
+    --main-font-familiy: "Red Hat Display", Arial, Helvetica, sans-serif;
+
+
+}
+
+[data-theme="dark"] {
+    --background-color: linear-gradient(180deg, #2A2142 0%, #2F3E6F 50%, #1A2A54 100%);
+    --background-color: linear-gradient(180deg, #201932 0%, #222c50 50%, #131e3c 100%);
+    // --background-color: linear-gradient(180deg, #1B1B2F 0%, #121224 60%, #0A0A1A 100%);
+    // --background-color: linear-gradient(180deg, #111110 0%, #1A1A1A 40%, #2E2E3A 100%);
+    // --text-color: white;
+    --text-color: #e4e4e4;
 }
 
 @media (max-width: 768px) {
