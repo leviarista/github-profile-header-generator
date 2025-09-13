@@ -26,17 +26,19 @@ body {
     .toogle-dark-mode {
         position: absolute;
         float: right;
-        height: 30px;
+        height: 35px;
         padding: 0px;
         display: flex;
         align-items: center;
         justify-content: center;
         background-color: #949494;
-        border-radius: 15px;
+        border-radius: 17px;
+        user-select: none;
 
         >div {
-            width: 30px;
-            height: 30px;
+            width: 35px;
+            height: 35px;
+            padding: 7px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -53,7 +55,7 @@ body {
         }
 
         img {
-            width: 15px;
+            width: 100%;
             filter: brightness(0)
         }
 
@@ -296,7 +298,7 @@ button {
             align-items: center;
 
             img {
-                width: 30px;
+                width: 27px;
                 transition: all ease 500ms;
 
                 &:hover {
