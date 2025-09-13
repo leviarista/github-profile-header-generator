@@ -1,30 +1,31 @@
-# PR Commit(e.g:feat xxx)
+# Pull Request Title
 
-Summary why you opened this PR, And the benefits this PR has.
+## Description
 
-## Test Environment
+> Summary why you opened this PR, you may add the benefits this PR provides.
 
-- OS:
-- Browser:
-- Framework Version:
+## Changes
 
-## Screenshots（If Available）
-
-|        Picture Name        |
-| :------------------------: |
-| ![ExampleImage](/HEAD.png) |
-
-## Detail Changes
-
+> Please describe your changes, if needed attach screenshots.  
 1. Fix...
 2. Refactor...
 3. Update...
 
-## Footer
+## Screenshots
+(_If applicable_)
 
-> [!CAUTION]
-> BREAKING CHANGE:
+|        Picture Name         |
+| :-------------------------: |
+| _Insert your picture link_  |
 
-## Additions
+## Related Issues
 
-Maybe type some words to dev?
+> Please add any related issue(s):
+
+This tickets: 
+- Fixes [Issue ticketname](Issue ticket link)
+- Implements [Issue ticketname](Issue ticket link)
+
+## Aditional information
+
+> Provide any additional information that might be useful.
