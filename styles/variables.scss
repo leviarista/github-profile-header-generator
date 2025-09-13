@@ -16,12 +16,23 @@
 }
 
 [data-theme="dark"] {
-    --background-color: linear-gradient(180deg, #2A2142 0%, #2F3E6F 50%, #1A2A54 100%);
-    --background-color: linear-gradient(180deg, #201932 0%, #222c50 50%, #131e3c 100%);
+    // --background-color: linear-gradient(180deg, #2A2142 0%, #2F3E6F 50%, #1A2A54 100%);
+    // --background-color: linear-gradient(180deg, #201932 0%, #222c50 50%, #131e3c 100%);
     // --background-color: linear-gradient(180deg, #1B1B2F 0%, #121224 60%, #0A0A1A 100%);
     // --background-color: linear-gradient(180deg, #111110 0%, #1A1A1A 40%, #2E2E3A 100%);
+    // --background-color: linear-gradient(180deg, #0d0a14 0%, #151b31 75%, #131e3c 100%);
+    // --background-color: linear-gradient(180deg, #3b2e5a 0%, #4b3b7a 40%, #1a1a1a 100%);
+    // --background-color: linear-gradient(180deg, #1e1436 0%, #2a1e4a 40%, #0a0a0a 100%);
+    // --background-color: linear-gradient(180deg, #1A1924 0%, #2A2D40 50%, #0F1017 100%);
+    // --background-color: linear-gradient(180deg, #121212 0%, #2F3E50 50%, #10192a 100%);
+    --background-color: linear-gradient(180deg, #111110 0%, #1e2732 50%, #111110 100%);
+
     // --text-color: white;
-    --text-color: #e4e4e4;
+    --text-color: #f5f5f5;
+
+    .tab {
+        background-color: #1b3050;
+    }
 }
 
 @media (max-width: 768px) {
