@@ -12,7 +12,6 @@ const {
 } = getMainElements();
 
 function updateBanner(theme) {
-    console.table(theme);
     console.log('•ᴗ• Updating Banner ...');
     applyTheme(theme);
     if (!theme.ignoreSave) saveTheme(theme);
@@ -251,8 +250,9 @@ function updateUIOptions({
 }
 
 function getSavedThemeProp(prop) {
-    if (!prop) return '';
+    if (!prop) return null;
     const theme = JSON.parse(localStorage.getItem('theme'));
+    if(!theme) return null;
     return theme[prop];
 }
 

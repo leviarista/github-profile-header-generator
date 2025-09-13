@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     if (theme)
         setPreset(JSON.parse(theme), true);
     else
-        setPreset(initialTheme, true);
+        setPreset(initialTheme);
 });
 
 // Demo reset after ended
