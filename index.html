@@ -63,14 +63,46 @@
     <script src="https://cdn.counter.dev/script.js" data-id="4c163d75-71a1-43ff-adea-40e6a4f56cfe"
         data-utcoffset="-5"></script>
     <script data-goatcounter="https://levi-gphg.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-  <script type="module" crossorigin src="/github-profile-header-generator/assets/index-euEs_F4l.js"></script>
-  <link rel="stylesheet" crossorigin href="/github-profile-header-generator/assets/index-BZmOk-6b.css">
+
+    <script>
+        /* ************** Dark Mode ************** */
+        function detectColorScheme() {
+            let darkMode = 0;
+            if (localStorage.getItem("darkMode")) {
+                if (localStorage.getItem("darkMode") == 1) {
+                    darkMode = 1;
+                }
+            } else if (!window.matchMedia) {
+                return false;
+            } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+                darkMode = 1;
+            }
+
+            if (darkMode == 1) {
+                localStorage.setItem('darkMode', 1);
+                document.documentElement.setAttribute("data-theme", "dark");
+            } else {
+                localStorage.setItem('darkMode', 0);
+                document.documentElement.setAttribute("data-theme", "light");
+
+            }
+        }
+        detectColorScheme();
+    </script>
+  <script type="module" crossorigin src="/github-profile-header-generator/assets/index-HahNONH6.js"></script>
+  <link rel="stylesheet" crossorigin href="/github-profile-header-generator/assets/index-BZITSLwR.css">
 </head>
 
-
-
-<body class="main-container">
+<body class="main-container dark-mode">
     <div class="left-container scrollable">
+        <div class="toogle-dark-mode">
+            <div id="light-mode-btn">
+                <img src="/github-profile-header-generator/images/icons/sun.svg" alt="light-mode-btn">
+            </div>
+            <div id="dark-mode-btn">
+                <img src="/github-profile-header-generator/images/icons/moon.svg" alt="dark-mode-btn">
+            </div>
+        </div>
         <header class="header">
     <h1>
         <img src="data:image/svg+xml,%3csvg%20id='Capa_1'%20data-name='Capa%201'%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20585%20618'%3e%3cdefs%3e%3cstyle%3e.cls-1{fill:%23fff;}.cls-2{fill:%234e6db3;}.cls-3{fill:%23605fa1;}.cls-4{fill:%23dcc48e;}%3c/style%3e%3c/defs%3e%3crect%20class='cls-1'%20x='55'%20width='475'%20height='618'%20rx='37.97'/%3e%3crect%20class='cls-2'%20x='73.16'%20y='15'%20width='439'%20height='586'%20rx='37.97'/%3e%3crect%20class='cls-1'%20y='116'%20width='585'%20height='181'%20rx='48.97'/%3e%3crect%20class='cls-3'%20x='12.5'%20y='131'%20width='560'%20height='151'%20rx='37.97'/%3e%3cpolygon%20class='cls-1'%20points='292.5%20140%20343.02%20244.52%20456%20261.28%20374.25%20342.64%20393.55%20457.51%20292.5%20403.28%20191.45%20457.51%20210.75%20342.64%20129%20261.28%20241.98%20244.52%20292.5%20140'/%3e%3cpolygon%20class='cls-4'%20points='292.5%20178.58%20332.61%20259.85%20422.28%20272.88%20357.39%20336.13%20372.71%20425.45%20292.5%20383.28%20212.29%20425.45%20227.61%20336.13%20162.72%20272.88%20252.4%20259.85%20292.5%20178.58'/%3e%3c/svg%3e" width="40" height="40" alt="Github logo" /><br />
