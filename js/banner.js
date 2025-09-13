@@ -252,7 +252,7 @@ function updateUIOptions({
 function getSavedThemeProp(prop) {
     if (!prop) return null;
     const theme = JSON.parse(localStorage.getItem('theme'));
-    if(!theme) return null;
+    if(!theme) return 'bubbles';
     return theme[prop];
 }
 
