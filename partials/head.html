@@ -61,5 +61,30 @@
     <script src="https://cdn.counter.dev/script.js" data-id="4c163d75-71a1-43ff-adea-40e6a4f56cfe"
         data-utcoffset="-5"></script>
     <script data-goatcounter="https://levi-gphg.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-</head>
 
+    <script>
+        /* ************** Dark Mode ************** */
+        function detectColorScheme() {
+            let darkMode = 0;
+            if (localStorage.getItem("darkMode")) {
+                if (localStorage.getItem("darkMode") == 1) {
+                    darkMode = 1;
+                }
+            } else if (!window.matchMedia) {
+                return false;
+            } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+                darkMode = 1;
+            }
+
+            if (darkMode == 1) {
+                localStorage.setItem('darkMode', 1);
+                document.documentElement.setAttribute("data-theme", "dark");
+            } else {
+                localStorage.setItem('darkMode', 0);
+                document.documentElement.setAttribute("data-theme", "light");
+
+            }
+        }
+        detectColorScheme();
+    </script>
+</head>

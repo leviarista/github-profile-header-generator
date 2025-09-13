@@ -149,7 +149,9 @@ document.querySelector('.randomize-button')
 
 document.querySelector('.reset-button')
     .addEventListener('click', (e) => {
+        const darkMode = localStorage.getItem('darkMode');
         localStorage.clear();
+        localStorage.setItem('darkMode', darkMode);
         setPreset(initialTheme);
     });
 
@@ -189,6 +191,32 @@ document.addEventListener("DOMContentLoaded", (event) => {
     } else {
         document.getElementById("defaultOpenTag").click();
     }
+});
+
+/* ************** Dark Mode ************** */
+
+function setLightMode() {
+    localStorage.setItem('darkMode', 0);
+    document.documentElement.setAttribute("data-theme", "light");
+    document.querySelector('#light-mode-btn').classList.add('selected');
+    document.querySelector('#dark-mode-btn').classList.remove('selected');
+}
+function setDarkMode() {
+    localStorage.setItem('darkMode', 1);
+    document.documentElement.setAttribute("data-theme", "dark");
+    document.querySelector('#light-mode-btn').classList.remove('selected');
+    document.querySelector('#dark-mode-btn').classList.add('selected');
+}
+
+document.addEventListener("DOMContentLoaded", (event) => {
+    const localDarkMode = localStorage.getItem('darkMode');
+    if (localDarkMode && localDarkMode == 1){
+        document.querySelector('#dark-mode-btn').classList.add('selected');
+    } else {
+        document.querySelector('#light-mode-btn').classList.add('selected');
+    }
+    document.querySelector('#light-mode-btn').onclick = setLightMode;
+    document.querySelector('#dark-mode-btn').onclick = setDarkMode;
 });
 
 /* ************** ************** ************** */
