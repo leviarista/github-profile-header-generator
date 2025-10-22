@@ -14,6 +14,7 @@ const {
 /* ************** Options ************** */
 
 const initialTheme = {
+    textAlign: "center",
     ...getAllPresets()[15],
     background: "#62518d",
     borderSize: 5,

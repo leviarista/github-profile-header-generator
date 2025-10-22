@@ -55,6 +55,13 @@
             .title,
             .subtitle {
                 transition: 0.25s ease;
+                white-space: nowrap;
+            }
+
+            // Ensure Electrolize font loads properly
+            .title[style*="Electrolize"],
+            .subtitle[style*="Electrolize"] {
+                font-family: "Electrolize", monospace !important;
             }
 
             img {
