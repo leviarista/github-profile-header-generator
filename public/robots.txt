@@ -1,3 +1,4 @@
 User-Agent: *
 Allow: /
 
+Sitemap: https://leviarista.github.io/github-profile-header-generator/sitemap.xml
