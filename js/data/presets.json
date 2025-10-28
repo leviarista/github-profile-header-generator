@@ -435,14 +435,13 @@
         "borderSize": 4,
         "decoration": "headphones-cat-2.png",
         "decorationLocal": false,
-        "decorationSize": "159",
+        "decorationSize": "105",
         "ignoreSave": null,
         "padding": 25,
         "pattern": "i-like-food",
         "patternColor": "#FFFFFF",
         "patternOpacity": 0.25,
         "patternSize": 225,
-        "previewImage": "theme-2-preview.png",
         "subtitleColor": "#5bfa05",
         "subtitleFont": "Kalam",
         "subtitleFontSize": "22",
@@ -450,6 +449,6 @@
         "titleColor": "#ffffff",
         "titleFont": "Della Respira",
         "titleFontSize": "51",
-        "previewImage": "theme-22-preview.png"
+        "previewImage": "theme-23-preview.png"
     }
 ]
