@@ -427,5 +427,27 @@
         "titleFont": "Passero One",
         "subtitleFont": "Source Code Pro",
         "previewImage": "theme-21-preview.png"
-    }
+    },
+    {
+    "background": "#1b1f1c",
+    "padding": 40,
+    "titleColor": "#00FF41",
+    "subtitleColor": "#A0FFA0",
+    "borderColor": "#00FF41",
+    "borderSize": 3,
+    "borderRadius": 12,
+    "textAlign": "center",
+    "decoration": "headphones-cat-1.png",
+    "decorationSize": 90,
+    "pattern": "honeycomb",
+    "patternColor": "#004d00",
+    "patternSize": 80,
+    "patternOpacity": 0.6,
+    "titleFontSize": 44,
+    "subtitleFontSize": 22,
+    "titleFont": "Orbitron",
+    "subtitleFont": "Source Code Pro",
+    "previewImage": "theme-22-preview.png"
+}
+
 ]
