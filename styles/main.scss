@@ -363,3 +363,24 @@ button {
         min-height: 100vh;
     }
 }
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #333;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: opacity 0.5s;
+    z-index: 9999;
+}
+
+.toast.success {
+    background: #4CAF50;
+}
+
+.toast.error {
+    background: #E53935;
+}
