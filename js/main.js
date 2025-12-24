@@ -14,6 +14,7 @@ const {
 /* ************** Options ************** */
 
 const initialTheme = {
+    textAlign: "center",
     ...getAllPresets()[15],
     background: "#62518d",
     borderSize: 5,
@@ -21,11 +22,12 @@ const initialTheme = {
     subtitleColor: "#FFF2B3",
     titleFont: 'Red Hat Display',
     subtitleFont: 'Kalam'
-}
+};
 
 // Init
 toolbox.querySelector('.size-inputs input#width-input').value = bannerImageContainer.clientWidth;
-document.addEventListener("DOMContentLoaded", (event) => {
+
+document.addEventListener("DOMContentLoaded", () => {
     const theme = localStorage.getItem('theme');
     if (theme)
         setPreset(JSON.parse(theme), true);
@@ -36,14 +38,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
 // Demo reset after ended
 document.querySelector('.how-to-section video.demo').onended = (e) => e.target.currentTime = 0;
 
-// Decoration
-
+// Decoration setup
 const imageDecorationContainer = document.querySelector('.img-decoration-container');
 const imgDecorationElement = document.createElement('img');
 imgDecorationElement.className = 'img-decoration';
 imgDecorationElement.style.position = 'absolute';
 imgDecorationElement.style.bottom = 'calc(50%)';
-imgDecorationElement.style.transform = 'translateY(50%)'
+imgDecorationElement.style.transform = 'translateY(50%)';
 imgDecorationElement.style.left = 'auto';
 imgDecorationElement.style.right = '25px';
 imgDecorationElement.style.width = '0px';
@@ -67,8 +68,10 @@ document.querySelector('.download-button')
                     scale: 2
                 });
             document.querySelector('.download-button img').src = './images/icons/download.svg'
+            showToast('Banner downloaded successfully 🎉', 'success');
         } catch (error) {
             console.error('Image capture or download failed:', error);
+            showToast('Download failed 😞', 'error');
         }
     })
 
@@ -210,13 +213,25 @@ function setDarkMode() {
 
 document.addEventListener("DOMContentLoaded", (event) => {
     const localDarkMode = localStorage.getItem('darkMode');
-    if (localDarkMode && localDarkMode == 1){
+    if (localDarkMode && localDarkMode == 1) {
         document.querySelector('#dark-mode-btn').classList.add('selected');
     } else {
         document.querySelector('#light-mode-btn').classList.add('selected');
     }
     document.querySelector('#light-mode-btn').onclick = setLightMode;
-    document.querySelector('#dark-mode-btn').onclick = setDarkMode;
 });
 
-/* ************** ************** ************** */
+
+/* ************** Notification Toasts ************** */
+
+function showToast(message, type = 'info') {
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.textContent = message;
+    document.body.appendChild(toast);
+
+    setTimeout(() => {
+        toast.style.opacity = 0;
+        setTimeout(() => toast.remove(), 500);
+    }, 3000);
+}
