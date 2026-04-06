@@ -219,6 +219,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         document.querySelector('#light-mode-btn').classList.add('selected');
     }
     document.querySelector('#light-mode-btn').onclick = setLightMode;
+    document.querySelector('#dark-mode-btn').onclick = setDarkMode;
 });
 
 
