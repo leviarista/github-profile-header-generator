@@ -2,11 +2,22 @@
   "name": "github-profile-header-generator",
   "version": "2.1.0",
   "description": "A simple but nice header image generator for your Github profile",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "build:gh-pages": "cp deploy/vite.config.gh-pages.js vite.config.js && vite build"
+    "build:gh-pages": "cp deploy/vite.config.gh-pages.js vite.config.js && vite build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:headed:chromium": "playwright test --headed --project=chromium",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:report": "playwright show-report",
+    "test:mutation": "stryker run",
+    "lint": "eslint js/"
   },
   "repository": {
     "type": "git",
@@ -19,9 +30,21 @@
   },
   "homepage": "https://github.com/leviarista/github-profile-header-generator#readme",
   "devDependencies": {
+    "@axe-core/playwright": "^4.10.1",
+    "@eslint/js": "^9.28.0",
+    "@faker-js/faker": "^9.8.0",
+    "@playwright/test": "^1.52.0",
+    "@stryker-mutator/core": "^8.7.1",
+    "@stryker-mutator/vitest-runner": "^8.7.1",
+    "@vitest/coverage-v8": "^3.2.4",
+    "eslint": "^9.28.0",
+    "eslint-plugin-security": "^3.0.1",
+    "jsdom": "^26.1.0",
     "sass": "^1.89.2",
     "vite": "^7.0.3",
-    "vite-plugin-html-inject": "^1.1.2"
+    "vite-plugin-html-inject": "^1.1.2",
+    "vitest": "^3.2.4",
+    "zod": "^3.24.4"
   },
   "dependencies": {
     "@zumer/snapdom": "^1.9.7"
