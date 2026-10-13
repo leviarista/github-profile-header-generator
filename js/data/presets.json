@@ -456,7 +456,7 @@
         "borderSize": 4,
         "decoration": "headphones-cat-2.png",
         "decorationLocal": false,
-        "decorationSize": "105",
+        "decorationSize": 105,
         "ignoreSave": null,
         "padding": 25,
         "pattern": "i-like-food",
@@ -465,11 +465,11 @@
         "patternSize": 225,
         "subtitleColor": "#5bfa05",
         "subtitleFont": "Kalam",
-        "subtitleFontSize": "22",
+        "subtitleFontSize": 22,
         "textAlign": "center",
         "titleColor": "#ffffff",
         "titleFont": "Della Respira",
-        "titleFontSize": "51",
+        "titleFontSize": 51,
         "previewImage": "theme-23-preview.png"
     }
 ]

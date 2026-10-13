@@ -55,7 +55,7 @@ function applyTheme({
     if (background) bannerImage.style.backgroundColor = background;
     if (titleColor) bannerTitle.style.color = titleColor;
     if (subtitleColor) bannerSubtitle.style.color = subtitleColor;
-    if (borderColor && borderSize && borderRadius) {
+    if (borderColor && borderSize && borderRadius !== undefined && borderRadius !== null) {
         bannerImage.style.border = `solid ${borderColor} ${borderSize}px`;
         bannerImage.style.borderRadius = `${borderRadius}px`;
     }
@@ -116,7 +116,7 @@ function applyTheme({
             otherImageDecoration.style.width = `${decorationSize}px`;
     }
     if (pattern || patternColor || patternOpacity || patternSize) {
-        bannerImage.style.backgroundImage = getPattern(pattern, patternColor.replace('#', ''), patternOpacity);
+        bannerImage.style.backgroundImage = getPattern(pattern, patternColor.replace('#', '') || 'FFFFFF', patternOpacity);
         bannerImage.style.backgroundSize = `${patternSize}px`;
     }
     if (titleFont && subtitleFont) {
@@ -129,9 +129,9 @@ function applyTheme({
         bannerTitle.style.fontSize = `${titleFontSize}px`;
         bannerSubtitle.style.fontSize = `${subtitleFontSize}px`;
     }
-    if (title || subtitle) {
-        bannerTitle.innerText = title || '';
-        bannerSubtitle.innerText = subtitle || '';
+    if (title !== undefined || subtitle !== undefined) {
+        if (title !== undefined) bannerTitle.innerText = title;
+        if (subtitle !== undefined) bannerSubtitle.innerText = subtitle;
     }
 }
 
@@ -209,14 +209,26 @@ function updateUIOptions({
         borderRadiusInput.value = borderRadius;
         borderRadiusInput.nextElementSibling.value = borderRadius;
     }
-    if (textAlign) { }
-    if (decoration) { }
+    // if (textAlign) {
+    //     toolbox.querySelectorAll('.align-buttons button').forEach(button => {
+    //         button.classList.toggle('selected', button.dataset.alignValue === textAlign);
+    //     });
+    // }
+    // if (decoration) {
+    //     toolboxDecorations.querySelectorAll('.decorations-buttons button').forEach(button => {
+    //         button.classList.toggle('selected', button.dataset.decorationValue === decoration);
+    //     });
+    // }
     if (decorationSize) {
         const decorationSizeInput = toolboxDecorations.querySelector('.decorations-size-inputs input#decoration-size-input');
         decorationSizeInput.value = decorationSize;
         decorationSizeInput.nextElementSibling.value = decorationSize;
     }
-    if (pattern) { }
+    // if (pattern) {
+    //     toolboxBackground.querySelectorAll('.patterns-buttons button').forEach(button => {
+    //         button.classList.toggle('selected', button.dataset.patternValue === pattern);
+    //     });
+    // }
     if (patternSize) {
         const patternSizeInput = toolboxBackground.querySelector('.pattern-inputs input#pattern-size-input');
         patternSizeInput.value = patternSize;
@@ -251,9 +263,12 @@ function updateUIOptions({
 
 function getSavedThemeProp(prop) {
     if (!prop) return null;
-    const theme = JSON.parse(localStorage.getItem('theme'));
-    if(!theme) return 'bubbles';
-    return theme[prop];
+    try {
+        const theme = JSON.parse(localStorage.getItem('theme'));
+        return theme ? theme[prop] : null;
+    } catch {
+        return null;
+    }
 }
 
 export {
