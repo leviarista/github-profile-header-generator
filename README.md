@@ -13,10 +13,10 @@ You can use it for your __repo banners__ too!
 
 1. Create a nice github header image.
 2. Create your GitHub profile README following [this guide](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme).
-3. Upload your header to your profile repo.
+3. Upload your banner image to your repo.
 4. Add this line to your README:
    ```Markdown
-   ![Header](./[Your header image])
+   ![Banner](./path_to_your_banner_image.png)
    ```
 
 ## Examples

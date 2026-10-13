@@ -1,105 +1,101 @@
 # Testing — GitHub Profile Header Generator
 
-Documentación completa del plan de pruebas, cobertura y bugs detectados para el
-proyecto `github-profile-header-generator` v2.1.0.
+Complete documentation of the test plan, coverage, and detected bugs for the
+`github-profile-header-generator` v2.1.0 project.
 
 ---
 
-## Tabla de contenidos
+## Table of Contents
 
-1. [Stack de pruebas](#1-stack-de-pruebas)
-2. [Estructura de archivos](#2-estructura-de-archivos)
-3. [Cómo ejecutar las pruebas](#3-cómo-ejecutar-las-pruebas)
-4. [Resultados de cobertura](#4-resultados-de-cobertura)
-5. [Bugs encontrados](#5-bugs-encontrados)
-6. [Generación de datos de prueba y oráculos](#6-generación-de-datos-de-prueba-y-oráculos)
-7. [Pruebas E2E (Playwright)](#7-pruebas-e2e-playwright)
-8. [Análisis estático (ESLint)](#8-análisis-estático-eslint)
-9. [Pruebas de mutación (Stryker)](#9-pruebas-de-mutación-stryker)
-10. [Limitaciones conocidas del entorno](#10-limitaciones-conocidas-del-entorno)
+1. [Testing Stack](#1-testing-stack)
+2. [File Structure](#2-file-structure)
+3. [How to Run the Tests](#3-how-to-run-the-tests)
+4. [Coverage Results](#4-coverage-results)
+5. [Found Bugs](#5-found-bugs)
+6. [Test Data and Oracles](#6-test-data-and-oracles)
+7. [E2E Tests (Playwright)](#7-e2e-tests-playwright)
+8. [Static Analysis (ESLint)](#8-static-analysis-eslint)
+9. [Mutation Testing (Stryker)](#9-mutation-testing-stryker)
+10. [Known Environment Limitations](#10-known-environment-limitations)
 
 ---
 
-## 1. Stack de pruebas
+## 1. Testing Stack
 
-| Herramienta                                                                          | Versión | Propósito                               |
+| Tool                                                                                 | Version | Purpose                                 |
 | ------------------------------------------------------------------------------------ | ------- | --------------------------------------- |
-| [Vitest](https://vitest.dev/)                                                        | ^3.2    | Runner de tests unitarios e integración |
-| [jsdom](https://github.com/jsdom/jsdom)                                              | ^26.1   | Simulación de DOM para Vitest           |
-| [@vitest/coverage-v8](https://vitest.dev/guide/coverage)                             | ^3.2    | Cobertura de código (V8 provider)       |
-| [@playwright/test](https://playwright.dev/)                                          | ^1.52   | Pruebas E2E en navegadores reales       |
-| [@axe-core/playwright](https://github.com/dequelabs/axe-core-npm)                    | ^4.10   | Accesibilidad automática (E2E)          |
-| [@stryker-mutator/core](https://stryker-mutator.io/)                                 | ^8.7    | Pruebas de mutación                     |
-| [ESLint](https://eslint.org/)                                                        | ^9.28   | Análisis estático                       |
-| [eslint-plugin-security](https://github.com/eslint-community/eslint-plugin-security) | —       | Reglas de seguridad OWASP               |
-| [@faker-js/faker](https://fakerjs.dev/)                                              | ^9.8    | Generación de datos de prueba           |
-| [Zod](https://zod.dev/)                                                              | ^3.24   | Oráculos / validación de esquemas       |
+| [Vitest](https://vitest.dev/)                                                        | ^3.2    | Unit and integration test runner        |
+| [jsdom](https://github.com/jsdom/jsdom)                                              | ^26.1   | DOM simulation for Vitest               |
+| [@vitest/coverage-v8](https://vitest.dev/guide/coverage)                             | ^3.2    | Code coverage (V8 provider)             |
+| [@playwright/test](https://playwright.dev/)                                          | ^1.52   | E2E tests in real browsers              |
+| [@axe-core/playwright](https://github.com/dequelabs/axe-core-npm)                    | ^4.10   | Automated accessibility checks (E2E)    |
+| [@stryker-mutator/core](https://stryker-mutator.io/)                                 | ^8.7    | Mutation testing                        |
+| [ESLint](https://eslint.org/)                                                        | ^9.28   | Static analysis                         |
+| [eslint-plugin-security](https://github.com/eslint-community/eslint-plugin-security) | —       | OWASP security rules                    |
+| [@faker-js/faker](https://fakerjs.dev/)                                              | ^9.8    | Test data generation                    |
+| [Zod](https://zod.dev/)                                                              | ^3.24   | Oracles / schema validation             |
 
 ---
 
-## 2. Estructura de archivos
+## 2. File Structure
 
 ```
 tests/
-├── setup.js                        # Fixture DOM completo para Vitest+jsdom
+├── setup.js                        # Complete DOM fixture for Vitest+jsdom
 ├── utils/
-│   ├── oracle.js                   # Oráculos Zod: PresetSchema, ThemeSchema, etc.
-│   └── testData.js                 # Generadores Faker: colores, presets, patrones
+│   ├── oracle.js                   # Zod oracles: PresetSchema, ThemeSchema, etc.
+│   └── testData.js                 # Faker generators: colors, presets, patterns
 ├── unit/
-│   ├── getPattern.test.js          # 70 tests — función getPattern() y variantes
-│   └── presets.test.js             # 21 tests — carga y validación de presets.json
+│   ├── getPattern.test.js          # 70 tests — getPattern() function and variants
+│   └── presets.test.js             # 21 tests — presets.json loading and validation
 ├── integration/
 │   ├── banner.test.js              # 27 tests — updateBanner, applyTheme, updateUIOptions
-│   └── localStorage.test.js       # 16 tests — saveTheme, getSavedThemeProp, ciclos
+│   └── localStorage.test.js        # 16 tests — saveTheme, getSavedThemeProp, cycles
 └── e2e/
-    ├── banner-customization.spec.ts  # Flujos de personalización de banner
-    ├── accessibility.spec.ts         # Accesibilidad con axe-core
-    └── performance.spec.ts           # Métricas de rendimiento (CLS, LCP, FCP)
+    ├── banner-customization.spec.ts  # Banner customization flows
+    ├── accessibility.spec.ts         # Accessibility with axe-core
+    └── performance.spec.ts           # Performance metrics (CLS, LCP, FCP)
 
 .github/prompts/
-└── playwright-qa-engineer.prompt.md  # Skill de Copilot para pruebas E2E
+└── playwright-qa-engineer.prompt.md  # Copilot skill for E2E testing
 
-vitest.config.js        # Configuración Vitest + cobertura
-playwright.config.ts    # Configuración Playwright (4 browsers, URL de producción)
-stryker.config.mjs      # Configuración Stryker (runner: vitest)
-eslint.config.js        # Configuración ESLint con eslint-plugin-security
+vitest.config.js        # Vitest + coverage configuration
+playwright.config.ts    # Playwright configuration (4 browsers, production URL)
+stryker.config.mjs      # Stryker configuration (runner: vitest)
+eslint.config.js        # ESLint configuration with eslint-plugin-security
 ```
 
----
-
-## 3. Cómo ejecutar las pruebas
+## 3. How to Run the Tests
 
 ```bash
-# Instalar todas las dependencias (incluye devDependencies de prueba)
+# Install all dependencies (including test devDependencies)
 npm install
 
-# ── Pruebas unitarias e integración ──────────────────────────────────────────
-npm test                # Ejecutar una vez y ver resultados
-npm run test:watch      # Modo observador (re-ejecuta al guardar)
-npm run test:coverage   # Ejecutar con reporte de cobertura HTML + texto
+# Unit and integration tests -------------------------------------------------
+npm test                # Run once and see results
+npm run test:watch      # Watch mode (reruns on save)
+npm run test:coverage   # Run with HTML + text coverage report
 
-# ── Pruebas E2E (requiere navegadores instalados) ────────────────────────────
-npx playwright install  # Instalar browsers (solo la primera vez)
-npm run test:e2e        # Ejecutar E2E en todos los browsers configurados
-npm run test:e2e:ui     # Abrir interfaz visual de Playwright
-npm run test:e2e:report # Abrir reporte HTML de última ejecución E2E
+# E2E tests (requires installed browsers) ------------------------------------
+npx playwright install  # Install browsers (only the first time)
+npm run test:e2e        # Run E2E in all configured browsers
+npm run test:e2e:ui     # Open Playwright visual interface
+npm run test:e2e:report # Open the latest E2E HTML report
 
-# ── Análisis estático ────────────────────────────────────────────────────────
-npm run lint            # ESLint con reglas de seguridad
+# Static analysis -------------------------------------------------------------
+npm run lint            # ESLint with security rules
 
-# ── Pruebas de mutación ──────────────────────────────────────────────────────
-npm run test:mutation   # Stryker sobre js/presets.js y js/helpers/helpers.js
+# Mutation testing ------------------------------------------------------------
+npm run test:mutation   # Stryker against js/presets.js and js/helpers/helpers.js
 ```
 
----
+## 4. Coverage Results
 
-## 4. Resultados de cobertura
+Coverage for files with testable business logic
+(pure UI modules —`main.js`, `toolbox-*.js`— are excluded because
+they require real browser interaction and are covered with E2E tests).
 
-Cobertura sobre archivos con lógica de negocio testeable
-(los módulos de UI pura —`main.js`, `toolbox-*.js`— se excluyen porque
-requieren interacción real con el navegador y se cubren con E2E).
-
-| Archivo                  | Sentencias | Ramas    | Funciones | Líneas   |
+| File                     | Statements | Branches | Functions | Lines    |
 | ------------------------ | ---------- | -------- | --------- | -------- |
 | `js/banner.js`           | 69%        | 70%      | **100%**  | 69%      |
 | `js/presets.js`          | **100%**   | **100%** | **100%**  | **100%** |
@@ -107,44 +103,39 @@ requieren interacción real con el navegador y se cubren con E2E).
 | `js/helpers/elements.js` | **100%**   | **100%** | **100%**  | **100%** |
 | **Total**                | **74%**    | **72%**  | **100%**  | **74%**  |
 
-**Umbrales configurados** (en `vitest.config.js`): líneas ≥ 70%, ramas ≥ 60%, funciones ≥ 80%.
+**Configured thresholds** (in `vitest.config.js`): lines ≥ 70%, branches ≥ 60%, functions ≥ 80%.
 
-Líneas no cubiertas en `banner.js`: ramas de `updateUIOptions` para `patternSize`,
-`patternColor/patternOpacity` y `titleFont/subtitleFont` (líneas ~220–249).
-Estas ramas requieren elementos del DOM de la toolbox que no están en el fixture de tests
-unitarios/integración.
+Uncovered lines in `banner.js`: branches in `updateUIOptions` for `patternSize`,
+`patternColor/patternOpacity`, and `titleFont/subtitleFont` (lines ~220–249).
+These branches require toolbox DOM elements that are not present in the unit/integration test fixture.
 
----
+## 5. Found Bugs
 
-## 5. Bugs encontrados
+The tests in this suite **document and detect** the following bugs in the
+source code. The tests that document them intentionally pass by verifying the
+current incorrect behavior and are marked with `[BUG #N]`.
 
-Los tests de esta suite **documentan y detectan** los siguientes bugs en el
-código fuente. Los tests que los documentan pasan intencionalmente verificando
-el comportamiento incorrecto actual y están marcados con `[BUG #N]`.
+### BUG #1 — `TypeError` when applying a pattern without `patternColor` (CRITICAL)
 
----
+| Field            | Detail                                   |
+| ---------------- | ---------------------------------------- |
+| **File**         | `js/banner.js` — `applyTheme()` function |
+| **Approx. line** | 110                                      |
+| **Severity**     | 🔴 CRITICAL                              |
 
-### BUG #1 — `TypeError` al aplicar patrón sin `patternColor` (CRÍTICO)
-
-| Campo            | Detalle                                 |
-| ---------------- | --------------------------------------- |
-| **Archivo**      | `js/banner.js` — función `applyTheme()` |
-| **Línea aprox.** | 110                                     |
-| **Severidad**    | 🔴 CRÍTICO                              |
-
-**Descripción:**  
-La condición `if (pattern || patternColor || patternOpacity || patternSize)` activa
-el bloque cuando cualquiera de los cuatro es truthy. Dentro del bloque se llama
-incondicionalmente a `patternColor.replace('#', '')`, lo que lanza un `TypeError`
-si `patternColor` es `undefined` (p.ej., cuando solo se actualiza `patternSize`).
+**Description:**  
+The condition `if (pattern || patternColor || patternOpacity || patternSize)` opens
+the block when any of the four values is truthy. Inside the block,
+`patternColor.replace('#', '')` is called unconditionally, which throws a `TypeError`
+if `patternColor` is `undefined` (for example, when only `patternSize` is updated).
 
 ```js
-// Reproducción del bug:
+// Bug reproduction:
 updateBanner({ patternSize: 20 });
 // → TypeError: Cannot read properties of undefined (reading 'replace')
 ```
 
-**Corrección sugerida:**
+**Suggested fix:**
 
 ```js
 bannerImage.style.backgroundImage = getPattern(
@@ -154,146 +145,134 @@ bannerImage.style.backgroundImage = getPattern(
 );
 ```
 
----
+### BUG #2 — `getSavedThemeProp` returns `'bubbles'` for any property (MEDIUM)
 
-### BUG #2 — `getSavedThemeProp` devuelve `'bubbles'` para cualquier propiedad (MEDIO)
+| Field            | Detail                                          |
+| ---------------- | ----------------------------------------------- |
+| **File**         | `js/banner.js` — `getSavedThemeProp()` function |
+| **Approx. line** | 258                                             |
+| **Severity**     | 🟡 MEDIUM                                       |
 
-| Campo            | Detalle                                        |
-| ---------------- | ---------------------------------------------- |
-| **Archivo**      | `js/banner.js` — función `getSavedThemeProp()` |
-| **Línea aprox.** | 258                                            |
-| **Severidad**    | 🟡 MEDIO                                       |
-
-**Descripción:**  
-Cuando no existe un tema guardado en localStorage, la función retorna la cadena
-hardcodeada `'bubbles'` para **cualquier** propiedad solicitada, incluyendo
-`borderSize`, `titleColor`, `borderRadius`, etc.
+**Description:**  
+When no theme is stored in localStorage, the function returns the hardcoded string
+`'bubbles'` for **any** requested property, including `borderSize`, `titleColor`,
+`borderRadius`, and others.
 
 ```js
-// Comportamiento actual (con localStorage vacío):
+// Current behavior (with empty localStorage):
 getSavedThemeProp("borderSize"); // → 'bubbles'  ❌
 getSavedThemeProp("titleColor"); // → 'bubbles'  ❌
-getSavedThemeProp("background"); // → 'bubbles'  ❌ (esperado: null o undefined)
+getSavedThemeProp("background"); // → 'bubbles'  ❌ (expected: null or undefined)
 ```
 
-**Corrección sugerida:**
+**Suggested fix:**
 
 ```js
-if (!theme) return null; // o retornar un mapa de defaults por propiedad
+if (!theme) return null; // or return a map of defaults by property
 ```
 
----
+### BUG #3 — `updateUIOptions` does not update `textAlign`, `decoration`, or `pattern` (LOW)
 
-### BUG #3 — `updateUIOptions` no actualiza `textAlign`, `decoration` ni `pattern` (BAJO)
-
-| Campo            | Detalle                                      |
+| Field            | Detail                                       |
 | ---------------- | -------------------------------------------- |
-| **Archivo**      | `js/banner.js` — función `updateUIOptions()` |
-| **Línea aprox.** | 187–205                                      |
-| **Severidad**    | 🟢 BAJO                                      |
+| **File**         | `js/banner.js` — `updateUIOptions()` function |
+| **Approx. line** | 187–205                                      |
+| **Severity**     | 🟢 LOW                                       |
 
-**Descripción:**  
-Los bloques `if (textAlign)`, `if (decoration)` y `if (pattern)` están vacíos
-en `updateUIOptions`. Cuando se restaura un tema guardado, los controles del
-toolbox para alineación de texto, decoración y patrón no se actualizan visualmente.
+**Description:**  
+The `if (textAlign)`, `if (decoration)`, and `if (pattern)` blocks are empty in
+`updateUIOptions`. When a saved theme is restored, the toolbox controls for text
+alignment, decoration, and pattern are not visually updated.
 
----
+### BUG #3b — `borderRadius: 0` prevents the border from being applied (LOW)
 
-### BUG #3b — `borderRadius: 0` impide aplicar el borde (BAJO)
-
-| Campo            | Detalle                                 |
+| Field            | Detail                                  |
 | ---------------- | --------------------------------------- |
-| **Archivo**      | `js/banner.js` — función `applyTheme()` |
-| **Línea aprox.** | 96                                      |
-| **Severidad**    | 🟢 BAJO                                 |
+| **File**         | `js/banner.js` — `applyTheme()` function |
+| **Approx. line** | 96                                      |
+| **Severity**     | 🟢 LOW                                  |
 
-**Descripción:**  
-La condición `if (borderColor && borderSize && borderRadius)` falla cuando
-`borderRadius` es `0` (borde sin redondeo), porque `0` es falsy en JavaScript.
-Resultado: un tema con `borderRadius: 0` (esquinas cuadradas) nunca aplica
-el borde completo.
+**Description:**  
+The condition `if (borderColor && borderSize && borderRadius)` fails when
+`borderRadius` is `0` (no rounded corners), because `0` is falsy in JavaScript.
+As a result, a theme with `borderRadius: 0` (square corners) never applies the
+full border.
 
 ```js
 applyTheme({ borderColor: "#000", borderSize: 2, borderRadius: 0 });
-// → bannerImage.style.border === ''  ❌  (borde no aplicado)
+// → bannerImage.style.border === ''  ❌  (border not applied)
 ```
 
-**Corrección sugerida:**
+**Suggested fix:**
 
 ```js
 if (borderColor && borderSize && borderRadius !== undefined && borderRadius !== null) { ... }
 ```
 
----
+### BUG #4 — Empty title/subtitle cannot be cleared (LOW)
 
-### BUG #4 — Título/subtítulo vacío no puede limpiarse (BAJO)
-
-| Campo            | Detalle                                 |
+| Field            | Detail                                  |
 | ---------------- | --------------------------------------- |
-| **Archivo**      | `js/banner.js` — función `applyTheme()` |
-| **Línea aprox.** | 129                                     |
-| **Severidad**    | 🟢 BAJO                                 |
+| **File**         | `js/banner.js` — `applyTheme()` function |
+| **Approx. line** | 129                                     |
+| **Severity**     | 🟢 LOW                                  |
 
-**Descripción:**  
-La condición `if (title || subtitle)` impide limpiar el título o subtítulo
-enviando una cadena vacía (`''`), ya que `''` es falsy.
+**Description:**  
+The condition `if (title || subtitle)` prevents clearing the title or subtitle
+by sending an empty string (`''`), because `''` is falsy.
 
 ```js
 updateBanner({ title: "" });
-// → bannerTitle.innerText sin cambios  ❌
+// → bannerTitle.innerText unchanged  ❌
 ```
 
-**Corrección sugerida:**
+**Suggested fix:**
 
 ```js
 if (title !== undefined || subtitle !== undefined) { ... }
 ```
 
----
+### BUG #5 — Preset #22 has numeric fields stored as strings (DATA — MEDIUM)
 
-### BUG #5 — Preset #22 tiene campos numéricos como strings (DATOS — MEDIO)
+| Field            | Detail                            |
+| ---------------- | --------------------------------- |
+| **File**         | `js/data/presets.json` — index 22 |
+| **Approx. line** | ~230                              |
+| **Severity**     | 🟡 MEDIUM                         |
 
-| Campo            | Detalle                            |
-| ---------------- | ---------------------------------- |
-| **Archivo**      | `js/data/presets.json` — índice 22 |
-| **Línea aprox.** | ~230                               |
-| **Severidad**    | 🟡 MEDIO                           |
-
-**Descripción:**  
-El preset en el índice 22 tiene los campos `decorationSize`, `titleFontSize` y
-`subtitleFontSize` como strings en lugar de números. Esto puede causar errores
-al usarlos en cálculos o interpolaciones:
+**Description:**  
+The preset at index 22 has the `decorationSize`, `titleFontSize`, and
+`subtitleFontSize` fields stored as strings instead of numbers. This can cause
+errors when using them in calculations or interpolations:
 
 ```json
-// Incorrecto (preset #22):
+// Incorrect (preset #22):
 "decorationSize": "77",
 "titleFontSize": "44",
 "subtitleFontSize": "18"
 
-// Correcto (resto de presets):
+// Correct (all other presets):
 "decorationSize": 77,
 "titleFontSize": 44,
 "subtitleFontSize": 18
 ```
 
-**Detectado por:** Oráculo `PresetSchema` (Zod) en `tests/unit/presets.test.js`.
+**Detected by:** `PresetSchema` oracle (Zod) in `tests/unit/presets.test.js`.
 
----
+### BUG #6 — `getSavedThemeProp` lacks `try/catch` around `JSON.parse` (LOW)
 
-### BUG #6 — `getSavedThemeProp` sin `try/catch` en `JSON.parse` (BAJO)
+| Field            | Detail                                          |
+| ---------------- | ----------------------------------------------- |
+| **File**         | `js/banner.js` — `getSavedThemeProp()` function |
+| **Approx. line** | 257                                             |
+| **Severity**     | 🟢 LOW                                          |
 
-| Campo            | Detalle                                        |
-| ---------------- | ---------------------------------------------- |
-| **Archivo**      | `js/banner.js` — función `getSavedThemeProp()` |
-| **Línea aprox.** | 257                                            |
-| **Severidad**    | 🟢 BAJO                                        |
+**Description:**  
+`JSON.parse(localStorage.getItem('theme'))` runs without a `try/catch` block.
+If localStorage contents are corrupted or modified by an external script,
+the app will throw an uncaught `SyntaxError`.
 
-**Descripción:**  
-`JSON.parse(localStorage.getItem('theme'))` se ejecuta sin bloque `try/catch`.
-Si el contenido de localStorage está corrupto o fue modificado por un script
-externo, la aplicación lanzará un `SyntaxError` no manejado.
-
-**Corrección sugerida:**
+**Suggested fix:**
 
 ```js
 function getSavedThemeProp(prop) {
@@ -308,132 +287,120 @@ function getSavedThemeProp(prop) {
 }
 ```
 
----
+## 6. Test Data and Oracles
 
-## 6. Generación de datos de prueba y oráculos
+### Data generators (`tests/utils/testData.js`)
 
-### Generadores de datos (`tests/utils/testData.js`)
+They use **@faker-js/faker** to create realistic and reproducible data:
 
-Utilizan **@faker-js/faker** para crear datos realistas y reproducibles:
+| Function                    | Description                         |
+| -------------------------- | ----------------------------------- |
+| `generateHexColor()`       | Random hex color                    |
+| `generatePatternName()`    | Valid pattern name from the catalog  |
+| `generatePreset()`         | Full preset with all fields         |
+| `generatePresets(n)`       | List of `n` random presets          |
+| `generatePatternTestCases()` | Test cases for `getPattern()`     |
+| `generatePartialTheme()`   | Partial theme with random fields    |
 
-| Función                      | Descripción                          |
-| ---------------------------- | ------------------------------------ |
-| `generateHexColor()`         | Color hexadecimal aleatorio          |
-| `generatePatternName()`      | Nombre de patrón válido del catálogo |
-| `generatePreset()`           | Preset completo con todos los campos |
-| `generatePresets(n)`         | Lista de `n` presets aleatorios      |
-| `generatePatternTestCases()` | Casos de prueba para `getPattern()`  |
-| `generatePartialTheme()`     | Tema parcial con campos aleatorios   |
+### Oracles (`tests/utils/oracle.js`)
 
-### Oráculos (`tests/utils/oracle.js`)
+They use **Zod** to validate data contracts:
 
-Utilizan **Zod** para validar contratos de datos:
+| Schema                       | Validates                                   |
+| --------------------------- | ------------------------------------------- |
+| `PresetSchema`               | Full preset structure (types, ranges)       |
+| `ThemeSchema`                | Structure of a theme stored in localStorage |
+| `PatternResultSchema`        | Result of `getPattern()` (string or 'none') |
+| `validateAllPresets(presets)` | Validates all presets and returns errors    |
 
-| Esquema                       | Valida                                           |
-| ----------------------------- | ------------------------------------------------ |
-| `PresetSchema`                | Estructura completa de un preset (tipos, rangos) |
-| `ThemeSchema`                 | Estructura de un tema guardado en localStorage   |
-| `PatternResultSchema`         | Resultado de `getPattern()` (string o 'none')    |
-| `validateAllPresets(presets)` | Valida todos los presets y devuelve errores      |
+The oracle automatically detected **BUG #5** by validating all presets against
+the expected schema.
 
-El oráculo detectó **BUG #5** automáticamente al validar todos los presets contra
-el esquema esperado.
+## 7. E2E Tests (Playwright)
 
----
-
-## 7. Pruebas E2E (Playwright)
-
-Las pruebas E2E se ejecutan contra la URL de producción:  
+The E2E tests run against the production URL:  
 **`https://leviarista.github.io/github-profile-header-generator/`**
 
-### Configuración (`playwright.config.ts`)
+### Configuration (`playwright.config.ts`)
 
 - **Browsers**: Chromium, Firefox, WebKit (Safari), Mobile Chrome
-- **Timeout**: 30 000 ms por prueba
-- **Reintentos**: 2 en CI, 0 en local
+- **Timeout**: 30,000 ms per test
+- **Retries**: 2 in CI, 0 locally
 
-### Suites E2E
+### E2E suites
 
-| Archivo                        | Descripción                                                                  |
-| ------------------------------ | ---------------------------------------------------------------------------- |
-| `banner-customization.spec.ts` | Carga de la app, cambio de colores, selección de presets, descarga de imagen |
-| `accessibility.spec.ts`        | Escaneo de accesibilidad con axe-core en todas las secciones                 |
-| `performance.spec.ts`          | CLS, LCP, FCP usando Performance Observer nativo                             |
+| File                           | Description                                                            |
+| ------------------------------ | ---------------------------------------------------------------------- |
+| `banner-customization.spec.ts` | App load, color changes, preset selection, image download              |
+| `accessibility.spec.ts`        | Accessibility scan with axe-core across all sections                   |
+| `performance.spec.ts`          | CLS, LCP, FCP using the native Performance Observer                    |
 
-### Ejecutar E2E
+### Run E2E
 
 ```bash
-npx playwright install          # Solo la primera vez
-npm run test:e2e                 # Todos los browsers
-npm run test:e2e -- --project=chromium  # Solo Chromium
-npm run test:e2e:ui              # Interfaz visual interactiva
-npm run test:e2e:report          # Abrir último reporte HTML
+npx playwright install          # Only the first time
+npm run test:e2e                # All browsers
+npm run test:e2e -- --project=chromium  # Chromium only
+npm run test:e2e:ui             # Interactive visual interface
+npm run test:e2e:report         # Open the latest HTML report
 ```
 
----
-
-## 8. Análisis estático (ESLint)
+## 8. Static Analysis (ESLint)
 
 ```bash
 npm run lint
 ```
 
-Configuración en `eslint.config.js`:
+Configuration in `eslint.config.js`:
 
 - Base: `@eslint/js` recommended
-- Plugin: `eslint-plugin-security` (reglas OWASP para JS)
-- Reglas clave: `security/detect-object-injection`, `security/detect-non-literal-regexp`
+- Plugin: `eslint-plugin-security` (OWASP rules for JS)
+- Key rules: `security/detect-object-injection`, `security/detect-non-literal-regexp`
 
----
-
-## 9. Pruebas de mutación (Stryker)
+## 9. Mutation Testing (Stryker)
 
 ```bash
 npm run test:mutation
 ```
 
-Configuración en `stryker.config.mjs`:
+Configuration in `stryker.config.mjs`:
 
 - **Runner**: Vitest
-- **Mutantes en**: `js/presets.js`, `js/helpers/helpers.js`
-- **Reporter**: HTML + texto
+- **Mutants in**: `js/presets.js`, `js/helpers/helpers.js`
+- **Reporter**: HTML + text
 
-Las pruebas de mutación verifican que los tests unitarios sean capaces de detectar
-cambios incorrectos en la lógica (operadores lógicos, valores de retorno, condiciones).
+Mutation tests verify that the unit tests are able to detect incorrect changes
+in the logic (logical operators, return values, conditions).
 
----
-
-## 10. Limitaciones conocidas del entorno
+## 10. Known Environment Limitations
 
 ### jsdom — `innerText` setter
 
-jsdom no implementa completamente el setter de `element.innerText` en todos los
-contextos. En consecuencia:
+jsdom does not fully implement the `element.innerText` setter in all contexts.
+As a result:
 
-- Los tests que verifican cambios en `innerText` usan `Object.defineProperty` para
-  interceptar el setter y capturar el valor asignado.
-- En un navegador real, `bannerTitle.innerText = 'value'` funciona correctamente.
+- Tests that verify `innerText` changes use `Object.defineProperty` to intercept
+  the setter and capture the assigned value.
+- In a real browser, `bannerTitle.innerText = 'value'` works correctly.
 
-### jsdom — `backgroundImage` con SVG data URLs
+### jsdom — `backgroundImage` with SVG data URLs
 
-jsdom puede rechazar URLs SVG complejas asignadas a `element.style.backgroundImage`
-a través del parser CSS interno. Los tests relacionados verifican el tipo del valor
-retornado (`typeof string`) en lugar del contenido exacto.
+jsdom may reject complex SVG URLs assigned to `element.style.backgroundImage`
+through its internal CSS parser. Related tests verify the type of the returned
+value (`typeof string`) instead of the exact content.
 
-### Módulos de UI pura (toolbox)
+### Pure UI modules (toolbox)
 
-Los archivos `js/main.js`, `js/toolbox-*.js` y similares inicializan listeners de
-eventos directamente al cargar el módulo. No son testables en jsdom sin refactorizar
-para inyección de dependencias. Se cubren exclusivamente mediante pruebas E2E.
+Files such as `js/main.js`, `js/toolbox-*.js`, and similar modules initialize
+event listeners directly when the module loads. They are not testable in jsdom
+without refactoring for dependency injection. They are covered exclusively by E2E tests.
 
----
+## Executive Summary
 
-## Resumen ejecutivo
-
-| Métrica                              | Resultado                                 |
-| ------------------------------------ | ----------------------------------------- |
-| Tests unitarios + integración        | **145 / 145 pasan** ✅                    |
-| Cobertura de líneas                  | **74%** (umbral: 70%) ✅                  |
-| Cobertura de funciones               | **100%** (umbral: 80%) ✅                 |
-| Bugs detectados                      | **7 bugs** (1 crítico, 2 medios, 4 bajos) |
-| Bugs en datos detectados por oráculo | **1** (BUG #5, presets.json)              |
+| Metric                       | Result                                    |
+| ---------------------------- | ----------------------------------------- |
+| Unit + integration tests     | **145 / 145 passing** ✅                  |
+| Line coverage                | **74%** (threshold: 70%) ✅              |
+| Function coverage            | **100%** (threshold: 80%) ✅             |
+| Bugs detected                | **7 bugs** (1 critical, 2 medium, 4 low) |
+| Data bugs detected by oracle  | **1** (BUG #5, presets.json)             |
