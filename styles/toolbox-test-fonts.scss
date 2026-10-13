@@ -8,8 +8,8 @@
 #test-fonts-section {
     font-size: 20px;
     padding: 50px 0 100px 50px;
-    background-color: #222;
-    color: white;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
 }
 
 .red-hat-display {

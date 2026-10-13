@@ -1,53 +1,77 @@
-/* Style the tab */
 .tab {
     position: fixed;
     left: 50%;
     transform: translateX(calc(-50% + 190px));
-    padding: 0 2px 2px 2px;
+    padding: 0;
     width: fit-content;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(4, auto);
-    gap: 2px;
+    gap: 0;
     justify-content: center;
-    color: var(--text-color);
-    background: #6E5494;
-    border-radius: 0 0 10px 10px;
-    box-shadow: 0px 0px 5px 2px rgba(255, 255, 255, 0.25);
-    // overflow: hidden;
+    color: var(--text-primary);
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-default);
     z-index: 10;
     user-select: none;
 }
 
-/* Style the buttons that are used to open the tab content */
 .tab button {
-    background-color: inherit;
+    background-color: transparent;
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 1rem 2rem;
-    transition: 0.3s;
-    color: rgb(240, 240, 240);
-    border-radius: 0 0 9px 9px;
-    font-weight: bold;
+    padding: 0.75rem 1.5rem;
+    transition: all var(--transition-fast);
+    color: var(--text-secondary);
+    border-radius: 0;
+    font-weight: 500;
+    font-size: 13px;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: transparent;
+        transition: background var(--transition-fast);
+    }
 }
 
-/* Change background color of buttons on hover */
 .tab button:hover {
-    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--text-primary);
+    background-color: rgba(255, 255, 255, 0.05);
+
+    &::after {
+        background: var(--border-default);
+    }
 }
 
-/* Create an active/current tablink class */
 .tab button.active {
-    background-color: rgba(255, 255, 255, 0.15);
-    // border-top-left-radius: 7px;
-    // border-top-right-radius: 7px;
+    color: var(--text-primary);
+
+    &::after {
+        background: var(--accent-blue);
+    }
 }
 
-/* Style the tab content */
+.badge-new {
+    background-color: var(--accent-purple);
+    color: #fff;
+    padding: 1px 5px;
+    font-size: 9px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-left: 4px;
+    vertical-align: super;
+    line-height: 1;
+}
+
 .tabcontent {
     width: 100%;
-    // max-width: calc(1280px - 296px - 24px);
     margin: auto;
     margin-top: calc(1rem + 2rem + 0.5rem);
     max-width: calc(850px);
@@ -56,25 +80,26 @@
 }
 
 .tabcontent {
-    animation: fadeEffect 1s;
-    /* Fading effect takes 1 second */
+    animation: fadeEffect 0.3s ease;
 }
 
-/* Go from zero to full opacity */
 @keyframes fadeEffect {
     from {
         opacity: 0;
+        transform: translateY(4px);
     }
 
     to {
         opacity: 1;
+        transform: translateY(0);
     }
 }
 
 @media (max-width: 850px) {
     .tab {
         button {
-            padding: 10px 1rem;
+            padding: 0.75rem 1rem;
+            font-size: 12px;
         }
     }
 }
@@ -83,17 +108,15 @@
     .tab {
         position: static;
         width: 100%;
-        transform: translateX(calc(0));
+        transform: translateX(0);
         display: grid;
         grid-template-columns: repeat(4, auto);
-        gap: 1px;
-        border-radius: 0;
-        padding: 1px;
-        overflow: auto;
+        gap: 0;
+        border-bottom: 1px solid var(--border-default);
 
         button {
-            padding: 10px;
-            border-radius: 0;
+            padding: 0.75rem 0.5rem;
+            font-size: 12px;
         }
     }
 
@@ -108,17 +131,14 @@
         width: 100%;
         margin: 0;
         left: 0;
-        transform: translateX(calc(0));
+        transform: translateX(0);
         display: grid;
         grid-template-columns: repeat(4, auto);
-        border-radius: 0;
-        padding: 1px;
-        overflow: auto;
+        border-bottom: 1px solid var(--border-default);
 
         button {
-            padding: 10px;
-            border-radius: 0;
+            padding: 0.75rem 0.5rem;
+            font-size: 11px;
         }
     }
-
 }

@@ -1,38 +1,55 @@
 :root {
-    --button-border-radius: 7px;
-    --input-border-radius: 7px;
-    --background-color: linear-gradient(180deg,
-            #675494 0%,
-            #605fa1 32.6%,
-            #4e6db3 68.54%,
-            #4078c0 100%);
-    --text-color: white;
-    --paddings: 3rem;
-    --github-dark-mode-color: #0d1117;
-    --github-light-mode-color: white;
-    --main-font-familiy: "Red Hat Display", Arial, Helvetica, sans-serif;
-
-
+    --button-border-radius: 8px;
+    --input-border-radius: 8px;
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --bg-tertiary: #CDE4F7;
+    --bg-overlay: rgba(0, 0, 0, 0.4);
+    --border-default: #30363d;
+    --border-muted: #21262d;
+    --text-primary: #f0f6fc;
+    --text-secondary: #8b949e;
+    --text-muted: #6e7681;
+    --accent-blue: #58a6ff;
+    --accent-green: #238636;
+    --accent-green-hover: #2ea043;
+    --accent-purple: #bc8cff;
+    --accent-danger: #f85149;
+    --accent-warning: #d29922;
+    --focus-ring: rgba(88, 166, 255, 0.3);
+    --github-dark-bg: #0d1117;
+    --github-light-bg: #ffffff;
+    --paddings: 2rem;
+    --main-font-family: "Red Hat Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --transition-fast: 150ms ease;
+    --transition-normal: 250ms ease;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 3px 6px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
 [data-theme="dark"] {
-    // --background-color: linear-gradient(180deg, #2A2142 0%, #2F3E6F 50%, #1A2A54 100%);
-    // --background-color: linear-gradient(180deg, #201932 0%, #222c50 50%, #131e3c 100%);
-    // --background-color: linear-gradient(180deg, #1B1B2F 0%, #121224 60%, #0A0A1A 100%);
-    // --background-color: linear-gradient(180deg, #111110 0%, #1A1A1A 40%, #2E2E3A 100%);
-    // --background-color: linear-gradient(180deg, #0d0a14 0%, #151b31 75%, #131e3c 100%);
-    // --background-color: linear-gradient(180deg, #3b2e5a 0%, #4b3b7a 40%, #1a1a1a 100%);
-    // --background-color: linear-gradient(180deg, #1e1436 0%, #2a1e4a 40%, #0a0a0a 100%);
-    // --background-color: linear-gradient(180deg, #1A1924 0%, #2A2D40 50%, #0F1017 100%);
-    // --background-color: linear-gradient(180deg, #121212 0%, #2F3E50 50%, #10192a 100%);
-    --background-color: linear-gradient(180deg, #111110 0%, #1e2732 50%, #111110 100%);
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --bg-tertiary: #21262d;
+    --text-primary: #f0f6fc;
+    --text-secondary: #8b949e;
+    --border-default: #30363d;
+}
 
-    // --text-color: white;
-    --text-color: #f5f5f5;
-
-    .tab {
-        background-color: #1b3050;
-    }
+[data-theme="light"] {
+    --bg-primary: #f6f8fa;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #eaeef2;
+    --bg-overlay: rgba(255, 255, 255, 0.8);
+    --text-primary: #1f2328;
+    --text-secondary: #656d76;
+    --text-muted: #8b949e;
+    --border-default: #d0d7de;
+    --border-muted: #d8dee4;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 3px 6px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 @media (max-width: 768px) {

@@ -1,25 +1,23 @@
 .toolbox-container {
     .result-box {
-        // height: 300px;
-        padding: 2rem 2rem 0.5rem 2rem;
-        background: var(--github-dark-mode-color);
-        transition: 0.5s ease;
+        padding: 1.5rem 2rem 0.5rem 2rem;
+        background: var(--github-dark-bg);
+        transition: background-color var(--transition-normal);
         user-select: none;
         position: relative;
         z-index: 20;
-        border-bottom: solid 1px #373737;
+        border-bottom: 1px solid var(--border-default);
 
-        &.light-mode {
-            background: var(--github-light-mode-color);
+        [data-theme="light"] & {
+            background: var(--github-light-bg);
 
-            .dark-mode-button,
             .randomize-button,
-            .reset-button {
-                color: black !important;
+            .reset-button,
+            .download-button {
+                color: var(--text-primary) !important;
 
                 &:hover {
-                    // box-shadow: 0px 0px 5px 2px rgba(255, 255, 255, 0.25);
-                    text-shadow: 0px 0px 10px #929292 !important;
+                    background: rgba(0, 0, 0, 0.05);
                 }
             }
         }
@@ -27,11 +25,9 @@
         .header-image-container {
             width: 100%;
             flex-grow: 1;
-            // max-width: calc(1280px - 296px - 24px);
-            max-width: calc(850px);
+            max-width: 850px;
             margin: auto;
-            width: 100%;
-            filter: drop-shadow(0px 0px 5px rgba(125, 125, 125, 0.5));
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
         }
 
         #github-header-image {
@@ -45,20 +41,19 @@
             flex-direction: column;
             background-color: #62518d;
             color: white;
-            border-radius: 7px;
+            border-radius: var(--button-border-radius);
             margin: 0 auto;
             border: none;
             overflow: hidden;
             background-size: 200px;
-            transition: 0.25s ease;
+            transition: background-color var(--transition-normal);
 
             .title,
             .subtitle {
-                transition: 0.25s ease;
+                transition: color var(--transition-fast);
                 white-space: nowrap;
             }
 
-            // Ensure Electrolize font loads properly
             .title[style*="Electrolize"],
             .subtitle[style*="Electrolize"] {
                 font-family: "Electrolize", monospace !important;
@@ -70,70 +65,68 @@
         }
 
         .options-container {
-            max-width: calc(850px);
+            max-width: 850px;
             margin: auto;
             user-select: none;
             display: flex;
             align-items: center;
-            gap: 35px;
+            gap: 1rem;
             justify-content: space-between;
-            // flex-wrap: wrap;
-            padding: 1rem 0 0.5rem 0;
+            padding: 0.75rem 0 0.5rem 0;
             overflow: auto;
 
-            >div:first-child {
+            > div:first-child {
                 display: flex;
-                gap: 2rem;
+                gap: 0.5rem;
             }
 
-            .dark-mode-button,
             .randomize-button,
-            .download-button,
-            .reset-button {
-                background-color: transparent;
+            .reset-button,
+            .download-button {
+                background-color: #60AFD6;
                 display: flex;
-                gap: 7px;
+                gap: 6px;
                 justify-content: center;
                 align-items: center;
                 width: fit-content;
-                height: 35px;
-                // border: 1px solid #ffffff;
-                // border-radius: var(--button-border-radius);
-                color: var(--text-color);
-                // text-transform: uppercase;
+                height: 32px;
+                padding: 0 10px;
+                color: var(--text-primary);
                 text-align: center;
-                font-weight: 600;
+                font-weight: 500;
+                font-size: 12px;
                 white-space: nowrap;
-                transition: all 0.25s ease-in-out;
+                border-radius: 6px;
+                transition: all var(--transition-fast);
                 cursor: pointer;
+                border: 1px solid transparent;
 
                 img {
-                    transition: all ease 500ms;
+                    transition: transform var(--transition-fast);
                 }
 
                 &:hover {
-                    // box-shadow: 0px 0px 5px 2px rgba(255, 255, 255, 0.25);
-                    text-shadow: 0px 0px 10px rgb(255, 255, 255);
-
-                    img {
-                        transform: scale(1.2);
-                    }
+                    background: #4998BF;
                 }
             }
 
             .download-button,
             .display-button,
             .miniature-button {
-                background-color: #2D8655 !important;
-                // border: 1px solid #ffffff;
-                border-radius: var(--button-border-radius);
-                padding: 5px 15px;
+                background-color: var(--accent-green) !important;
+                border-radius: 6px;
+                padding: 0 12px;
+                color: #fff;
+
+                &:hover {
+                    background-color: var(--accent-green-hover) !important;
+                }
             }
         }
     }
 
     .toolbox-tools {
-        height: calc(100vh - 230px - 3rem - 35px - 1rem);
+        height: calc(100vh - 230px - 3rem - 40px - 1rem);
         overflow: auto;
         padding: 1rem 1rem 4rem 1rem;
     }
@@ -141,14 +134,14 @@
     .toolbox {
         box-sizing: border-box;
 
-        >div {
+        > div {
             display: flex;
             align-items: center;
             justify-content: center;
             flex-wrap: wrap;
 
             &:not(:last-child) {
-                margin-bottom: 15px;
+                margin-bottom: 1rem;
             }
         }
 
@@ -157,7 +150,7 @@
 
             input {
                 text-align: center;
-                width: calc(50% - 7.5px);
+                width: calc(50% - 0.5rem);
             }
         }
 
@@ -167,7 +160,7 @@
                 align-items: center;
 
                 &:not(:last-child) {
-                    margin-right: 15px;
+                    margin-right: 1rem;
                 }
 
                 input {
@@ -179,9 +172,9 @@
         }
 
         .size-inputs {
-            >div {
+            > div {
                 &:not(:last-child) {
-                    margin-right: 15px;
+                    margin-right: 1rem;
                 }
 
                 input {
@@ -223,7 +216,7 @@
                 align-items: flex-start;
 
                 &:not(:last-child) {
-                    margin-right: 15px;
+                    margin-right: 1rem;
                 }
 
                 input {
@@ -241,23 +234,23 @@
         }
 
         .result-box {
-            padding: 2rem 1rem 0.5rem 1rem;
+            padding: 1.5rem 1rem 0.5rem 1rem;
 
             #github-header-image {
                 height: 230px;
             }
 
             .options-container {
-                gap: 10px;
+                gap: 0.5rem;
 
-                >div:first-child {
-                    gap: 10px;
+                > div:first-child {
+                    gap: 0.5rem;
                 }
             }
         }
 
         .toolbox-tools {
-            height: calc(100vh - 230px - 3rem - 35px - 2rem - 2rem);
+            height: calc(100vh - 230px - 3rem - 40px - 2rem - 2rem);
             min-height: 300px;
         }
 
@@ -265,9 +258,6 @@
             .text-inputs {
                 input {
                     width: 100%;
-                    // &:not(:last-child) {
-                    //     margin-bottom: 10px;
-                    // }
                 }
             }
 
@@ -287,14 +277,13 @@
         .result-box {
             .options-container {
                 flex-wrap: wrap;
-                gap: 10px;
+                gap: 0.5rem;
                 justify-content: center;
 
-                >div:first-child {
-                    gap: 10px;
+                > div:first-child {
+                    gap: 0.5rem;
                 }
             }
         }
     }
-
 }

@@ -67,27 +67,18 @@
 
     <script>
         /* ************** Dark Mode ************** */
-        function detectColorScheme() {
-            let darkMode = 0;
-            if (localStorage.getItem("darkMode")) {
-                if (localStorage.getItem("darkMode") == 1) {
-                    darkMode = 1;
-                }
-            } else if (!window.matchMedia) {
-                return false;
-            } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-                darkMode = 1;
+        (function () {
+            const saved = localStorage.getItem("darkMode");
+            let isDark = false;
+
+            if (saved !== null) {
+                isDark = saved === "1";
+            } else if (window.matchMedia) {
+                isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
             }
 
-            if (darkMode == 1) {
-                localStorage.setItem('darkMode', 1);
-                document.documentElement.setAttribute("data-theme", "dark");
-            } else {
-                localStorage.setItem('darkMode', 0);
-                document.documentElement.setAttribute("data-theme", "light");
-
-            }
-        }
-        detectColorScheme();
+            localStorage.setItem('darkMode', isDark ? "1" : "0");
+            document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
+        })();
     </script>
 </head>

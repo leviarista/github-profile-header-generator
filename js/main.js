@@ -13,16 +13,21 @@ const {
 
 /* ************** Options ************** */
 
-const initialTheme = {
-    textAlign: "center",
-    ...getAllPresets()[15],
-    background: "#62518d",
-    borderSize: 5,
-    decoration: 'dino-border.png',
-    subtitleColor: "#FFF2B3",
-    titleFont: 'Red Hat Display',
-    subtitleFont: 'Kalam'
-};
+function getInitialTheme() {
+    const isDark = localStorage.getItem('darkMode') !== '0';
+    return {
+        textAlign: "center",
+        ...getAllPresets()[15],
+        background: isDark ? "#62518d" : "#4a6fa5",
+        borderSize: 5,
+        decoration: 'dino-border.png',
+        subtitleColor: isDark ? "#FFF2B3" : "#FFF2B3",
+        titleFont: 'Red Hat Display',
+        subtitleFont: 'Kalam'
+    };
+}
+
+const initialTheme = getInitialTheme();
 
 // Init
 toolbox.querySelector('.size-inputs input#width-input').value = bannerImageContainer.clientWidth;
@@ -68,10 +73,10 @@ document.querySelector('.download-button')
                     scale: 2
                 });
             document.querySelector('.download-button img').src = './images/icons/download.svg'
-            showToast('Banner downloaded successfully 🎉', 'success');
+            showToast('Banner downloaded successfully', 'success');
         } catch (error) {
             console.error('Image capture or download failed:', error);
-            showToast('Download failed 😞', 'error');
+            showToast('Download failed', 'error');
         }
     })
 
@@ -100,7 +105,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
         }
         if (miniatureButton) {
             miniatureButton.style.display = "block";
-            // console.log('Running on localhost! display appending image option  ...');
 
             miniatureButton.addEventListener('click', async () => {
                 const png = await snapdom.toPng(el, { embedFonts: true, scale: 0.25 });
@@ -117,31 +121,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
         }
     }
 });
-
-// Toogle Dark Mode button
-document.querySelector('.dark-mode-button')
-    .addEventListener('click', (e) => {
-        let resultBox = document.querySelector('.result-box');
-        const toogleDarkModeButton = document.querySelector('.dark-mode-button');
-        const toogleRandomizeButton = document.querySelector('.randomize-button');
-        const toogleResetButton = document.querySelector('.reset-button');
-        const toogleDownloadButton = document.querySelector('.download-button');
-
-        const size = 20;
-
-        resultBox.classList.toggle('light-mode');
-        if (resultBox.className.includes('light')) {
-            toogleDarkModeButton.innerHTML = `<img src="./images/icons/light-dark-black.svg" width="${size}" />Light`
-            toogleRandomizeButton.innerHTML = `<img src="./images/icons/random-black.svg" width="${size}" />Random`
-            toogleResetButton.innerHTML = `<img src="./images/icons/reset-black.svg" width="${size}" />Reset`
-            toogleDownloadButton.innerHTML = `<img src="./images/icons/download.svg" width="${size}" />Download`
-        } else {
-            toogleDarkModeButton.innerHTML = `<img src="./images/icons/light-dark.svg" width="${size}" />Dark`
-            toogleRandomizeButton.innerHTML = `<img src="./images/icons/random.svg" width="${size}" />Random`
-            toogleResetButton.innerHTML = `<img src="./images/icons/reset.svg" width="${size}" />Reset`
-            toogleDownloadButton.innerHTML = `<img src="./images/icons/download.svg" width="${size}" />Download`
-        }
-    });
 
 // Randomize
 document.querySelector('.randomize-button')
@@ -180,7 +159,7 @@ function openTab(e, name) {
 document.querySelectorAll('.tab .tablinks')
     .forEach(button => {
         button.addEventListener('click', (e) => {
-            const name = e.target.getAttribute('data-name');
+            const name = e.currentTarget.getAttribute('data-name');
             localStorage.setItem('openTab', name)
             openTab(e, name);
         });
@@ -196,32 +175,26 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
 });
 
-/* ************** Dark Mode ************** */
+/* ************** App Dark Mode (UI theme) ************** */
 
-function setLightMode() {
-    localStorage.setItem('darkMode', 0);
-    document.documentElement.setAttribute("data-theme", "light");
-    document.querySelector('#light-mode-btn').classList.add('selected');
-    document.querySelector('#dark-mode-btn').classList.remove('selected');
-}
-function setDarkMode() {
-    localStorage.setItem('darkMode', 1);
-    document.documentElement.setAttribute("data-theme", "dark");
-    document.querySelector('#light-mode-btn').classList.remove('selected');
-    document.querySelector('#dark-mode-btn').classList.add('selected');
+function applyTheme(isDark) {
+    localStorage.setItem('darkMode', isDark ? "1" : "0");
+    document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
+
+    document.querySelector('#light-mode-btn').classList.toggle('selected', !isDark);
+    document.querySelector('#dark-mode-btn').classList.toggle('selected', isDark);
 }
 
-document.addEventListener("DOMContentLoaded", (event) => {
+document.addEventListener("DOMContentLoaded", () => {
     const localDarkMode = localStorage.getItem('darkMode');
-    if (localDarkMode && localDarkMode == 1) {
-        document.querySelector('#dark-mode-btn').classList.add('selected');
-    } else {
-        document.querySelector('#light-mode-btn').classList.add('selected');
-    }
-    document.querySelector('#light-mode-btn').onclick = setLightMode;
-    document.querySelector('#dark-mode-btn').onclick = setDarkMode;
-});
+    const isDark = localDarkMode === "1";
 
+    document.querySelector('#light-mode-btn').classList.toggle('selected', !isDark);
+    document.querySelector('#dark-mode-btn').classList.toggle('selected', isDark);
+
+    document.querySelector('#light-mode-btn').onclick = () => applyTheme(false);
+    document.querySelector('#dark-mode-btn').onclick = () => applyTheme(true);
+});
 
 /* ************** Notification Toasts ************** */
 
