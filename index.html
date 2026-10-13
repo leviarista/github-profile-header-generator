@@ -69,31 +69,22 @@
 
     <script>
         /* ************** Dark Mode ************** */
-        function detectColorScheme() {
-            let darkMode = 0;
-            if (localStorage.getItem("darkMode")) {
-                if (localStorage.getItem("darkMode") == 1) {
-                    darkMode = 1;
-                }
-            } else if (!window.matchMedia) {
-                return false;
-            } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-                darkMode = 1;
+        (function () {
+            const saved = localStorage.getItem("darkMode");
+            let isDark = false;
+
+            if (saved !== null) {
+                isDark = saved === "1";
+            } else if (window.matchMedia) {
+                isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
             }
 
-            if (darkMode == 1) {
-                localStorage.setItem('darkMode', 1);
-                document.documentElement.setAttribute("data-theme", "dark");
-            } else {
-                localStorage.setItem('darkMode', 0);
-                document.documentElement.setAttribute("data-theme", "light");
-
-            }
-        }
-        detectColorScheme();
+            localStorage.setItem('darkMode', isDark ? "1" : "0");
+            document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
+        })();
     </script>
-  <script type="module" crossorigin src="/github-profile-header-generator/assets/index-BqZhzdUv.js"></script>
-  <link rel="stylesheet" crossorigin href="/github-profile-header-generator/assets/index-BO9LJGEl.css">
+  <script type="module" crossorigin src="/github-profile-header-generator/assets/index-n3Hi4wvN.js"></script>
+  <link rel="stylesheet" crossorigin href="/github-profile-header-generator/assets/index-M7BEkWdR.css">
 </head>
 
 <body class="main-container dark-mode">
@@ -198,10 +189,6 @@
     </div>
     <div class="options-container">
         <div>
-            <div role="button" class="dark-mode-button">
-                <img src="./images/icons/light-dark.svg" width="20" />
-                Dark
-            </div>
             <div role="button" class="randomize-button">
                 <img src="./images/icons/random.svg" width="20" />
                 Random
@@ -230,11 +217,7 @@
 
         <div class="tab">
             <button class="tablinks" data-name="presets-section">
-                Presets
-                <div
-                    style="position: absolute; background-color: rgba(255, 255, 255, 1); top: 5px; color: #585c9c; padding: 2px 5px; font-size: 10px; font-weight: bold; border-radius: 5px; transform: translateX(-40px)">
-                    NEW
-                </div>
+                Presets <span class="badge-new">NEW</span>
             </button>
             <button class="tablinks" data-name="main-section" id="defaultOpenTag">Main</button>
             <button class="tablinks" data-name="background-section">Background</button>
