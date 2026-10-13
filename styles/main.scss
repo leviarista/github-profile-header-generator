@@ -167,8 +167,8 @@ input[type="range"] {
     &::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
-        width: 16px;
-        height: 16px;
+        width: 20px;
+        height: 20px;
         background: var(--accent-blue);
         border: 2px solid var(--bg-primary);
         border-radius: 50%;

@@ -8,18 +8,8 @@
         z-index: 20;
         border-bottom: 1px solid var(--border-default);
 
-        [data-theme="light"] & {
+        &.light-mode {
             background: var(--github-light-bg);
-
-            .randomize-button,
-            .reset-button,
-            .download-button {
-                color: var(--text-primary) !important;
-
-                &:hover {
-                    background: rgba(0, 0, 0, 0.05);
-                }
-            }
         }
 
         .header-image-container {
@@ -80,10 +70,11 @@
                 gap: 0.5rem;
             }
 
+            .dark-mode-button,
             .randomize-button,
             .reset-button,
             .download-button {
-                background-color: #60AFD6;
+                background: #60AFD6;
                 display: flex;
                 gap: 6px;
                 justify-content: center;
@@ -91,9 +82,9 @@
                 width: fit-content;
                 height: 32px;
                 padding: 0 10px;
-                color: var(--text-primary);
+                color: white;
                 text-align: center;
-                font-weight: 500;
+                font-weight: 700;
                 font-size: 12px;
                 white-space: nowrap;
                 border-radius: 6px;
@@ -106,6 +97,9 @@
                 }
 
                 &:hover {
+                    img {
+                        transform: scale(1.2);
+                    }
                     background: #4998BF;
                 }
             }
@@ -283,6 +277,14 @@
                 > div:first-child {
                     gap: 0.5rem;
                 }
+
+            .randomize-button,
+            .reset-button {
+                img {
+                    display: none;
+                }
+            }
+
             }
         }
     }

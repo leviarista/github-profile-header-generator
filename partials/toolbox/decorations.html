@@ -8,7 +8,24 @@
                 <output for="decoration-size-input">100</output>
             </div>
         </div>
-        <div>Decorations:</div>
+        <div class="decorations-upload">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;" >
+                <label for="decoration-size-input" style="font-weight: 100;">Upload my own decoration:</label>
+                <input type="file" id="decoration-upload-input" class="btn" aria-label="Upload decoration" />
+            </div>
+            <div class="preview-decoration" alt="Preview uploaded decoration"></div>
+            <span class="myoctocats-tip">
+                💡Use an octocat from the
+                <a href="https://octodex.github.com/" target="_blank" rel="noopener noreferrer">Github
+                    Octodex</a>
+                <br />
+                💡Build my own at
+                <a href="https://myoctocat.com/" target="_blank" rel="noopener noreferrer">MyOctocat.com</a>
+                <!-- <br />
+                &emsp; (My octocat looks like broken but you can copy the svg result) -->
+            </span>
+        </div>
+        <div>Or choose one of these:</div>
         <div class="decorations-buttons">
             <button type="button" class="btn" aria-label="no decorations" data-decoration-value="none">
                 None
@@ -97,21 +114,6 @@
             <button type="button" class="btn" aria-label="js decoration button" data-decoration-value="js.png">
                 <img src="./images/decorations/js.png" alt="js decoration button" />
             </button>
-        </div>
-        <div class="decorations-upload">
-            <label for="decoration-size-input">Upload your own decoration:</label>
-            <input type="file" id="decoration-upload-input" class="btn" aria-label="Upload decoration" />
-            <div class="preview-decoration" alt="Preview uploaded decoration"></div>
-            <span class="myoctocats-tip">
-                💡Use an octocat from the
-                <a href="https://octodex.github.com/" target="_blank" rel="noopener noreferrer">Github
-                    Octodex</a>
-                <br />
-                💡Or build your own at
-                <a href="https://myoctocat.com/" target="_blank" rel="noopener noreferrer">MyOctocat.com</a>
-                <!-- <br />
-                &emsp; (My octocat looks like broken but you can copy the svg result) -->
-            </span>
         </div>
     </div>
 </div>

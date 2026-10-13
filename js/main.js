@@ -14,14 +14,13 @@ const {
 /* ************** Options ************** */
 
 function getInitialTheme() {
-    const isDark = localStorage.getItem('darkMode') !== '0';
     return {
         textAlign: "center",
         ...getAllPresets()[15],
-        background: isDark ? "#62518d" : "#4a6fa5",
+        background: "#4a6fa5", // old: "#62518d"
         borderSize: 5,
         decoration: 'dino-border.png',
-        subtitleColor: isDark ? "#FFF2B3" : "#FFF2B3",
+        subtitleColor: "#FFF2B3",
         titleFont: 'Red Hat Display',
         subtitleFont: 'Kalam'
     };
@@ -121,6 +120,20 @@ document.addEventListener("DOMContentLoaded", (event) => {
         }
     }
 });
+
+// Toogle Dark Mode button
+document.querySelector('.dark-mode-button')
+    .addEventListener('click', (e) => {
+        let resultBox = document.querySelector('.result-box');
+        const toogleDarkModeButton = document.querySelector('.dark-mode-button');
+
+        resultBox.classList.toggle('light-mode');
+        if (resultBox.className.includes('light')) {
+            toogleDarkModeButton.innerHTML = `<img src="./images/icons/light-dark.svg" width="20" />Light`
+        } else {
+            toogleDarkModeButton.innerHTML = `<img src="./images/icons/light-dark.svg" width="20" />Dark`
+        }
+    });
 
 // Randomize
 document.querySelector('.randomize-button')

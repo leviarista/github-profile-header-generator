@@ -53,10 +53,14 @@
             margin-top: 0.5rem;
         }
 
+        #decoration-upload-input {
+            margin-bottom: 0.5rem;
+        }
+
         .myoctocats-tip {
             margin-top: 0.75rem;
             margin-bottom: 0.75rem;
-            padding: 1rem;
+            padding: 0.5rem 1rem;
             border-radius: var(--input-border-radius);
             font-size: 13px;
             line-height: 1.6;
