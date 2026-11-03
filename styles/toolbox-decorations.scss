@@ -29,6 +29,10 @@
             border-radius: 6px;
             transition: all var(--transition-fast);
 
+            [data-theme="light"] & {
+                background: #93a7ba;
+            }
+
             img {
                 max-width: 50px;
                 max-height: 50px;

@@ -56,6 +56,8 @@ function getPatternDefaultSize(option) {
             return 40;
         case 'dalmatian-spots':
             return 200;
+        case 'subtle-stripes':
+            return 25;
         default:
             return 100;
     }

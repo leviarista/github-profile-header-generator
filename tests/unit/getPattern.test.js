@@ -24,6 +24,7 @@ const KNOWN_PATTERNS = [
   "brick-wall",
   "honeycomb",
   "charlie-brown",
+  "subtle-stripes",
 ];
 
 // ─── Return format ─────────────────────────────────────────────────────────
