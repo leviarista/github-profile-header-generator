@@ -1,8 +1,8 @@
 /**
  * tests/setup.js
- * Prepara el DOM mínimo necesario para que banner.js y los módulos
- * del toolbox puedan ser importados sin errores en el entorno jsdom.
- * Se ejecuta ANTES de cada archivo de test (setupFiles en vitest.config.js).
+ * Sets up the minimal DOM needed for banner.js and the toolbox modules
+ * to be imported without errors in the jsdom environment.
+ * Runs BEFORE each test file (setupFiles in vitest.config.js).
  */
 
 document.body.innerHTML = `

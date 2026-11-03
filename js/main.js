@@ -1,7 +1,9 @@
-import { snapdom } from '@zumer/snapdom';
 import { getMainElements } from './helpers/elements';
 import { isDevOptions, isLocalDevelopment } from './helpers/helpers';
 import { getAllPresets, getRandomPreset, setPreset } from './presets';
+
+// Loaded on demand: the capture library is only needed when exporting
+const loadSnapdom = () => import('@zumer/snapdom').then(m => m.snapdom);
 
 /* ************** Elements ************** */
 
@@ -63,6 +65,7 @@ document.querySelector('.download-button')
         document.querySelector('.download-button img').src = './images/icons/loading.gif'
 
         try {
+            const snapdom = await loadSnapdom();
             await snapdom.download(
                 bannerImage,
                 {
@@ -93,7 +96,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             displayButton.style.display = "block";
 
             displayButton.addEventListener('click', async () => {
-                const png = await snapdom.toPng(el, { embedFonts: true });
+                const png = await (await loadSnapdom()).toPng(el, { embedFonts: true });
 
                 const prevImage = container.children[1];
                 if (prevImage) container.removeChild(prevImage);
@@ -106,7 +109,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             miniatureButton.style.display = "block";
 
             miniatureButton.addEventListener('click', async () => {
-                const png = await snapdom.toPng(el, { embedFonts: true, scale: 0.25 });
+                const png = await (await loadSnapdom()).toPng(el, { embedFonts: true, scale: 0.25 });
 
                 const prevImage = container.children[1];
                 if (prevImage) container.removeChild(prevImage);

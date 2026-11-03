@@ -1,6 +1,8 @@
-import { getPattern } from './data/patterns';
 import { getMainElements } from "./helpers/elements";
 import { isLocalDevelopment } from './helpers/helpers';
+
+let patternModule;
+const loadPatternModule = () => patternModule ??= import('./data/patterns.js');
 
 const {
     bannerImage,
@@ -116,8 +118,14 @@ function applyTheme({
             otherImageDecoration.style.width = `${decorationSize}px`;
     }
     if (pattern || patternColor || patternOpacity || patternSize) {
-        bannerImage.style.backgroundImage = getPattern(pattern, patternColor.replace('#', '') || 'FFFFFF', patternOpacity);
-        bannerImage.style.backgroundSize = `${patternSize}px`;
+        loadPatternModule().then(({ getPattern }) => {
+            bannerImage.style.backgroundImage = getPattern(
+                pattern,
+                patternColor?.replace('#', '') || 'FFFFFF',
+                patternOpacity
+            );
+            bannerImage.style.backgroundSize = `${patternSize}px`;
+        });
     }
     if (titleFont && subtitleFont) {
         // document.fonts.ready.then(() => {

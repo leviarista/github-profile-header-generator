@@ -1,12 +1,12 @@
 /**
  * tests/integration/banner.test.js
- * Pruebas de integración para js/banner.js.
- * Verifica que updateBanner y updateUIOptions mutean correctamente el DOM.
- * El DOM fixture está definido en tests/setup.js (cargado via setupFiles).
+ * Integration tests for js/banner.js.
+ * Verifies that updateBanner and updateUIOptions correctly mutate the DOM.
+ * The DOM fixture is defined in tests/setup.js (loaded via setupFiles).
  */
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 
-// Mock del canvas ANTES de importar banner (banner → helpers → saveImage → canvas)
+// Canvas mock BEFORE importing banner (banner → helpers → saveImage → canvas)
 const mockToDataURL = vi.fn(() => "data:image/png;base64,MOCK");
 const mockDrawImage = vi.fn();
 const mockGetContext = vi.fn(() => ({ drawImage: mockDrawImage }));
@@ -30,8 +30,8 @@ const bannerTitle = bannerImage.querySelector(".title");
 const bannerSubtitle = bannerImage.querySelector(".subtitle");
 
 /**
- * jsdom no implementa correctamente el setter de innerText (no actualiza textContent).
- * Interceptamos el setter para poder verificar qué valor recibe banner.js.
+ * jsdom does not correctly implement the innerText setter (it does not update textContent).
+ * We intercept the setter so we can verify which value banner.js receives.
  */
 const innerTextCapture = { title: "GitHub User", subtitle: "Developer" };
 Object.defineProperty(bannerTitle, "innerText", {
@@ -57,7 +57,7 @@ beforeEach(() => {
   localStorage.clear();
   vi.clearAllMocks();
 
-  // Resetear estilos del banner al estado inicial entre pruebas
+  // Reset banner styles to the initial state between tests
   bannerImage.style.cssText = "";
   innerTextCapture.title = "GitHub User";
   innerTextCapture.subtitle = "Developer";
@@ -67,18 +67,18 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
-// ─── updateBanner - Propiedades visuales ──────────────────────────────────
+// ─── updateBanner - Visual properties ─────────────────────────────────────
 
-describe("updateBanner - propiedades visuales del banner", () => {
-  it("aplica el color de fondo al banner", () => {
+describe("updateBanner - banner visual properties", () => {
+  it("applies the background color to the banner", () => {
     updateBanner({ background: "#FF5733", ignoreSave: true });
     expect(bannerImage.style.backgroundColor).toMatch(
       /rgb\(255, 87, 51\)|#FF5733/i,
     );
   });
 
-  it("aplica el borde al banner (borderColor + borderSize + borderRadius, todos requeridos)", () => {
-    // applyTheme: if (borderColor && borderSize && borderRadius) — los 3 deben ser truthy
+  it("applies the border to the banner (borderColor + borderSize + borderRadius, all required)", () => {
+    // applyTheme: if (borderColor && borderSize && borderRadius) — all 3 must be truthy
     updateBanner({
       borderColor: "#FFFFFF",
       borderSize: 5,
@@ -89,20 +89,18 @@ describe("updateBanner - propiedades visuales del banner", () => {
     expect(bannerImage.style.border).toContain("solid");
   });
 
-  it("[BUG #3b] borderRadius:0 es falsy — el borde NO se aplica cuando borderRadius es 0", () => {
-    // borderRadius=0 es falsy en JS, por lo que la condición falla y el borde no se aplica
+  it("applies the border when borderRadius is 0", () => {
     updateBanner({
       borderColor: "#FFFFFF",
       borderSize: 5,
       borderRadius: 0,
       ignoreSave: true,
     });
-    // Solo se aplica borderColor (hay otra condición separada para eso)
-    expect(bannerImage.style.border).not.toContain("5px");
+    expect(bannerImage.style.border).toContain("5px");
   });
 
-  it("aplica el borderRadius al banner (requiere borderColor + borderSize + borderRadius)", () => {
-    // La condición if (borderColor && borderSize && borderRadius) requiere los 3 truthy
+  it("applies the borderRadius to the banner (requires borderColor + borderSize + borderRadius)", () => {
+    // The condition if (borderColor && borderSize && borderRadius) requires all 3 to be truthy
     updateBanner({
       borderColor: "#000000",
       borderSize: 3,
@@ -112,170 +110,161 @@ describe("updateBanner - propiedades visuales del banner", () => {
     expect(bannerImage.style.borderRadius).toContain("15");
   });
 
-  it("aplica el padding al banner", () => {
+  it("applies the padding to the banner", () => {
     updateBanner({ padding: 30, ignoreSave: true });
     expect(bannerImage.style.padding).toContain("30");
   });
 
-  it("aplica el color del título", () => {
+  it("applies the title color", () => {
     updateBanner({ titleColor: "#FF0000", ignoreSave: true });
     expect(bannerTitle.style.color).toMatch(/rgb\(255, 0, 0\)|#FF0000/i);
   });
 
-  it("aplica el color del subtítulo", () => {
+  it("applies the subtitle color", () => {
     updateBanner({ subtitleColor: "#00FF00", ignoreSave: true });
     expect(bannerSubtitle.style.color).toMatch(/rgb\(0, 255, 0\)|#00FF00/i);
   });
 
-  it("actualiza el título cuando se proporciona texto no vacío (via innerText interceptado)", () => {
-    updateBanner({ title: "Mi Nombre de GitHub", ignoreSave: true });
-    // banner.js usa innerText setter; lo interceptamos para verificar el valor correcto
-    expect(innerTextCapture.title).toBe("Mi Nombre de GitHub");
+  it("updates the title when non-empty text is provided (via intercepted innerText)", () => {
+    updateBanner({ title: "My GitHub Name", ignoreSave: true });
+    // banner.js uses the innerText setter; we intercept it to verify the correct value
+    expect(innerTextCapture.title).toBe("My GitHub Name");
   });
 
-  it("actualiza el subtítulo cuando se proporciona texto no vacío (via innerText interceptado)", () => {
+  it("updates the subtitle when non-empty text is provided (via intercepted innerText)", () => {
     updateBanner({ subtitle: "Full Stack Developer", ignoreSave: true });
     expect(innerTextCapture.subtitle).toBe("Full Stack Developer");
   });
 
-  it("aplica tamaño de fuente del título", () => {
+  it("applies the title font size", () => {
     updateBanner({ titleFontSize: 50, ignoreSave: true });
     expect(bannerTitle.style.fontSize).toContain("50");
   });
 
-  it("aplica tamaño de fuente del subtítulo", () => {
+  it("applies the subtitle font size", () => {
     updateBanner({ subtitleFontSize: 25, ignoreSave: true });
     expect(bannerSubtitle.style.fontSize).toContain("25");
   });
 });
 
-// ─── updateBanner - Patrones de fondo ─────────────────────────────────────
+// ─── updateBanner - Background patterns ───────────────────────────────────
 
-describe("updateBanner - patrones de fondo", () => {
-  it("aplica patrón cuando pattern Y patternColor están definidos", () => {
+describe("updateBanner - background patterns", () => {
+  it("applies a pattern when both pattern AND patternColor are defined", () => {
     updateBanner({
       pattern: "bubbles",
       patternColor: "#FFFFFF",
       patternOpacity: 0.25,
       ignoreSave: true,
     });
-    // jsdom puede rechazar SVG data URLs en inline style backgroundImage
-    // Verificamos que no lanza error y que el estilo fue asignado
+    // jsdom may reject SVG data URLs en inline style backgroundImage
+    // We verify that it does not throw and that the style was assigned
     const bgImage = bannerImage.style.backgroundImage;
-    // En jsdom, el valor puede quedar vacío si el CSS parser rechaza la URL SVG,
-    // pero en navegadores reales funcionaría correctamente
+    // In jsdom, the value may remain empty if the CSS parser rejects the SVG URL,
+    // but it would work correctly in real browsers
     expect(typeof bgImage).toBe("string");
   });
 
-  it("no aplica patrón cuando pattern es falsy", () => {
+  it("does not apply a pattern when pattern is falsy", () => {
     bannerImage.style.backgroundImage = "";
     updateBanner({ pattern: null, ignoreSave: true });
     expect(bannerImage.style.backgroundImage).toBe("");
   });
 
-  /**
-   * DOCUMENTACIÓN DE BUG #1 (Crítico):
-   * Si patternSize es truthy pero patternColor es undefined,
-   * la condición (pattern || patternColor || patternOpacity || patternSize) es verdadera
-   * y se intenta llamar patternColor.replace('#', '') → TypeError.
-   *
-   * @bug banner.js: applyTheme() - patternColor.replace() cuando patternColor es undefined
-   * @severity CRITICAL
-   */
-  it("[BUG #1] lanza TypeError cuando patternSize es truthy pero patternColor es undefined", () => {
+  it("does not throw when patternSize is set without a pattern color", () => {
     expect(() => {
       updateBanner({ patternSize: 100, ignoreSave: true });
-    }).toThrow(TypeError);
+    }).not.toThrow();
   });
 
-  it("[BUG #1] lanza TypeError cuando pattern es truthy pero patternColor es undefined", () => {
+  it("does not throw when a pattern is set without a pattern color", () => {
     expect(() => {
       updateBanner({ pattern: "bubbles", ignoreSave: true });
-    }).toThrow(TypeError);
+    }).not.toThrow();
   });
 });
 
-// ─── updateBanner - Casos límite con título/subtítulo vacíos ──────────────
+// ─── updateBanner - Edge cases with empty title/subtitle ──────────────────
 
-describe("updateBanner - título y subtítulo vacíos (BUG #4)", () => {
+describe("updateBanner - empty title and subtitle (BUG #4)", () => {
   /**
-   * DOCUMENTACIÓN DE BUG #4 (Bajo):
-   * La condición `if (title || subtitle)` es falsa cuando ambos son '' (string vacío).
-   * Esto impide limpiar el texto del banner asignando string vacío.
+   * BUG #4 DOCUMENTATION (Low):
+   * The condition `if (title || subtitle)` is false when both are '' (empty string).
+   * This prevents clearing the banner text by assigning an empty string.
    *
-   * @bug banner.js: applyTheme() - condición `title || subtitle` ignora string vacío
+   * @bug banner.js: applyTheme() - condition `title || subtitle` ignores empty string
    * @severity LOW
    */
-  it("[BUG #4] no limpia el título cuando se pasa una cadena vacía", () => {
-    bannerTitle.textContent = "Texto existente";
+  it("[BUG #4] does not clear the title when an empty string is passed", () => {
+    bannerTitle.textContent = "Existing text";
     updateBanner({ title: "", ignoreSave: true });
-    // BUG: el texto NO se limpia porque '' es falsy
-    expect(bannerTitle.textContent).toBe("Texto existente");
+    // BUG: the text is NOT cleared because '' is falsy
+    expect(bannerTitle.textContent).toBe("Existing text");
   });
 
-  it("[BUG #4] no limpia el subtítulo cuando se pasa una cadena vacía", () => {
-    bannerSubtitle.textContent = "Subtítulo existente";
+  it("[BUG #4] does not clear the subtitle when an empty string is passed", () => {
+    bannerSubtitle.textContent = "Existing subtitle";
     updateBanner({ subtitle: "", ignoreSave: true });
-    // BUG: el texto NO se limpia porque '' es falsy
-    expect(bannerSubtitle.textContent).toBe("Subtítulo existente");
+    // BUG: the text is NOT cleared because '' is falsy
+    expect(bannerSubtitle.textContent).toBe("Existing subtitle");
   });
 });
 
-// ─── updateBanner - Persistencia en localStorage ──────────────────────────
+// ─── updateBanner - Persistence in localStorage ───────────────────────────
 
-describe("updateBanner - persistencia en localStorage", () => {
-  it("guarda el tema en localStorage cuando ignoreSave NO está definido", () => {
+describe("updateBanner - persistence in localStorage", () => {
+  it("saves the theme in localStorage when ignoreSave is NOT defined", () => {
     updateBanner({ background: "#123456" });
-    // La clave usada en saveTheme es 'theme' (no 'github-profile-header-theme')
+    // The key used in saveTheme is 'theme' (not 'github-profile-header-theme')
     const saved = localStorage.getItem("theme");
     expect(saved).not.toBeNull();
     const parsed = JSON.parse(saved);
     expect(parsed.background).toBe("#123456");
   });
 
-  it("NO guarda en localStorage cuando ignoreSave es true", () => {
+  it("does NOT save to localStorage when ignoreSave is true", () => {
     updateBanner({ background: "#654321", ignoreSave: true });
     expect(localStorage.getItem("theme")).toBeNull();
   });
 });
 
-// ─── updateUIOptions - Actualización de inputs del DOM ────────────────────
+// ─── updateUIOptions - Updating DOM inputs ────────────────────────────────
 
-describe("updateUIOptions - actualización de controles del toolbox", () => {
-  it("actualiza el selector de color de fondo", () => {
+describe("updateUIOptions - updating toolbox controls", () => {
+  it("updates the background color selector", () => {
     updateUIOptions({ background: "#AABBCC" });
     const input = document.querySelector("#main-bg-color-selector");
     expect(input.value).toBe("#aabbcc");
   });
 
-  it("actualiza el selector de color del título", () => {
+  it("updates the title color selector", () => {
     updateUIOptions({ titleColor: "#FF0000" });
     expect(document.querySelector("#title-color-selector").value).toBe(
       "#ff0000",
     );
   });
 
-  it("actualiza el selector de color del subtítulo", () => {
+  it("updates the subtitle color selector", () => {
     updateUIOptions({ subtitleColor: "#00FF00" });
     expect(document.querySelector("#subtitle-color-selector").value).toBe(
       "#00ff00",
     );
   });
 
-  it("actualiza el selector de color del borde", () => {
+  it("updates the border color selector", () => {
     updateUIOptions({ borderColor: "#0000FF" });
     expect(document.querySelector("#border-color-selector").value).toBe(
       "#0000ff",
     );
   });
 
-  it("actualiza el input de tamaño de borde", () => {
+  it("updates the border size input", () => {
     updateUIOptions({ borderSize: 8 });
     const inputs = document.querySelectorAll("#border-input");
     expect(inputs[0].value).toBe("8");
   });
 
-  it("actualiza el input de border radius", () => {
+  it("updates the border radius input", () => {
     updateUIOptions({ borderRadius: 12 });
     expect(document.querySelector("#border-radius-input").value).toBe("12");
   });
@@ -284,21 +273,14 @@ describe("updateUIOptions - actualización de controles del toolbox", () => {
 // ─── getSavedThemeProp ────────────────────────────────────────────────────
 
 describe("getSavedThemeProp", () => {
-  it("retorna el valor guardado cuando el tema existe en localStorage", () => {
-    // La clave que usa saveTheme/getSavedThemeProp es 'theme'
+  it("returns the saved value when the theme exists in localStorage", () => {
+    // The key used by saveTheme/getSavedThemeProp is 'theme'
     localStorage.setItem("theme", JSON.stringify({ background: "#123ABC" }));
     expect(getSavedThemeProp("background")).toBe("#123ABC");
   });
 
-  /**
-   * DOCUMENTACIÓN DE BUG #2 (Medio):
-   * getSavedThemeProp() retorna 'bubbles' para CUALQUIER prop cuando localStorage está vacío.
-   */
-  it("[BUG #2] retorna 'bubbles' para CUALQUIER prop cuando no hay tema guardado", () => {
+  it("returns null when there is no saved theme", () => {
     localStorage.clear();
-    expect(getSavedThemeProp("background")).toBe("bubbles");
-    expect(getSavedThemeProp("titleColor")).toBe("bubbles");
-    expect(getSavedThemeProp("borderSize")).toBe("bubbles");
-    expect(getSavedThemeProp("borderRadius")).toBe("bubbles");
+    expect(getSavedThemeProp("background")).toBeNull();
   });
 });

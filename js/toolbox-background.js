@@ -1,5 +1,5 @@
 import { getSavedThemeProp, updateBanner } from './banner';
-import { getPatternDefaultSize } from './data/patterns';
+import { getPatternDefaultSize } from './data/pattern-defaults';
 import { getMainElements } from './helpers/elements';
 
 /* ************** Elements ************** */
