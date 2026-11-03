@@ -1,11 +1,11 @@
 /**
  * tests/unit/helpers.test.js
- * Pruebas unitarias para las funciones en js/helpers/helpers.js.
- * Cubre: saveImageOnLocalStorage, isLocalDevelopment (constante).
+ * Unit tests for the functions in js/helpers/helpers.js.
+ * Covers: saveImageOnLocalStorage, isLocalDevelopment (constant).
  */
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 
-// ─── Configurar mock del canvas ANTES de importar el módulo ───────────────
+// ─── Set up the canvas mock BEFORE importing the module ───────────────────
 
 const mockToDataURL = vi.fn(() => "data:image/png;base64,MOCK_DATA_URL");
 const mockDrawImage = vi.fn();
@@ -13,7 +13,7 @@ const mockGetContext = vi.fn(() => ({
   drawImage: mockDrawImage,
 }));
 
-// Mock de HTMLCanvasElement para jsdom (no implementa canvas real)
+// Mock HTMLCanvasElement for jsdom (it doesn't implement a real canvas)
 Object.defineProperty(HTMLCanvasElement.prototype, "getContext", {
   value: mockGetContext,
   writable: true,
@@ -39,23 +39,23 @@ afterEach(() => {
 // ─── saveImageOnLocalStorage ──────────────────────────────────────────────
 
 describe("saveImageOnLocalStorage", () => {
-  it("no lanza error cuando se llama con un elemento imagen válido", () => {
+  it("does not throw when called with a valid image element", () => {
     const mockImg = document.createElement("img");
     mockImg.width = 800;
     mockImg.height = 200;
     expect(() => saveImageOnLocalStorage(mockImg)).not.toThrow();
   });
 
-  it('llama a getContext("2d") para obtener el contexto del canvas', () => {
+  it('calls getContext("2d") to get the canvas context', () => {
     const mockImg = document.createElement("img");
     saveImageOnLocalStorage(mockImg);
     expect(mockGetContext).toHaveBeenCalledWith("2d");
   });
 
-  it("llama a drawImage con la imagen proporcionada (5 args: img, x, y, width, height)", () => {
+  it("calls drawImage with the provided image (5 args: img, x, y, width, height)", () => {
     const mockImg = document.createElement("img");
     saveImageOnLocalStorage(mockImg);
-    // canvas.drawImage(img, 0, 0, img.width, img.height) — img sin src tiene width/height = 0
+    // canvas.drawImage(img, 0, 0, img.width, img.height) — an img without src has width/height = 0
     expect(mockDrawImage).toHaveBeenCalledWith(
       mockImg,
       0,
@@ -65,7 +65,7 @@ describe("saveImageOnLocalStorage", () => {
     );
   });
 
-  it('guarda en localStorage con la clave "savedImage"', () => {
+  it('saves to localStorage under the "savedImage" key', () => {
     const mockImg = document.createElement("img");
     saveImageOnLocalStorage(mockImg);
     expect(localStorage.getItem("savedImage")).toBe(
@@ -73,17 +73,17 @@ describe("saveImageOnLocalStorage", () => {
     );
   });
 
-  it("sobreescribe el valor previo en localStorage con la nueva imagen", () => {
-    localStorage.setItem("savedImage", "valor-anterior");
+  it("overwrites the previous localStorage value with the new image", () => {
+    localStorage.setItem("savedImage", "previous-value");
     const mockImg = document.createElement("img");
-    mockToDataURL.mockReturnValue("data:image/png;base64,NUEVO_VALOR");
+    mockToDataURL.mockReturnValue("data:image/png;base64,NEW_VALUE");
     saveImageOnLocalStorage(mockImg);
     expect(localStorage.getItem("savedImage")).toBe(
-      "data:image/png;base64,NUEVO_VALOR",
+      "data:image/png;base64,NEW_VALUE",
     );
   });
 
-  it("usa toDataURL para obtener la representación base64", () => {
+  it("uses toDataURL to get the base64 representation", () => {
     const mockImg = document.createElement("img");
     saveImageOnLocalStorage(mockImg);
     expect(mockToDataURL).toHaveBeenCalled();
@@ -92,38 +92,38 @@ describe("saveImageOnLocalStorage", () => {
 
 // ─── isLocalDevelopment ───────────────────────────────────────────────────
 
-describe("isLocalDevelopment (constante evaluada al importar)", () => {
-  it('es false en el entorno de pruebas jsdom (hostname vacío o "localhost" del test runner)', async () => {
-    // En jsdom el hostname por defecto es '' o 'localhost' dependiendo del URL configurado.
-    // La constante se evalúa al cargar el módulo.
-    // Verificamos que la importación del módulo no lanzó error.
+describe("isLocalDevelopment (constant evaluated on import)", () => {
+  it('is false in the jsdom test environment (empty hostname or the test runner\'s "localhost")', async () => {
+    // In jsdom the default hostname is '' or 'localhost' depending on the configured URL.
+    // The constant is evaluated when the module loads.
+    // We verify that importing the module did not throw.
     const mod = await import("../../js/helpers/helpers.js");
     expect(mod).toBeDefined();
   });
 
-  it('el hostname de jsdom no es "localhost" en el contexto de Vitest', () => {
-    // jsdom por defecto usa 'about:blank' o un hostname vacío, no localhost
+  it('the jsdom hostname is not "localhost" in the Vitest context', () => {
+    // jsdom defaults to 'about:blank' or an empty hostname, not localhost
     const hostname = window.location.hostname;
-    // Puede ser '' (string vacío) en jsdom — confirmamos que no es un hostname de producción
+    // May be '' (empty string) in jsdom — we confirm it is not a production hostname
     expect(hostname).not.toContain("github.io");
     expect(hostname).not.toContain("example.com");
   });
 });
 
-// ─── localStorage general ─────────────────────────────────────────────────
+// ─── General localStorage ─────────────────────────────────────────────────
 
-describe("localStorage en el entorno jsdom", () => {
-  it("localStorage está disponible en el entorno de pruebas", () => {
+describe("localStorage in the jsdom environment", () => {
+  it("localStorage is available in the test environment", () => {
     expect(typeof localStorage).toBe("object");
     expect(localStorage).not.toBeNull();
   });
 
-  it("setItem y getItem funcionan correctamente", () => {
+  it("setItem and getItem work correctly", () => {
     localStorage.setItem("test-key", "test-value");
     expect(localStorage.getItem("test-key")).toBe("test-value");
   });
 
-  it("clear elimina todos los items", () => {
+  it("clear removes all items", () => {
     localStorage.setItem("key1", "val1");
     localStorage.clear();
     expect(localStorage.getItem("key1")).toBeNull();

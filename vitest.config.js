@@ -12,13 +12,13 @@ export default defineConfig({
       reportsDirectory: "./coverage",
       include: ["js/**/*.js"],
       exclude: [
-        // Módulos de UI pura: solo testables vía E2E (navegador real)
+        // Pure UI modules: only testable via E2E (real browser)
         "js/main.js",
         "js/toolbox-main.js",
         "js/toolbox-background.js",
         "js/toolbox-decorations.js",
         "js/toolbox-presets.js",
-        // Datos estáticos sin lógica ejecutable
+        // Static data with no executable logic
         "js/data/patterns.js",
       ],
       thresholds: {

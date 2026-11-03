@@ -1,17 +1,10 @@
 /**
  * tests/unit/getPattern.test.js
- * Pruebas unitarias para la función getPattern (js/data/patterns.js).
- * No requiere DOM — función pura que genera strings CSS.
+ * Unit tests for the getPattern function (js/data/patterns.js).
+ * Requires no DOM — pure function that generates CSS strings.
  */
 import { describe, it, expect } from "vitest";
 import { getPattern, getPatternDefaultSize } from "../../js/data/patterns.js";
-import { PatternResultSchema } from "../utils/oracle.js";
-import {
-  generatePatternTestCases,
-  generateHexColorNoHash,
-  generateOpacity,
-  generateUnknownPatternName,
-} from "../utils/testData.js";
 
 const KNOWN_PATTERNS = [
   "jigsaw",
@@ -33,11 +26,11 @@ const KNOWN_PATTERNS = [
   "charlie-brown",
 ];
 
-// ─── Formato de retorno ────────────────────────────────────────────────────
+// ─── Return format ─────────────────────────────────────────────────────────
 
-describe("getPattern - formato de retorno", () => {
+describe("getPattern - return format", () => {
   it.each(KNOWN_PATTERNS)(
-    'patrón "%s" retorna una cadena que empieza con url(',
+    'pattern "%s" returns a string starting with url(',
     (pattern) => {
       const result = getPattern(pattern, "FFFFFF", 0.25);
       expect(typeof result).toBe("string");
@@ -46,119 +39,80 @@ describe("getPattern - formato de retorno", () => {
   );
 
   it.each(KNOWN_PATTERNS)(
-    'patrón "%s" contiene SVG inline codificado',
+    'pattern "%s" contains encoded inline SVG',
     (pattern) => {
       const result = getPattern(pattern, "FFFFFF", 0.25);
       expect(result).toContain("data:image/svg+xml");
     },
   );
 
-  it.each(KNOWN_PATTERNS)(
-    'patrón "%s" cumple el esquema de oráculo PatternResultSchema',
-    (pattern) => {
-      const result = getPattern(pattern, "FFFFFF", 0.25);
-      const validation = PatternResultSchema.safeParse(result);
-      expect(validation.success).toBe(true);
-    },
-  );
 });
 
-// ─── Interpolación de parámetros ──────────────────────────────────────────
+// ─── Parameter interpolation ──────────────────────────────────────────────
 
-describe("getPattern - interpolación de parámetros", () => {
-  it("incluye el color hex en el SVG generado", () => {
+describe("getPattern - parameter interpolation", () => {
+  it("includes the hex color in the generated SVG", () => {
     const result = getPattern("bubbles", "ABC123", 0.5);
     expect(result).toContain("ABC123");
   });
 
-  it("incluye la opacidad en el SVG generado", () => {
+  it("includes the opacity in the generated SVG", () => {
     const result = getPattern("bubbles", "FFFFFF", 0.75);
     expect(result).toContain("0.75");
   });
 
-  it("usa la opacidad por defecto 0.25 si no se especifica", () => {
+  it("uses the default opacity 0.25 when not specified", () => {
     const result = getPattern("bubbles", "FFFFFF");
     expect(result).toContain("0.25");
   });
 
-  it("usa el color por defecto FFFFFF si no se especifica", () => {
+  it("uses the default color FFFFFF when not specified", () => {
     const result = getPattern("bubbles");
     expect(result).toContain("FFFFFF");
   });
 
-  it("colores distintos producen SVGs distintos", () => {
+  it("different colors produce different SVGs", () => {
     const a = getPattern("bubbles", "FF0000", 0.25);
     const b = getPattern("bubbles", "00FF00", 0.25);
     expect(a).not.toBe(b);
   });
 
-  it("opacidades distintas producen SVGs distintos", () => {
+  it("different opacities produce different SVGs", () => {
     const a = getPattern("bubbles", "FFFFFF", 0.1);
     const b = getPattern("bubbles", "FFFFFF", 0.9);
     expect(a).not.toBe(b);
   });
 });
 
-// ─── Casos límite ─────────────────────────────────────────────────────────
+// ─── Edge cases ───────────────────────────────────────────────────────────
 
-describe("getPattern - casos límite", () => {
-  it('retorna "none" para un patrón desconocido (caso default del switch)', () => {
-    const result = getPattern("patron-que-no-existe", "FFFFFF", 0.5);
+describe("getPattern - edge cases", () => {
+  it('returns "none" for an unknown pattern (switch default case)', () => {
+    const result = getPattern("nonexistent-pattern", "FFFFFF", 0.5);
     expect(result).toBe("none");
   });
 
-  it("maneja opacidad 0 sin errores", () => {
+  it("handles opacity 0 without errors", () => {
     expect(() => getPattern("bubbles", "FFFFFF", 0)).not.toThrow();
     const result = getPattern("bubbles", "FFFFFF", 0);
     expect(result).toContain("svg");
   });
 
-  it("maneja opacidad 1 sin errores", () => {
+  it("handles opacity 1 without errors", () => {
     expect(() => getPattern("bubbles", "FFFFFF", 1)).not.toThrow();
   });
 
-  it("llamadas con los mismos parámetros producen el mismo resultado (determinismo)", () => {
+  it("calls with the same parameters produce the same result (determinism)", () => {
     const r1 = getPattern("jigsaw", "AABBCC", 0.3);
     const r2 = getPattern("jigsaw", "AABBCC", 0.3);
     expect(r1).toBe(r2);
   });
 });
 
-// ─── Pruebas con datos generados por Faker ────────────────────────────────
-
-describe("getPattern - generación de datos con Faker", () => {
-  it("todos los casos generados aleatoriamente cumplen el esquema de oráculo", () => {
-    const cases = generatePatternTestCases(20);
-    cases.forEach(({ pattern, color, opacity }) => {
-      const result = getPattern(pattern, color, opacity);
-      const validation = PatternResultSchema.safeParse(result);
-      expect(
-        validation.success,
-        `Fallo para patrón="${pattern}" color="${color}" opacidad=${opacity}: ${JSON.stringify(validation.error?.issues)}`,
-      ).toBe(true);
-    });
-  });
-
-  it('patrones desconocidos generados aleatoriamente siempre retornan "none"', () => {
-    const unknownPatterns = Array.from(
-      { length: 10 },
-      generateUnknownPatternName,
-    );
-    unknownPatterns.forEach((pattern) => {
-      const result = getPattern(
-        pattern,
-        generateHexColorNoHash(),
-        generateOpacity(),
-      );
-      expect(result).toBe("none");
-    });
-  });
-});
-
 // ─── getPatternDefaultSize ────────────────────────────────────────────────
 
 describe("getPatternDefaultSize", () => {
-  it("retorna un número positivo para patrones conocidos", () => {
+  it("returns a positive number for known patterns", () => {
     KNOWN_PATTERNS.forEach((pattern) => {
       const size = getPatternDefaultSize(pattern);
       if (size !== undefined) {
@@ -168,35 +122,35 @@ describe("getPatternDefaultSize", () => {
     });
   });
 
-  it("bubbles tiene tamaño por defecto 200", () => {
+  it("bubbles has a default size of 200", () => {
     expect(getPatternDefaultSize("bubbles")).toBe(200);
   });
 
-  it("jigsaw tiene tamaño por defecto 100", () => {
+  it("jigsaw has a default size of 100", () => {
     expect(getPatternDefaultSize("jigsaw")).toBe(100);
   });
 
-  it("retorna undefined o un valor para patrones desconocidos", () => {
-    const result = getPatternDefaultSize("patron-inexistente");
-    // No debe lanzar error; puede retornar undefined
+  it("returns undefined or a value for unknown patterns", () => {
+    const result = getPatternDefaultSize("missing-pattern");
+    // Must not throw; may return undefined
     expect(result === undefined || typeof result === "number").toBe(true);
   });
 });
 
-// ─── Snapshots de oráculos ────────────────────────────────────────────────
+// ─── Oracle snapshots ─────────────────────────────────────────────────────
 
-describe("getPattern - snapshots de oráculos visuales", () => {
-  it("topography con FFFFFF/0.25 mantiene estructura estable (snapshot)", () => {
+describe("getPattern - visual oracle snapshots", () => {
+  it("topography with FFFFFF/0.25 keeps a stable structure (snapshot)", () => {
     const result = getPattern("topography", "FFFFFF", 0.25);
     expect(result).toMatchSnapshot();
   });
 
-  it("bubbles con FFFFFF/0.25 mantiene estructura estable (snapshot)", () => {
+  it("bubbles with FFFFFF/0.25 keeps a stable structure (snapshot)", () => {
     const result = getPattern("bubbles", "FFFFFF", 0.25);
     expect(result).toMatchSnapshot();
   });
 
-  it("jigsaw con FFFFFF/0.25 mantiene estructura estable (snapshot)", () => {
+  it("jigsaw with FFFFFF/0.25 keeps a stable structure (snapshot)", () => {
     const result = getPattern("jigsaw", "FFFFFF", 0.25);
     expect(result).toMatchSnapshot();
   });

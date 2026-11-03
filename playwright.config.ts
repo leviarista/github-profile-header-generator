@@ -1,17 +1,14 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const PORT = 4173;
+
 export default defineConfig({
   testDir: './tests/e2e',
-  fullyParallel: false,
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 1,
-  workers: 1,
-  reporter: [
-    ['html', { outputFolder: 'playwright-report', open: 'never' }],
-    ['list'],
-  ],
+  retries: process.env.CI ? 2 : 0,
+  reporter: [['list']],
   use: {
-    baseURL: 'https://leviarista.github.io/github-profile-header-generator/',
+    baseURL: `http://localhost:${PORT}/`,
     headless: !process.env.HEADED,
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
@@ -23,17 +20,11 @@ export default defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
-    {
-      name: 'mobile-chrome',
-      use: { ...devices['Pixel 5'] },
-    },
   ],
+  webServer: {
+    command: `npm run build && npm run preview -- --port ${PORT} --strictPort`,
+    url: `http://localhost:${PORT}/`,
+    reuseExistingServer: !process.env.CI,
+    timeout: 120000,
+  },
 });

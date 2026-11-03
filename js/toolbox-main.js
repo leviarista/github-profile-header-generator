@@ -79,7 +79,7 @@ toolbox.querySelectorAll('.size-inputs input')
             input.addEventListener('keyup', (e) => {
                 setSizeValues();
             });
-        } else if (input.id = 'paddings-input') {
+        } else if (input.id === 'paddings-input') {
             input.addEventListener('input', (e) => {
                 e.target.nextElementSibling.value = e.target.value
                 setPaddingValues();
