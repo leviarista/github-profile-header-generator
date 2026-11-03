@@ -18,6 +18,7 @@ const KNOWN_PATTERNS = [
   "brick-wall",
   "honeycomb",
   "charlie-brown",
+  "subtle-stripes",
 ];
 
 const TEXT_ALIGNS = ["flex-start", "center", "flex-end"];

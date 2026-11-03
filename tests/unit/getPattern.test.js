@@ -31,6 +31,7 @@ const KNOWN_PATTERNS = [
   "brick-wall",
   "honeycomb",
   "charlie-brown",
+  "subtle-stripes",
 ];
 
 // ─── Formato de retorno ────────────────────────────────────────────────────
