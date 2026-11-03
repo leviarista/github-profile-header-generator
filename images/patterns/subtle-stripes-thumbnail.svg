@@ -1,0 +1,76 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_11_40)">
+<path d="M50 13H0V253H50V13Z" fill="#F5F5F5"/>
+</g>
+<g clip-path="url(#clip1_11_40)">
+<path d="M50 -87H0V153H50V-87Z" fill="#F5F5F5"/>
+</g>
+<g clip-path="url(#clip2_11_40)">
+<path d="M150 40H40V280H150V40Z" fill="#F5F5F5"/>
+</g>
+<g clip-path="url(#clip3_11_40)">
+<path d="M150 -60H40V180H150V-60Z" fill="#F5F5F5"/>
+</g>
+<g clip-path="url(#clip4_11_40)">
+<path d="M250 40H140V280H250V40Z" fill="#F5F5F5"/>
+</g>
+<g clip-path="url(#clip5_11_40)">
+<path d="M350 40H240V280H350V40Z" fill="#F5F5F5"/>
+</g>
+<g clip-path="url(#clip6_11_40)">
+<path d="M250 -60H140V180H250V-60Z" fill="#F5F5F5"/>
+</g>
+<g clip-path="url(#clip7_11_40)">
+<path d="M350 -60H240V180H350V-60Z" fill="#F5F5F5"/>
+</g>
+<g clip-path="url(#clip8_11_40)">
+<path d="M50 140H-60V380H50V140Z" fill="#F5F5F5"/>
+</g>
+<g clip-path="url(#clip9_11_40)">
+<path d="M150 140H40V380H150V140Z" fill="#F5F5F5"/>
+</g>
+<g clip-path="url(#clip10_11_40)">
+<path d="M250 140H140V380H250V140Z" fill="#F5F5F5"/>
+</g>
+<g clip-path="url(#clip11_11_40)">
+<path d="M350 140H240V380H350V140Z" fill="#F5F5F5"/>
+</g>
+<defs>
+<clipPath id="clip0_11_40">
+<rect width="100" height="100" fill="white" transform="translate(0 100)"/>
+</clipPath>
+<clipPath id="clip1_11_40">
+<rect width="100" height="100" fill="white"/>
+</clipPath>
+<clipPath id="clip2_11_40">
+<rect width="100" height="100" fill="white" transform="translate(100 100)"/>
+</clipPath>
+<clipPath id="clip3_11_40">
+<rect width="100" height="100" fill="white" transform="translate(100)"/>
+</clipPath>
+<clipPath id="clip4_11_40">
+<rect width="100" height="100" fill="white" transform="translate(200 100)"/>
+</clipPath>
+<clipPath id="clip5_11_40">
+<rect width="100" height="100" fill="white" transform="translate(300 100)"/>
+</clipPath>
+<clipPath id="clip6_11_40">
+<rect width="100" height="100" fill="white" transform="translate(200)"/>
+</clipPath>
+<clipPath id="clip7_11_40">
+<rect width="100" height="100" fill="white" transform="translate(300)"/>
+</clipPath>
+<clipPath id="clip8_11_40">
+<rect width="100" height="100" fill="white" transform="translate(0 200)"/>
+</clipPath>
+<clipPath id="clip9_11_40">
+<rect width="100" height="100" fill="white" transform="translate(100 200)"/>
+</clipPath>
+<clipPath id="clip10_11_40">
+<rect width="100" height="100" fill="white" transform="translate(200 200)"/>
+</clipPath>
+<clipPath id="clip11_11_40">
+<rect width="100" height="100" fill="white" transform="translate(300 200)"/>
+</clipPath>
+</defs>
+</svg>
