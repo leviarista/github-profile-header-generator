@@ -171,25 +171,16 @@ describe("updateBanner - background patterns", () => {
     expect(bannerImage.style.backgroundImage).toBe("");
   });
 
-  /**
-   * BUG #1 DOCUMENTATION (Critical):
-   * If patternSize is truthy but patternColor is undefined,
-   * the condition (pattern || patternColor || patternOpacity || patternSize) is true
-   * and patternColor.replace('#', '') is called → TypeError.
-   *
-   * @bug banner.js: applyTheme() - patternColor.replace() when patternColor is undefined
-   * @severity CRITICAL
-   */
-  it("[BUG #1] throws TypeError when patternSize is truthy but patternColor is undefined", () => {
+  it("does not throw when patternSize is set without a pattern color", () => {
     expect(() => {
       updateBanner({ patternSize: 100, ignoreSave: true });
-    }).toThrow(TypeError);
+    }).not.toThrow();
   });
 
-  it("[BUG #1] throws TypeError when pattern is truthy but patternColor is undefined", () => {
+  it("does not throw when a pattern is set without a pattern color", () => {
     expect(() => {
       updateBanner({ pattern: "bubbles", ignoreSave: true });
-    }).toThrow(TypeError);
+    }).not.toThrow();
   });
 });
 
